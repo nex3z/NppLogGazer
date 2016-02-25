@@ -131,11 +131,20 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pattern Extractor.
+        ///   Looks up a localized string similar to Pattern Tracer.
         /// </summary>
-        internal static string pattern_extractor_panel_label {
+        internal static string pattern_tracer_dlg_label {
             get {
-                return ResourceManager.GetString("pattern_extractor_panel_label", resourceCulture);
+                return ResourceManager.GetString("pattern_tracer_dlg_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Qucik Search.
+        /// </summary>
+        internal static string quick_search_dlg_label {
+            get {
+                return ResourceManager.GetString("quick_search_dlg_label", resourceCulture);
             }
         }
         

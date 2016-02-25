@@ -1,6 +1,6 @@
 ﻿namespace NppLogGazer
 {
-    partial class frmPatternExtractor
+    partial class frmPatternTracer
     {
         /// <summary>
         /// Required designer variable.

@@ -50,20 +50,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DllExport\DllExportAttribute.cs" />
-    <Compile Include="Forms\frmMyDlg.cs">
+    <Compile Include="Forms\frmPatternTracer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmMyDlg.Designer.cs">
-      <DependentUpon>frmMyDlg.cs</DependentUpon>
+    <Compile Include="Forms\frmPatternTracer.Designer.cs">
+      <DependentUpon>frmPatternTracer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmQuickSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmQuickSearch.Designer.cs">
+      <DependentUpon>frmQuickSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="NppPluginNETBase.cs" />
     <Compile Include="NppPluginNETHelper.cs" />
+    <Compile Include="PatternTracer\Model\Pattern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -72,11 +81,15 @@
     </Compile>
     <Compile Include="proto\Search.cs" />
     <Compile Include="proto\Scintilla.cs" />
+    <Compile Include="QuickSearch\Model\Keyword.cs" />
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\frmMyDlg.resx">
-      <DependentUpon>frmMyDlg.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmPatternTracer.resx">
+      <DependentUpon>frmPatternTracer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmQuickSearch.resx">
+      <DependentUpon>frmQuickSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

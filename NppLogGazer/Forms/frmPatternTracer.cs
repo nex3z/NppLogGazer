@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace NppLogGazer
 {
-    public partial class frmPatternExtractor : Form
+    public partial class frmPatternTracer : Form
     {
-        public frmPatternExtractor()
+        public frmPatternTracer()
         {
             InitializeComponent();
         }
