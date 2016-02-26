@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanelPatternExtractor = new System.Windows.Forms.TableLayoutPanel();
+            this.tabLayoutPatternTracer = new System.Windows.Forms.TableLayoutPanel();
             this.splitPatternExtractor = new System.Windows.Forms.SplitContainer();
             this.toolStripContainerPatternInput = new System.Windows.Forms.ToolStripContainer();
             this.txtPatternInput = new System.Windows.Forms.TextBox();
             this.toolStripPatternInput = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainerPatternList = new System.Windows.Forms.ToolStripContainer();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstPattern = new System.Windows.Forms.ListBox();
             this.toolStripListMgmt = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripListIO = new System.Windows.Forms.ToolStrip();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.tableLayoutPanelPatternExtractor.SuspendLayout();
+            this.tabLayoutPatternTracer.SuspendLayout();
             this.splitPatternExtractor.Panel1.SuspendLayout();
             this.splitPatternExtractor.Panel2.SuspendLayout();
             this.splitPatternExtractor.SuspendLayout();
@@ -57,19 +57,19 @@
             this.toolStripListIO.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanelPatternExtractor
+            // tabLayoutPatternTracer
             // 
-            this.tableLayoutPanelPatternExtractor.ColumnCount = 1;
-            this.tableLayoutPanelPatternExtractor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPatternExtractor.Controls.Add(this.splitPatternExtractor, 0, 1);
-            this.tableLayoutPanelPatternExtractor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelPatternExtractor.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelPatternExtractor.Name = "tableLayoutPanelPatternExtractor";
-            this.tableLayoutPanelPatternExtractor.RowCount = 2;
-            this.tableLayoutPanelPatternExtractor.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelPatternExtractor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatternExtractor.Size = new System.Drawing.Size(400, 449);
-            this.tableLayoutPanelPatternExtractor.TabIndex = 0;
+            this.tabLayoutPatternTracer.ColumnCount = 1;
+            this.tabLayoutPatternTracer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tabLayoutPatternTracer.Controls.Add(this.splitPatternExtractor, 0, 1);
+            this.tabLayoutPatternTracer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabLayoutPatternTracer.Location = new System.Drawing.Point(0, 0);
+            this.tabLayoutPatternTracer.Name = "tabLayoutPatternTracer";
+            this.tabLayoutPatternTracer.RowCount = 2;
+            this.tabLayoutPatternTracer.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tabLayoutPatternTracer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tabLayoutPatternTracer.Size = new System.Drawing.Size(400, 449);
+            this.tabLayoutPatternTracer.TabIndex = 0;
             // 
             // splitPatternExtractor
             // 
@@ -145,7 +145,7 @@
             // 
             // toolStripContainerPatternList.ContentPanel
             // 
-            this.toolStripContainerPatternList.ContentPanel.Controls.Add(this.listBox1);
+            this.toolStripContainerPatternList.ContentPanel.Controls.Add(this.lstPattern);
             this.toolStripContainerPatternList.ContentPanel.Size = new System.Drawing.Size(394, 226);
             this.toolStripContainerPatternList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainerPatternList.Location = new System.Drawing.Point(0, 0);
@@ -160,15 +160,15 @@
             this.toolStripContainerPatternList.TopToolStripPanel.Controls.Add(this.toolStripListMgmt);
             this.toolStripContainerPatternList.TopToolStripPanel.Controls.Add(this.toolStripListIO);
             // 
-            // listBox1
+            // lstPattern
             // 
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(0, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(394, 226);
-            this.listBox1.TabIndex = 0;
+            this.lstPattern.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstPattern.FormattingEnabled = true;
+            this.lstPattern.ItemHeight = 12;
+            this.lstPattern.Location = new System.Drawing.Point(0, 0);
+            this.lstPattern.Name = "lstPattern";
+            this.lstPattern.Size = new System.Drawing.Size(394, 226);
+            this.lstPattern.TabIndex = 0;
             // 
             // toolStripListMgmt
             // 
@@ -228,15 +228,15 @@
             this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton4.Text = "toolStripButton4";
             // 
-            // frmPatternExtractor
+            // frmPatternTracer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 449);
-            this.Controls.Add(this.tableLayoutPanelPatternExtractor);
-            this.Name = "frmPatternExtractor";
-            this.Text = "frmMyDlg";
-            this.tableLayoutPanelPatternExtractor.ResumeLayout(false);
+            this.Controls.Add(this.tabLayoutPatternTracer);
+            this.Name = "frmPatternTracer";
+            this.Text = "Pattern Tracer";
+            this.tabLayoutPatternTracer.ResumeLayout(false);
             this.splitPatternExtractor.Panel1.ResumeLayout(false);
             this.splitPatternExtractor.Panel2.ResumeLayout(false);
             this.splitPatternExtractor.ResumeLayout(false);
@@ -263,14 +263,14 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatternExtractor;
+        private System.Windows.Forms.TableLayoutPanel tabLayoutPatternTracer;
         private System.Windows.Forms.SplitContainer splitPatternExtractor;
         private System.Windows.Forms.ToolStripContainer toolStripContainerPatternInput;
         private System.Windows.Forms.TextBox txtPatternInput;
         private System.Windows.Forms.ToolStrip toolStripPatternInput;
         private System.Windows.Forms.ToolStripButton toolStripBtnSearch;
         private System.Windows.Forms.ToolStripContainer toolStripContainerPatternList;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstPattern;
         private System.Windows.Forms.ToolStrip toolStripListMgmt;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;

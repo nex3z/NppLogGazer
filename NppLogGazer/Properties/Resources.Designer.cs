@@ -131,6 +131,24 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Match Case.
+        /// </summary>
+        internal static string match_case {
+            get {
+                return ResourceManager.GetString("match_case", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match Word.
+        /// </summary>
+        internal static string match_word {
+            get {
+                return ResourceManager.GetString("match_word", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pattern Tracer.
         /// </summary>
         internal static string pattern_tracer_dlg_label {
@@ -140,11 +158,40 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Qucik Search.
+        ///   Looks up a localized string similar to Quick Search.
         /// </summary>
         internal static string quick_search_dlg_label {
             get {
                 return ResourceManager.GetString("quick_search_dlg_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regular Expression.
+        /// </summary>
+        internal static string regular_expression {
+            get {
+                return ResourceManager.GetString("regular_expression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_duplicate {
+            get {
+                object obj = ResourceManager.GetObject("remove_duplicate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap report_disk {
+            get {
+                object obj = ResourceManager.GetObject("report_disk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -165,6 +212,15 @@ namespace NppLogGazer.Properties {
             get {
                 object obj = ResourceManager.GetObject("star_bmp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrap Search.
+        /// </summary>
+        internal static string wrap_search {
+            get {
+                return ResourceManager.GetString("wrap_search", resourceCulture);
             }
         }
     }
