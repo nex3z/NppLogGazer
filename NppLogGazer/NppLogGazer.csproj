@@ -81,7 +81,10 @@
     </Compile>
     <Compile Include="proto\Search.cs" />
     <Compile Include="proto\Scintilla.cs" />
-    <Compile Include="QuickSearch\Model\Keyword.cs" />
+    <Compile Include="QuickSearch\Presenter\QuickSearchPresenter.cs" />
+    <Compile Include="QuickSearch\Repository\KeywordRepository.cs" />
+    <Compile Include="QuickSearch\View\IQuickSearchView.cs" />
+    <Compile Include="QuickSearch\Model\KeywordModel.cs" />
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +139,7 @@
   <ItemGroup>
     <None Include="Resources\report_disk.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildProjectDirectory)\DllExport\NppPlugin.DllExport.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

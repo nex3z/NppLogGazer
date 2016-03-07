@@ -7,14 +7,14 @@ namespace NppLogGazer.QuickSearch.Model
     public enum KeywordType { Normal, RegExp };
 
     [Serializable]
-    class Keyword
+    class KeywordModel
     {
         public string KeywordText { get; set; }
         public KeywordType Type { get; set; }
 
-        public Keyword() { }
+        public KeywordModel() { }
 
-        public Keyword(string keyword, KeywordType type)
+        public KeywordModel(string keyword, KeywordType type)
         {
             this.KeywordText = keyword;
             this.Type = type;
@@ -25,7 +25,7 @@ namespace NppLogGazer.QuickSearch.Model
             return KeywordText;
         }
 
-        public bool Equals(Keyword other)
+        public bool Equals(KeywordModel other)
         {
             if ((this.KeywordText == other.KeywordText) && (this.Type == other.Type))
             {
