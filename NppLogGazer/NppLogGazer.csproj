@@ -57,16 +57,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DllExport\DllExportAttribute.cs" />
-    <Compile Include="Forms\frmPatternTracer.cs">
+    <Compile Include="QuickSearch\View\Event\SearchEventArgs.cs" />
+    <Compile Include="PatternTracer\View\frmPatternTracer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmPatternTracer.Designer.cs">
+    <Compile Include="PatternTracer\View\frmPatternTracer.Designer.cs">
       <DependentUpon>frmPatternTracer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmQuickSearch.cs">
+    <Compile Include="QuickSearch\View\frmQuickSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmQuickSearch.Designer.cs">
+    <Compile Include="QuickSearch\View\frmQuickSearch.Designer.cs">
       <DependentUpon>frmQuickSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
@@ -88,10 +89,10 @@
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\frmPatternTracer.resx">
+    <EmbeddedResource Include="PatternTracer\View\frmPatternTracer.resx">
       <DependentUpon>frmPatternTracer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmQuickSearch.resx">
+    <EmbeddedResource Include="QuickSearch\View\frmQuickSearch.resx">
       <DependentUpon>frmQuickSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -139,7 +140,9 @@
   <ItemGroup>
     <None Include="Resources\report_disk.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Forms\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildProjectDirectory)\DllExport\NppPlugin.DllExport.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

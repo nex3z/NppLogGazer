@@ -244,6 +244,7 @@
             this.lstKeywords.Name = "lstKeywords";
             this.lstKeywords.Size = new System.Drawing.Size(365, 466);
             this.lstKeywords.TabIndex = 5;
+            this.lstKeywords.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstKeywords_MouseDown);
             // 
             // frmQuickSearch
             // 

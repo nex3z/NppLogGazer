@@ -7,7 +7,7 @@ namespace NppLogGazer.QuickSearch.Model
     public enum KeywordType { Normal, RegExp };
 
     [Serializable]
-    class KeywordModel
+    public class KeywordModel
     {
         public string KeywordText { get; set; }
         public KeywordType Type { get; set; }
