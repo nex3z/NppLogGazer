@@ -8,18 +8,11 @@ using System.Xml.Serialization;
 
 namespace NppLogGazer.QuickSearch.Repository
 {
-    class KeywordRepository
+    class KeywordRepository : IKeywordRepository
     {
         BindingList<KeywordModel> KeywordList { get; set; }
-        String FilePath;
 
-        public KeywordRepository(String filePath)
-        {
-            this.FilePath = filePath;
-            LoadFromFile(this.FilePath);
-        }
-
-        public void LoadFromFile(String filePath)
+        public void Load(String filePath)
         {
 
             using (FileStream fs = File.Open(filePath, FileMode.OpenOrCreate))
@@ -36,7 +29,7 @@ namespace NppLogGazer.QuickSearch.Repository
             }
         }
 
-        public void SaveToFile(String filePath)
+        public void Save(String filePath)
         {
             try
             {

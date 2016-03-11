@@ -19,7 +19,6 @@ namespace NppLogGazer
         public frmQuickSearch()
         {
             InitializeComponent();
-            presenter = new QuickSearchPresenter(this);
         }
 
         public void ShowMessage(string message) {

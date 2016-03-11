@@ -57,6 +57,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DllExport\DllExportAttribute.cs" />
+    <Compile Include="QuickSearch\QuickSearchPanel.cs" />
+    <Compile Include="QuickSearch\Repository\IKeywordRepository.cs" />
     <Compile Include="QuickSearch\View\Event\SearchEventArgs.cs" />
     <Compile Include="PatternTracer\View\frmPatternTracer.cs">
       <SubType>Form</SubType>

@@ -6,6 +6,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using NppPluginNET;
+using NppLogGazer.QuickSearch;
+using NppLogGazer.QuickSearch.Presenter;
 
 namespace NppLogGazer
 {
@@ -16,14 +18,15 @@ namespace NppLogGazer
         static string iniFilePath = null;
         static bool someSetting = false;
         static frmPatternTracer frmPatternTracer = null;
-        static frmQuickSearch frmQuickSearch = null;
+        static Form frmQuickSearch = null;
         static int idPatternTracerDlg = -1;
         static int idQuickSearchDlg = -1;
         static Bitmap tbPatternTracerBmp = Properties.Resources.star;
         static Bitmap tbPatternTracerBmp_tbTab = Properties.Resources.star_bmp;
         static Bitmap tbQuickSearchBmp = Properties.Resources.magnifier;
         static Bitmap tbQuickSearchBmp_tbTab = Properties.Resources.magnifier;
-        static Icon tbIcon = null;
+        static Icon tbPatternTracerIcon = null;
+        static Icon tbQuickSearchIcon = null;
         #endregion
 
         #region " StartUp/CleanUp "
@@ -76,7 +79,7 @@ namespace NppLogGazer
                     ImageAttributes attr = new ImageAttributes();
                     attr.SetRemapTable(colorMap);
                     g.DrawImage(tbPatternTracerBmp_tbTab, new Rectangle(0, 0, 16, 16), 0, 0, 16, 16, GraphicsUnit.Pixel, attr);
-                    tbIcon = Icon.FromHandle(newBmp.GetHicon());
+                    tbPatternTracerIcon = Icon.FromHandle(newBmp.GetHicon());
                 }
 
                 NppTbData _nppTbData = new NppTbData();
@@ -84,7 +87,7 @@ namespace NppLogGazer
                 _nppTbData.pszName = Properties.Resources.pattern_tracer_dlg_label;
                 _nppTbData.dlgID = idPatternTracerDlg;
                 _nppTbData.uMask = NppTbMsg.DWS_DF_CONT_RIGHT | NppTbMsg.DWS_ICONTAB | NppTbMsg.DWS_ICONBAR;
-                _nppTbData.hIconTab = (uint)tbIcon.Handle;
+                _nppTbData.hIconTab = (uint)tbPatternTracerIcon.Handle;
                 _nppTbData.pszModuleName = PluginName;
                 IntPtr _ptrNppTbData = Marshal.AllocHGlobal(Marshal.SizeOf(_nppTbData));
                 Marshal.StructureToPtr(_nppTbData, _ptrNppTbData, false);
@@ -101,7 +104,7 @@ namespace NppLogGazer
         {
             if (frmQuickSearch == null)
             {
-                frmQuickSearch = new frmQuickSearch();
+                frmQuickSearch = QuickSearchPanel.Instance.Form;
 
                 using (Bitmap newBmp = new Bitmap(16, 16))
                 {
@@ -113,7 +116,7 @@ namespace NppLogGazer
                     ImageAttributes attr = new ImageAttributes();
                     attr.SetRemapTable(colorMap);
                     g.DrawImage(tbQuickSearchBmp_tbTab, new Rectangle(0, 0, 16, 16), 0, 0, 16, 16, GraphicsUnit.Pixel, attr);
-                    tbIcon = Icon.FromHandle(newBmp.GetHicon());
+                    tbQuickSearchIcon = Icon.FromHandle(newBmp.GetHicon());
                 }
 
                 NppTbData _nppTbData = new NppTbData();
@@ -121,7 +124,7 @@ namespace NppLogGazer
                 _nppTbData.pszName = Properties.Resources.quick_search_dlg_label;
                 _nppTbData.dlgID = idQuickSearchDlg;
                 _nppTbData.uMask = NppTbMsg.DWS_DF_CONT_RIGHT | NppTbMsg.DWS_ICONTAB | NppTbMsg.DWS_ICONBAR;
-                _nppTbData.hIconTab = (uint)tbIcon.Handle;
+                _nppTbData.hIconTab = (uint)tbQuickSearchIcon.Handle;
                 _nppTbData.pszModuleName = PluginName;
                 IntPtr _ptrNppTbData = Marshal.AllocHGlobal(Marshal.SizeOf(_nppTbData));
                 Marshal.StructureToPtr(_nppTbData, _ptrNppTbData, false);
