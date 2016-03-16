@@ -21,11 +21,20 @@ namespace NppLogGazer.QuickSearch.Presenter
         private void wireUpEvents()
         {
             view.PerformSearch += performSearch;
+            view.AddKeyword += addKeyword;
+            view.RemoveKeywordAt += removeKeywordAt;
+        }
+
+        private void addKeyword(Object sender, AddKeywordEventArgs args)
+        {
+        }
+
+        private void removeKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
+        {
         }
 
         private void performSearch(Object sender, SearchEventArgs args)
         {
-            view.ShowMessage("Delivered!");
         }
     }
 }

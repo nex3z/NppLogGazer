@@ -1,4 +1,5 @@
 ﻿using NppLogGazer.QuickSearch;
+using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.Presenter;
 using NppLogGazer.QuickSearch.View.Event;
 using System;
@@ -14,6 +15,10 @@ namespace NppLogGazer
     public partial class frmQuickSearch : Form, IQuickSearchView
     {
         public event EventHandler<SearchEventArgs> PerformSearch;
+
+        public event EventHandler<AddKeywordEventArgs> AddKeyword;
+        public event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
+
         private QuickSearchPresenter presenter;
 
         public frmQuickSearch()
@@ -31,6 +36,27 @@ namespace NppLogGazer
             if (PerformSearch != null)
             {
                 PerformSearch(null, new SearchEventArgs());
+            }
+        }
+
+        private void toolBtnAdd_Click(object sender, EventArgs e)
+        {
+            if (AddKeyword != null)
+            {
+                AddKeywordEventArgs args = new AddKeywordEventArgs();
+                args.Keyword.KeywordText = txtKeyword.Text;
+                args.Keyword.Type = chkRegExp.Checked ? KeywordType.RegExp : KeywordType.Normal;
+                AddKeyword(null, args);
+            }
+        }
+
+        private void toolBtnRemove_Click(object sender, EventArgs e)
+        {
+            if (RemoveKeywordAt != null)
+            {
+                RemoveKeywordAtEventArgs args = new RemoveKeywordAtEventArgs();
+                args.Position = lstKeywords.SelectedIndex;
+                RemoveKeywordAt(null, args);
             }
         }
 

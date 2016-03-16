@@ -10,6 +10,9 @@ namespace NppLogGazer.QuickSearch
     {
         event EventHandler<SearchEventArgs> PerformSearch;
 
+        event EventHandler<AddKeywordEventArgs> AddKeyword;
+        event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
+
         void ShowMessage(string message);
     }
 }

@@ -170,6 +170,7 @@
             this.toolBtnAdd.Name = "toolBtnAdd";
             this.toolBtnAdd.Size = new System.Drawing.Size(23, 22);
             this.toolBtnAdd.Text = "toolStripButton1";
+            this.toolBtnAdd.Click += new System.EventHandler(this.toolBtnAdd_Click);
             // 
             // toolBtnRemove
             // 
@@ -179,6 +180,7 @@
             this.toolBtnRemove.Name = "toolBtnRemove";
             this.toolBtnRemove.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRemove.Text = "toolStripButton2";
+            this.toolBtnRemove.Click += new System.EventHandler(this.toolBtnRemove_Click);
             // 
             // toolStripSeparator1
             // 
