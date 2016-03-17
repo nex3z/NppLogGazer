@@ -15,6 +15,8 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             this.view = view;
             this.repository = repository;
+
+            view.Bind(repository.KeywordList);
             wireUpEvents();
         }
 
@@ -27,6 +29,7 @@ namespace NppLogGazer.QuickSearch.Presenter
 
         private void addKeyword(Object sender, AddKeywordEventArgs args)
         {
+            repository.Add(args.Keyword);
         }
 
         private void removeKeywordAt(Object sender, RemoveKeywordAtEventArgs args)

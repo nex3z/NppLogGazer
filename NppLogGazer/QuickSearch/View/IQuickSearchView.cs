@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.View.Event;
+using System.ComponentModel;
 
 namespace NppLogGazer.QuickSearch
 {
@@ -13,6 +14,7 @@ namespace NppLogGazer.QuickSearch
         event EventHandler<AddKeywordEventArgs> AddKeyword;
         event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
 
+        void Bind(BindingList<KeywordModel> keywordList);
         void ShowMessage(string message);
     }
 }

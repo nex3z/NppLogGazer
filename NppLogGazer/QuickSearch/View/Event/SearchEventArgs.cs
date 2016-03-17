@@ -12,5 +12,10 @@ namespace NppLogGazer.QuickSearch.View.Event
         public bool MatchWord { get; set; }
         public bool MatchCase { get; set; }
         public bool WrapSearch { get; set; }
+
+        public SearchEventArgs()
+        {
+            Keyword = new KeywordModel();
+        }
     }
 }

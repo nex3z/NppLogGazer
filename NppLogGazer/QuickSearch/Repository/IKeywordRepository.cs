@@ -1,5 +1,7 @@
-﻿using System;
+﻿using NppLogGazer.QuickSearch.Model;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace NppLogGazer.QuickSearch.Repository
@@ -8,5 +10,9 @@ namespace NppLogGazer.QuickSearch.Repository
     {
         void Load(string path);
         void Save(string path);
+
+        BindingList<KeywordModel> KeywordList { get; set; }
+        void Add(KeywordModel item);
+        void RemoveItemAt(int position);
     }
 }

@@ -24,7 +24,8 @@ namespace NppLogGazer.QuickSearch
 
         public static QuickSearchPanel Instance
         {
-            get { 
+            get 
+            { 
                 return instance ?? (instance = new QuickSearchPanel());
             }
         }

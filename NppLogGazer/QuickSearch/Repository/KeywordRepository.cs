@@ -10,7 +10,22 @@ namespace NppLogGazer.QuickSearch.Repository
 {
     class KeywordRepository : IKeywordRepository
     {
-        BindingList<KeywordModel> KeywordList { get; set; }
+        public BindingList<KeywordModel> KeywordList { get; set; }
+
+        public KeywordRepository()
+        {
+            KeywordList = new BindingList<KeywordModel>();
+        }
+
+        public void Add(KeywordModel item)
+        {
+            KeywordList.Add(item);
+        }
+
+        public void RemoveItemAt(int position)
+        {
+            KeywordList.RemoveAt(position);
+        }
 
         public void Load(String filePath)
         {

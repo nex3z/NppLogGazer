@@ -19,14 +19,18 @@ namespace NppLogGazer
         public event EventHandler<AddKeywordEventArgs> AddKeyword;
         public event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
 
-        private QuickSearchPresenter presenter;
-
         public frmQuickSearch()
         {
             InitializeComponent();
         }
 
-        public void ShowMessage(string message) {
+        public void Bind(BindingList<KeywordModel> keywordList)
+        {
+            lstKeywords.DataSource = keywordList;
+        }
+
+        public void ShowMessage(string message) 
+        {
             MessageBox.Show(message);
         }
 
