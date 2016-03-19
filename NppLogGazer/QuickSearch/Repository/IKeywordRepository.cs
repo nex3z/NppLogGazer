@@ -14,5 +14,6 @@ namespace NppLogGazer.QuickSearch.Repository
         BindingList<KeywordModel> KeywordList { get; set; }
         void Add(KeywordModel item);
         void RemoveItemAt(int position);
+        void SwapItemAt(int first, int second);
     }
 }

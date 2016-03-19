@@ -18,6 +18,7 @@ namespace NppLogGazer
 
         public event EventHandler<AddKeywordEventArgs> AddKeyword;
         public event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
+        public event EventHandler<SwapPositionEventArgs> SwapKeywordPosition;
 
         public frmQuickSearch()
         {
@@ -32,6 +33,12 @@ namespace NppLogGazer
         public void ShowMessage(string message) 
         {
             MessageBox.Show(message);
+        }
+
+        public void SelectKeywordAt(int position)
+        {
+            if (position >= 0 && position < lstKeywords.Items.Count)
+                lstKeywords.SelectedIndex = position;
         }
 
         private void lstKeywords_MouseDown(object sender, MouseEventArgs e)
@@ -61,6 +68,24 @@ namespace NppLogGazer
                 RemoveKeywordAtEventArgs args = new RemoveKeywordAtEventArgs();
                 args.Position = lstKeywords.SelectedIndex;
                 RemoveKeywordAt(null, args);
+            }
+        }
+
+        private void toolBtnMoveUp_Click(object sender, EventArgs e)
+        {
+            int selectedIdx = lstKeywords.SelectedIndex;
+            if (selectedIdx > 0 && SwapKeywordPosition != null)
+            {
+                SwapKeywordPosition(null, new SwapPositionEventArgs(selectedIdx, selectedIdx - 1));
+            }
+        }
+
+        private void toolBtnMoveDown_Click(object sender, EventArgs e)
+        {
+            int selectedIdx = lstKeywords.SelectedIndex;
+            if (selectedIdx >= 0 && selectedIdx <= lstKeywords.Items.Count && SwapKeywordPosition != null)
+            {
+                SwapKeywordPosition(null, new SwapPositionEventArgs(selectedIdx, selectedIdx + 1));
             }
         }
 

@@ -195,6 +195,7 @@
             this.toolBtnMoveUp.Name = "toolBtnMoveUp";
             this.toolBtnMoveUp.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveUp.Text = "toolStripButton3";
+            this.toolBtnMoveUp.Click += new System.EventHandler(this.toolBtnMoveUp_Click);
             // 
             // toolBtnMoveDown
             // 
@@ -204,6 +205,7 @@
             this.toolBtnMoveDown.Name = "toolBtnMoveDown";
             this.toolBtnMoveDown.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveDown.Text = "toolStripButton4";
+            this.toolBtnMoveDown.Click += new System.EventHandler(this.toolBtnMoveDown_Click);
             // 
             // toolBtnRemoveDuplicate
             // 

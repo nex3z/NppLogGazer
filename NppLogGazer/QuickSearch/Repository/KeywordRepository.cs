@@ -19,12 +19,24 @@ namespace NppLogGazer.QuickSearch.Repository
 
         public void Add(KeywordModel item)
         {
-            KeywordList.Add(item);
+            if (item != null)
+                KeywordList.Add(item);
         }
 
         public void RemoveItemAt(int position)
         {
-            KeywordList.RemoveAt(position);
+            if (position >= 0 && position < KeywordList.Count)
+                KeywordList.RemoveAt(position);
+        }
+
+        public void SwapItemAt(int first, int second)
+        {
+            if (first >= 0 && first < KeywordList.Count && second >= 0 && second < KeywordList.Count)
+            {
+                KeywordModel tmp = KeywordList[first];
+                KeywordList[first] = KeywordList[second];
+                KeywordList[second] = tmp;
+            }
         }
 
         public void Load(String filePath)

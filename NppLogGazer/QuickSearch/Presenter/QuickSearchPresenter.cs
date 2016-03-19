@@ -25,15 +25,24 @@ namespace NppLogGazer.QuickSearch.Presenter
             view.PerformSearch += performSearch;
             view.AddKeyword += addKeyword;
             view.RemoveKeywordAt += removeKeywordAt;
+            view.SwapKeywordPosition += swapKeywordAt;
         }
 
         private void addKeyword(Object sender, AddKeywordEventArgs args)
         {
-            repository.Add(args.Keyword);
+            if (args.Keyword != null && args.Keyword.KeywordText != "")
+                repository.Add(args.Keyword);
         }
 
         private void removeKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
         {
+            repository.RemoveItemAt(args.Position);
+        }
+
+        private void swapKeywordAt(Object sender, SwapPositionEventArgs args)
+        {
+            repository.SwapItemAt(args.Src, args.Dest);
+            view.SelectKeywordAt(args.Dest);
         }
 
         private void performSearch(Object sender, SearchEventArgs args)

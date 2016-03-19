@@ -69,6 +69,7 @@
     <Compile Include="PatternTracer\View\frmPatternTracer.Designer.cs">
       <DependentUpon>frmPatternTracer.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuickSearch\View\Event\SwapPositionEventArgs.cs" />
     <Compile Include="QuickSearch\View\frmQuickSearch.cs">
       <SubType>Form</SubType>
     </Compile>

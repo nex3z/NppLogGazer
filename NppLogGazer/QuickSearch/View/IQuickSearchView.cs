@@ -13,8 +13,10 @@ namespace NppLogGazer.QuickSearch
 
         event EventHandler<AddKeywordEventArgs> AddKeyword;
         event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
+        event EventHandler<SwapPositionEventArgs> SwapKeywordPosition;
 
         void Bind(BindingList<KeywordModel> keywordList);
         void ShowMessage(string message);
+        void SelectKeywordAt(int position);
     }
 }
