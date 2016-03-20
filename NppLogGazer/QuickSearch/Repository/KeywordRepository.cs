@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -27,6 +28,11 @@ namespace NppLogGazer.QuickSearch.Repository
         {
             if (position >= 0 && position < KeywordList.Count)
                 KeywordList.RemoveAt(position);
+        }
+
+        public void RemoveDuplicated()
+        {
+            KeywordList = new BindingList<KeywordModel>(KeywordList.Distinct().ToList());
         }
 
         public void SwapItemAt(int first, int second)

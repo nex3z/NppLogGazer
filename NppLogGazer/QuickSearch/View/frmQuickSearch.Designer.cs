@@ -215,6 +215,7 @@
             this.toolBtnRemoveDuplicate.Name = "toolBtnRemoveDuplicate";
             this.toolBtnRemoveDuplicate.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRemoveDuplicate.Text = "toolStripButton5";
+            this.toolBtnRemoveDuplicate.Click += new System.EventHandler(this.toolBtnRemoveDuplicate_Click);
             // 
             // toolStripSeparator2
             // 

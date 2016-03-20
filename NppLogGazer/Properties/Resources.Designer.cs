@@ -176,6 +176,24 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete duplicated keywords in the list?.
+        /// </summary>
+        internal static string remove_dup_dlg_message {
+            get {
+                return ResourceManager.GetString("remove_dup_dlg_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove duplicated keywords.
+        /// </summary>
+        internal static string remove_dup_dlg_title {
+            get {
+                return ResourceManager.GetString("remove_dup_dlg_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap remove_duplicate {

@@ -17,32 +17,43 @@ namespace NppLogGazer.QuickSearch.Presenter
             this.repository = repository;
 
             view.Bind(repository.KeywordList);
-            wireUpEvents();
+            WireUpEvents();
         }
 
-        private void wireUpEvents()
+        private void WireUpEvents()
         {
             view.PerformSearch += performSearch;
-            view.AddKeyword += addKeyword;
-            view.RemoveKeywordAt += removeKeywordAt;
-            view.SwapKeywordPosition += swapKeywordAt;
+            view.AddKeyword += AddKeyword;
+            view.RemoveKeywordAt += RemoveKeywordAt;
+            view.SwapKeywordPosition += SwapKeywordAt;
+            view.RemoveDuplicates += RemoveDuplicates;
         }
 
-        private void addKeyword(Object sender, AddKeywordEventArgs args)
+        private void AddKeyword(Object sender, AddKeywordEventArgs args)
         {
             if (args.Keyword != null && args.Keyword.KeywordText != "")
                 repository.Add(args.Keyword);
         }
 
-        private void removeKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
+        private void RemoveKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
         {
             repository.RemoveItemAt(args.Position);
         }
 
-        private void swapKeywordAt(Object sender, SwapPositionEventArgs args)
+        private void SwapKeywordAt(Object sender, SwapPositionEventArgs args)
         {
             repository.SwapItemAt(args.Src, args.Dest);
             view.SelectKeywordAt(args.Dest);
+        }
+
+        private void RemoveDuplicates(Object sender, EventArgs args)
+        {
+            if (view.RequireConfirm(Properties.Resources.remove_dup_dlg_title, 
+                                    Properties.Resources.remove_dup_dlg_message))
+            {
+                repository.RemoveDuplicated();
+                view.Bind(repository.KeywordList);
+            }
         }
 
         private void performSearch(Object sender, SearchEventArgs args)

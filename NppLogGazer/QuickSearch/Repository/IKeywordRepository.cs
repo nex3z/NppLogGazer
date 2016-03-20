@@ -15,5 +15,6 @@ namespace NppLogGazer.QuickSearch.Repository
         void Add(KeywordModel item);
         void RemoveItemAt(int position);
         void SwapItemAt(int first, int second);
+        void RemoveDuplicated();
     }
 }

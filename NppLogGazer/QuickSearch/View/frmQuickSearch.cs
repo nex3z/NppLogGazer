@@ -19,6 +19,7 @@ namespace NppLogGazer
         public event EventHandler<AddKeywordEventArgs> AddKeyword;
         public event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
         public event EventHandler<SwapPositionEventArgs> SwapKeywordPosition;
+        public event EventHandler RemoveDuplicates;
 
         public frmQuickSearch()
         {
@@ -33,6 +34,22 @@ namespace NppLogGazer
         public void ShowMessage(string message) 
         {
             MessageBox.Show(message);
+        }
+
+        public bool RequireConfirm(string title, string message)
+        {
+            DialogResult MsgBoxResult = MessageBox.Show(
+                message,
+                title,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button1);
+
+            if (MsgBoxResult == DialogResult.Yes)
+                return true;
+            else
+                return false;
+
         }
 
         public void SelectKeywordAt(int position)
@@ -86,6 +103,14 @@ namespace NppLogGazer
             if (selectedIdx >= 0 && selectedIdx <= lstKeywords.Items.Count && SwapKeywordPosition != null)
             {
                 SwapKeywordPosition(null, new SwapPositionEventArgs(selectedIdx, selectedIdx + 1));
+            }
+        }
+
+        private void toolBtnRemoveDuplicate_Click(object sender, EventArgs e)
+        {
+            if (RemoveDuplicates != null)
+            {
+                RemoveDuplicates(null, EventArgs.Empty);
             }
         }
 
