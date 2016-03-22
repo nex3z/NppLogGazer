@@ -20,6 +20,8 @@ namespace NppLogGazer
         public event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
         public event EventHandler<SwapPositionEventArgs> SwapKeywordPosition;
         public event EventHandler RemoveDuplicates;
+        public event EventHandler<SaveKeywordListEventArgs> SaveKeywordList;
+        public event EventHandler<OpenKeywordListEventArgs> OpenKeywordList;
 
         public frmQuickSearch()
         {
@@ -49,7 +51,6 @@ namespace NppLogGazer
                 return true;
             else
                 return false;
-
         }
 
         public void SelectKeywordAt(int position)
@@ -111,6 +112,28 @@ namespace NppLogGazer
             if (RemoveDuplicates != null)
             {
                 RemoveDuplicates(null, EventArgs.Empty);
+            }
+        }
+
+        private void toolBtnSaveAs_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDlg = new SaveFileDialog();
+            saveFileDlg.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            if (saveFileDlg.ShowDialog() == DialogResult.OK && SaveKeywordList != null)
+            {
+                SaveKeywordList(null, new SaveKeywordListEventArgs(saveFileDlg.FileName));
+            }
+        }
+
+        private void toolBtnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDlg = new OpenFileDialog();
+            openFileDlg.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+
+            if (openFileDlg.ShowDialog() == DialogResult.OK && OpenKeywordList != null)
+            {
+                OpenKeywordList(null, new OpenKeywordListEventArgs(openFileDlg.FileName));
             }
         }
 

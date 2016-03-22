@@ -15,6 +15,8 @@ namespace NppLogGazer.QuickSearch
         event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
         event EventHandler<SwapPositionEventArgs> SwapKeywordPosition;
         event EventHandler RemoveDuplicates;
+        event EventHandler<SaveKeywordListEventArgs> SaveKeywordList;
+        event EventHandler<OpenKeywordListEventArgs> OpenKeywordList;
 
         void Bind(BindingList<KeywordModel> keywordList);
         void ShowMessage(string message);

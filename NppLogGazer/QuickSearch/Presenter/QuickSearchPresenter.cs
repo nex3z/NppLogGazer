@@ -1,7 +1,10 @@
-﻿using NppLogGazer.QuickSearch.Repository;
+﻿using NppLogGazer.QuickSearch.Model;
+using NppLogGazer.QuickSearch.Repository;
 using NppLogGazer.QuickSearch.View.Event;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Text;
 
 namespace NppLogGazer.QuickSearch.Presenter
@@ -27,6 +30,8 @@ namespace NppLogGazer.QuickSearch.Presenter
             view.RemoveKeywordAt += RemoveKeywordAt;
             view.SwapKeywordPosition += SwapKeywordAt;
             view.RemoveDuplicates += RemoveDuplicates;
+            view.SaveKeywordList += SaveKeywordList;
+            view.OpenKeywordList += OpenKeywordList;
         }
 
         private void AddKeyword(Object sender, AddKeywordEventArgs args)
@@ -54,6 +59,17 @@ namespace NppLogGazer.QuickSearch.Presenter
                 repository.RemoveDuplicated();
                 view.Bind(repository.KeywordList);
             }
+        }
+
+        private void SaveKeywordList(Object sender, SaveKeywordListEventArgs args)
+        {
+            repository.Save(args.Path);
+        }
+
+        private void OpenKeywordList(Object sender, OpenKeywordListEventArgs args)
+        {
+            repository.Load(args.Path);
+            view.Bind(repository.KeywordList);
         }
 
         private void performSearch(Object sender, SearchEventArgs args)

@@ -69,10 +69,12 @@ namespace NppLogGazer.QuickSearch.Repository
                 TextWriter writer = new StreamWriter(filePath);
                 XmlSerializer ser = new XmlSerializer(typeof(BindingList<KeywordModel>));
                 ser.Serialize(writer, KeywordList);
+                writer.Close();
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
                 // MessageBox.Show("Save file error: " + ex.Message);
+                File.Delete(filePath);
             }
         }
 

@@ -230,6 +230,7 @@
             this.toolBtnOpen.Name = "toolBtnOpen";
             this.toolBtnOpen.Size = new System.Drawing.Size(23, 22);
             this.toolBtnOpen.Text = "toolStripButton6";
+            this.toolBtnOpen.Click += new System.EventHandler(this.toolBtnOpen_Click);
             // 
             // toolBtnSaveAs
             // 
@@ -239,6 +240,7 @@
             this.toolBtnSaveAs.Name = "toolBtnSaveAs";
             this.toolBtnSaveAs.Size = new System.Drawing.Size(23, 22);
             this.toolBtnSaveAs.Text = "toolStripButton7";
+            this.toolBtnSaveAs.Click += new System.EventHandler(this.toolBtnSaveAs_Click);
             // 
             // lstKeywords
             // 

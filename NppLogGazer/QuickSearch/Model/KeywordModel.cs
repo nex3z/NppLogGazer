@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace NppLogGazer.QuickSearch.Model
 {
     public enum KeywordType { Normal, RegExp };
 
-    [Serializable]
     public class KeywordModel : IEquatable<KeywordModel>
     {
         public string KeywordText { get; set; }
+
         public KeywordType Type { get; set; }
 
         public KeywordModel() { }
