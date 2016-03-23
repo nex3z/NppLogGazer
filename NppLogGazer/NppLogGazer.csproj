@@ -60,6 +60,8 @@
     <Compile Include="DllExport\DllExportAttribute.cs" />
     <Compile Include="QuickSearch\QuickSearchPanel.cs" />
     <Compile Include="QuickSearch\Repository\IKeywordRepository.cs" />
+    <Compile Include="QuickSearch\Repository\LoadKeywordListException.cs" />
+    <Compile Include="QuickSearch\Repository\SaveKeyworkListException.cs" />
     <Compile Include="QuickSearch\View\Event\AddKeywordEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OpenKeywordListEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\RemoveKeywordAtEventArgs.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="PatternTracer\View\frmPatternTracer.Designer.cs">
       <DependentUpon>frmPatternTracer.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuickSearch\View\Event\SelectedKeywordChangedEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\SwapPositionEventArgs.cs" />
     <Compile Include="QuickSearch\View\frmQuickSearch.cs">
       <SubType>Form</SubType>

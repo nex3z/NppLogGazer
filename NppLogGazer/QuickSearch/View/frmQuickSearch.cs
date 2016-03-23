@@ -22,6 +22,7 @@ namespace NppLogGazer
         public event EventHandler RemoveDuplicates;
         public event EventHandler<SaveKeywordListEventArgs> SaveKeywordList;
         public event EventHandler<OpenKeywordListEventArgs> OpenKeywordList;
+        public event EventHandler<OnSelectedKeywordChangedEventArgs> OnSelectedKeywordChanged;
 
         public frmQuickSearch()
         {
@@ -51,6 +52,12 @@ namespace NppLogGazer
                 return true;
             else
                 return false;
+        }
+
+        public void RenderKeyword(KeywordModel keyword)
+        {
+            txtKeyword.Text = keyword.KeywordText;
+            chkRegExp.Checked = keyword.Type == KeywordType.RegExp;
         }
 
         public void SelectKeywordAt(int position)
@@ -135,6 +142,18 @@ namespace NppLogGazer
             {
                 OpenKeywordList(null, new OpenKeywordListEventArgs(openFileDlg.FileName));
             }
+        }
+
+        private void lstKeywords_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (OnSelectedKeywordChanged != null)
+            {
+                OnSelectedKeywordChanged(null, new OnSelectedKeywordChangedEventArgs(lstKeywords.SelectedIndex));
+            }
+        }
+
+        private void lstKeywords_DrawItem(object sender, DrawItemEventArgs e)
+        {
         }
 
     }

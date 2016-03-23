@@ -24,6 +24,21 @@ namespace NppLogGazer.QuickSearch.Repository
                 KeywordList.Add(item);
         }
 
+        public void InsertToFront(KeywordModel item)
+        {
+            if (item != null)
+                KeywordList.Insert(0, item);
+        }
+
+        public KeywordModel GetItemAt(int position)
+        {
+            if (position >= 0 && position < KeywordList.Count)
+            {
+                return KeywordList[position];
+            }
+            return null;
+        }
+
         public void RemoveItemAt(int position)
         {
             if (position >= 0 && position < KeywordList.Count)
@@ -57,7 +72,7 @@ namespace NppLogGazer.QuickSearch.Repository
                 }
                 catch (InvalidOperationException exception)
                 {
-                    // MessageBox.Show("Read file error: " + ex.Message + "\nPlease check " + fileName);
+                    throw (new LoadKeywordListException(exception.Message));
                 }
             }
         }
@@ -73,8 +88,8 @@ namespace NppLogGazer.QuickSearch.Repository
             }
             catch (Exception ex)
             {
-                // MessageBox.Show("Save file error: " + ex.Message);
                 File.Delete(filePath);
+                throw (new SaveKeyworkListException(ex.Message));
             }
         }
 

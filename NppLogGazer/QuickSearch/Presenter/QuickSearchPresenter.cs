@@ -32,12 +32,17 @@ namespace NppLogGazer.QuickSearch.Presenter
             view.RemoveDuplicates += RemoveDuplicates;
             view.SaveKeywordList += SaveKeywordList;
             view.OpenKeywordList += OpenKeywordList;
+            view.OnSelectedKeywordChanged += OnSelectedKeywordChanged;
         }
 
         private void AddKeyword(Object sender, AddKeywordEventArgs args)
         {
             if (args.Keyword != null && args.Keyword.KeywordText != "")
-                repository.Add(args.Keyword);
+            {
+                repository.InsertToFront(args.Keyword);
+                view.SelectKeywordAt(0);
+            }
+                
         }
 
         private void RemoveKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
@@ -63,13 +68,36 @@ namespace NppLogGazer.QuickSearch.Presenter
 
         private void SaveKeywordList(Object sender, SaveKeywordListEventArgs args)
         {
-            repository.Save(args.Path);
+            try
+            {
+                repository.Save(args.Path);
+            }
+            catch(SaveKeyworkListException ex)
+            {
+                view.ShowMessage(ex.Message);
+            }
         }
 
         private void OpenKeywordList(Object sender, OpenKeywordListEventArgs args)
         {
-            repository.Load(args.Path);
+            try
+            {
+                repository.Load(args.Path);
+            }
+            catch(LoadKeywordListException ex)
+            {
+                view.ShowMessage(ex.Message);
+            }
             view.Bind(repository.KeywordList);
+        }
+
+        private void OnSelectedKeywordChanged(Object sender, OnSelectedKeywordChangedEventArgs args)
+        {
+            KeywordModel keyword = repository.GetItemAt(args.SelectedIndex);
+            if (keyword != null)
+            {
+                view.RenderKeyword(repository.GetItemAt(args.SelectedIndex));
+            }
         }
 
         private void performSearch(Object sender, SearchEventArgs args)

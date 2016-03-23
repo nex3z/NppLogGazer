@@ -17,10 +17,12 @@ namespace NppLogGazer.QuickSearch
         event EventHandler RemoveDuplicates;
         event EventHandler<SaveKeywordListEventArgs> SaveKeywordList;
         event EventHandler<OpenKeywordListEventArgs> OpenKeywordList;
+        event EventHandler<OnSelectedKeywordChangedEventArgs> OnSelectedKeywordChanged;
 
         void Bind(BindingList<KeywordModel> keywordList);
         void ShowMessage(string message);
         void SelectKeywordAt(int position);
         bool RequireConfirm(string title, string message);
+        void RenderKeyword(KeywordModel keyword);
     }
 }
