@@ -16,6 +16,7 @@ namespace NppLogGazer
         #region " Fields "
         internal const string PluginName = "NppLogGazer";
         static string iniFilePath = null;
+        static string defaultKeywordListFile = null;
         static bool someSetting = false;
         static frmPatternTracer frmPatternTracer = null;
         static Form frmQuickSearch = null;
@@ -37,6 +38,7 @@ namespace NppLogGazer
             iniFilePath = sbIniFilePath.ToString();
             if (!Directory.Exists(iniFilePath)) Directory.CreateDirectory(iniFilePath);
             iniFilePath = Path.Combine(iniFilePath, PluginName + ".ini");
+            defaultKeywordListFile = Path.Combine(iniFilePath, PluginName + "Keywords.xml");
             someSetting = (Win32.GetPrivateProfileInt("SomeSection", "SomeKey", 0, iniFilePath) != 0);
 
             PluginBase.SetCommand(0, Properties.Resources.pattern_tracer_dlg_label, PatternTracerDlg); idPatternTracerDlg = 0;
@@ -59,6 +61,10 @@ namespace NppLogGazer
         internal static void PluginCleanUp()
         {
             Win32.WritePrivateProfileString("SomeSection", "SomeKey", someSetting ? "1" : "0", iniFilePath);
+        }
+        public static string GetDefaultKeywordListPath()
+        {
+            return defaultKeywordListFile;
         }
         #endregion
 

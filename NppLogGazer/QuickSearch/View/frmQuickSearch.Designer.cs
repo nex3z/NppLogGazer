@@ -245,6 +245,7 @@
             // lstKeywords
             // 
             this.lstKeywords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstKeywords.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstKeywords.FormattingEnabled = true;
             this.lstKeywords.ItemHeight = 12;
             this.lstKeywords.Location = new System.Drawing.Point(3, 111);

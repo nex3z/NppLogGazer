@@ -9,66 +9,29 @@ using System.Xml.Serialization;
 
 namespace NppLogGazer.QuickSearch.Repository
 {
-    class KeywordRepository : IKeywordRepository
+    public class KeywordRepository : IKeywordRepository
     {
-        public BindingList<KeywordModel> KeywordList { get; set; }
+        private FileInfo file;
 
-        public KeywordRepository()
+        public KeywordRepository(FileInfo file)
         {
-            KeywordList = new BindingList<KeywordModel>();
+            this.file = file;
         }
 
-        public void Add(KeywordModel item)
+        public IList<KeywordModel> GetAll()
         {
-            if (item != null)
-                KeywordList.Add(item);
-        }
-
-        public void InsertToFront(KeywordModel item)
-        {
-            if (item != null)
-                KeywordList.Insert(0, item);
-        }
-
-        public KeywordModel GetItemAt(int position)
-        {
-            if (position >= 0 && position < KeywordList.Count)
+            if (!file.Exists)
             {
-                return KeywordList[position];
+                return new List<KeywordModel>();
             }
-            return null;
-        }
 
-        public void RemoveItemAt(int position)
-        {
-            if (position >= 0 && position < KeywordList.Count)
-                KeywordList.RemoveAt(position);
-        }
-
-        public void RemoveDuplicated()
-        {
-            KeywordList = new BindingList<KeywordModel>(KeywordList.Distinct().ToList());
-        }
-
-        public void SwapItemAt(int first, int second)
-        {
-            if (first >= 0 && first < KeywordList.Count && second >= 0 && second < KeywordList.Count)
-            {
-                KeywordModel tmp = KeywordList[first];
-                KeywordList[first] = KeywordList[second];
-                KeywordList[second] = tmp;
-            }
-        }
-
-        public void Load(String filePath)
-        {
-
-            using (FileStream fs = File.Open(filePath, FileMode.OpenOrCreate))
+            using (FileStream fs = File.Open(file.FullName, FileMode.OpenOrCreate))
             {
                 XmlSerializer ser = new XmlSerializer(typeof(BindingList<KeywordModel>));
                 try
                 {
-                    KeywordList = (BindingList<KeywordModel>)ser.Deserialize(fs);
+                    IList<KeywordModel> keywords = (IList<KeywordModel>)ser.Deserialize(fs);
+                    return keywords;
                 }
                 catch (InvalidOperationException exception)
                 {
@@ -77,18 +40,18 @@ namespace NppLogGazer.QuickSearch.Repository
             }
         }
 
-        public void Save(String filePath)
+        public void ReplaceAll(IList<KeywordModel> keywords)
         {
             try
             {
-                TextWriter writer = new StreamWriter(filePath);
-                XmlSerializer ser = new XmlSerializer(typeof(BindingList<KeywordModel>));
-                ser.Serialize(writer, KeywordList);
+                TextWriter writer = new StreamWriter(file.FullName);
+                XmlSerializer ser = new XmlSerializer(typeof(IList<KeywordModel>));
+                ser.Serialize(writer, keywords);
                 writer.Close();
             }
             catch (Exception ex)
             {
-                File.Delete(filePath);
+                File.Delete(file.FullName);
                 throw (new SaveKeyworkListException(ex.Message));
             }
         }

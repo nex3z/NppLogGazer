@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace NppLogGazer.QuickSearch.Presenter
 {
@@ -14,12 +15,16 @@ namespace NppLogGazer.QuickSearch.Presenter
         private IQuickSearchView view;
         private IKeywordRepository repository;
 
+        private BindingList<KeywordModel> keywords;
+
         public QuickSearchPresenter(IQuickSearchView view, IKeywordRepository repository)
         {
             this.view = view;
             this.repository = repository;
 
-            view.Bind(repository.KeywordList);
+            keywords = new BindingList<KeywordModel>(repository.GetAll());
+            view.Bind(keywords);
+
             WireUpEvents();
         }
 
@@ -39,7 +44,7 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             if (args.Keyword != null && args.Keyword.KeywordText != "")
             {
-                repository.InsertToFront(args.Keyword);
+                keywords.Insert(0, args.Keyword);
                 view.SelectKeywordAt(0);
             }
                 
@@ -47,12 +52,17 @@ namespace NppLogGazer.QuickSearch.Presenter
 
         private void RemoveKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
         {
-            repository.RemoveItemAt(args.Position);
+            keywords.RemoveAt(args.Position);
         }
 
         private void SwapKeywordAt(Object sender, SwapPositionEventArgs args)
         {
-            repository.SwapItemAt(args.Src, args.Dest);
+            if (args.Src >= 0 && args.Src < keywords.Count && args.Dest >= 0 && args.Dest < keywords.Count)
+            {
+                KeywordModel tmp = keywords[args.Src];
+                keywords[args.Src] = keywords[args.Dest];
+                keywords[args.Dest] = tmp;
+            }
             view.SelectKeywordAt(args.Dest);
         }
 
@@ -61,8 +71,8 @@ namespace NppLogGazer.QuickSearch.Presenter
             if (view.RequireConfirm(Properties.Resources.remove_dup_dlg_title, 
                                     Properties.Resources.remove_dup_dlg_message))
             {
-                repository.RemoveDuplicated();
-                view.Bind(repository.KeywordList);
+                keywords = new BindingList<KeywordModel>(keywords.Distinct().ToList());
+                view.Bind(keywords);
             }
         }
 
@@ -70,7 +80,7 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                repository.Save(args.Path);
+                //repository.ReplaceAll(new FileInfo(args.Path));
             }
             catch(SaveKeyworkListException ex)
             {
@@ -82,21 +92,20 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                repository.Load(args.Path);
+                //repository.Load(args.Path);
             }
             catch(LoadKeywordListException ex)
             {
                 view.ShowMessage(ex.Message);
             }
-            view.Bind(repository.KeywordList);
+            //view.Bind(repository.KeywordList);
         }
 
         private void OnSelectedKeywordChanged(Object sender, OnSelectedKeywordChangedEventArgs args)
         {
-            KeywordModel keyword = repository.GetItemAt(args.SelectedIndex);
-            if (keyword != null)
+            if (args.SelectedIndex >= 0 && args.SelectedIndex < keywords.Count)
             {
-                view.RenderKeyword(repository.GetItemAt(args.SelectedIndex));
+                view.RenderKeyword(keywords[args.SelectedIndex]);
             }
         }
 
