@@ -14,7 +14,8 @@ namespace NppLogGazer
     class Main
     {
         #region " Fields "
-        internal const string PluginName = "NppLogGazer";
+        internal const string PluginName = "NppLogGazer"; 
+        public const string PluginVersion = "0.8.0";
         static string iniFilePath = null;
         static string defaultKeywordListFile = null;
         static bool someSetting = false;
@@ -25,7 +26,7 @@ namespace NppLogGazer
         static Bitmap tbPatternTracerBmp = Properties.Resources.star;
         static Bitmap tbPatternTracerBmp_tbTab = Properties.Resources.star_bmp;
         static Bitmap tbQuickSearchBmp = Properties.Resources.magnifier;
-        static Bitmap tbQuickSearchBmp_tbTab = Properties.Resources.magnifier;
+        static Bitmap tbQuickSearchBmp_tbTab = Properties.Resources.magnifier_bmp;
         static Icon tbPatternTracerIcon = null;
         static Icon tbQuickSearchIcon = null;
         #endregion
@@ -37,12 +38,14 @@ namespace NppLogGazer
             Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_GETPLUGINSCONFIGDIR, Win32.MAX_PATH, sbIniFilePath);
             iniFilePath = sbIniFilePath.ToString();
             if (!Directory.Exists(iniFilePath)) Directory.CreateDirectory(iniFilePath);
-            iniFilePath = Path.Combine(iniFilePath, PluginName + ".ini");
             defaultKeywordListFile = Path.Combine(iniFilePath, PluginName + "Keywords.xml");
+            LoadConfig(iniFilePath);
+            // iniFilePath = Path.Combine(iniFilePath, PluginName + ".ini");
+            
             someSetting = (Win32.GetPrivateProfileInt("SomeSection", "SomeKey", 0, iniFilePath) != 0);
 
-            PluginBase.SetCommand(0, Properties.Resources.pattern_tracer_dlg_label, PatternTracerDlg); idPatternTracerDlg = 0;
-            PluginBase.SetCommand(1, Properties.Resources.quick_search_dlg_label, QuickSearchDlg); idQuickSearchDlg = 1;
+            PluginBase.SetCommand(0, Properties.Resources.pattern_tracer_dlg_label, ShowPatternTracerDlg); idPatternTracerDlg = 0;
+            PluginBase.SetCommand(1, Properties.Resources.quick_search_dlg_label, ShowQuickSearchDlg); idQuickSearchDlg = 1;
         }
         internal static void SetToolBarIcon()
         {
@@ -60,16 +63,35 @@ namespace NppLogGazer
         }
         internal static void PluginCleanUp()
         {
-            Win32.WritePrivateProfileString("SomeSection", "SomeKey", someSetting ? "1" : "0", iniFilePath);
+            if (frmQuickSearch != null)
+            {
+                if (frmQuickSearch.Visible)
+                    QuickSearchSettings.Configs.showOnStartup = true;
+                else
+                    QuickSearchSettings.Configs.showOnStartup = false;
+
+                frmQuickSearch.Close();
+            }
+
+            SaveConfig(iniFilePath);
         }
         public static string GetDefaultKeywordListPath()
         {
             return defaultKeywordListFile;
         }
+        internal static void LoadConfig(string iniFilePath)
+        {
+            QuickSearchSettings.ConfigDir = iniFilePath;
+            QuickSearchSettings.LoadConfigs();
+        }
+        internal static void SaveConfig(string iniFilePath)
+        {
+            QuickSearchSettings.SaveConfigs();
+        }
         #endregion
 
         #region " Menu functions "
-        internal static void PatternTracerDlg()
+        internal static void ShowPatternTracerDlg()
         {
             if (frmPatternTracer == null)
             {
@@ -106,7 +128,7 @@ namespace NppLogGazer
             }
         }
 
-        internal static void QuickSearchDlg()
+        internal static void ShowQuickSearchDlg()
         {
             if (frmQuickSearch == null)
             {
@@ -136,10 +158,22 @@ namespace NppLogGazer
                 Marshal.StructureToPtr(_nppTbData, _ptrNppTbData, false);
 
                 Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMREGASDCKDLG, 0, _ptrNppTbData);
+                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idQuickSearchDlg]._cmdID, 1);
+   
             }
             else
             {
-                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, frmQuickSearch.Handle);
+                if (frmQuickSearch.Visible)
+                {
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMHIDE, 0, frmQuickSearch.Handle);
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idQuickSearchDlg]._cmdID, 0);
+                }
+                else
+                {
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, frmQuickSearch.Handle);
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idQuickSearchDlg]._cmdID, 1);
+                }
+                // Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, frmQuickSearch.Handle);
             }
         }
         #endregion

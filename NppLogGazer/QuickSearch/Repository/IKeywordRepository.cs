@@ -8,7 +8,7 @@ namespace NppLogGazer.QuickSearch.Repository
 {
     interface IKeywordRepository
     {
-        IList<KeywordModel> GetAll();
-        void ReplaceAll(IList<KeywordModel> keywords);
+        List<KeywordModel> GetAll();
+        void ReplaceAll(List<KeywordModel> keywords);
     }
 }

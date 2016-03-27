@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabLayoutQuickSearch = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutSearchOptions = new System.Windows.Forms.FlowLayoutPanel();
             this.chkMatchWord = new System.Windows.Forms.CheckBox();
@@ -47,10 +48,14 @@
             this.toolBtnOpen = new System.Windows.Forms.ToolStripButton();
             this.toolBtnSaveAs = new System.Windows.Forms.ToolStripButton();
             this.lstKeywords = new System.Windows.Forms.ListBox();
+            this.statusKeywordList = new System.Windows.Forms.StatusStrip();
+            this.statusLabelKeywordList = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTipKeywordList = new System.Windows.Forms.ToolTip(this.components);
             this.tabLayoutQuickSearch.SuspendLayout();
             this.flowLayoutSearchOptions.SuspendLayout();
             this.flowLayoutKeywordType.SuspendLayout();
             this.toolStripKeywrodList.SuspendLayout();
+            this.statusKeywordList.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabLayoutQuickSearch
@@ -62,16 +67,18 @@
             this.tabLayoutQuickSearch.Controls.Add(this.flowLayoutKeywordType, 0, 2);
             this.tabLayoutQuickSearch.Controls.Add(this.toolStripKeywrodList, 0, 3);
             this.tabLayoutQuickSearch.Controls.Add(this.lstKeywords, 0, 4);
+            this.tabLayoutQuickSearch.Controls.Add(this.statusKeywordList, 0, 5);
             this.tabLayoutQuickSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabLayoutQuickSearch.Location = new System.Drawing.Point(0, 0);
             this.tabLayoutQuickSearch.Name = "tabLayoutQuickSearch";
-            this.tabLayoutQuickSearch.RowCount = 5;
+            this.tabLayoutQuickSearch.RowCount = 6;
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tabLayoutQuickSearch.Size = new System.Drawing.Size(371, 580);
+            this.tabLayoutQuickSearch.Size = new System.Drawing.Size(371, 750);
             this.tabLayoutQuickSearch.TabIndex = 0;
             // 
             // flowLayoutSearchOptions
@@ -170,6 +177,7 @@
             this.toolBtnAdd.Name = "toolBtnAdd";
             this.toolBtnAdd.Size = new System.Drawing.Size(23, 22);
             this.toolBtnAdd.Text = "toolStripButton1";
+            this.toolBtnAdd.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_add;
             this.toolBtnAdd.Click += new System.EventHandler(this.toolBtnAdd_Click);
             // 
             // toolBtnRemove
@@ -180,6 +188,7 @@
             this.toolBtnRemove.Name = "toolBtnRemove";
             this.toolBtnRemove.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRemove.Text = "toolStripButton2";
+            this.toolBtnRemove.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_remove;
             this.toolBtnRemove.Click += new System.EventHandler(this.toolBtnRemove_Click);
             // 
             // toolStripSeparator1
@@ -195,6 +204,7 @@
             this.toolBtnMoveUp.Name = "toolBtnMoveUp";
             this.toolBtnMoveUp.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveUp.Text = "toolStripButton3";
+            this.toolBtnMoveUp.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_move_up;
             this.toolBtnMoveUp.Click += new System.EventHandler(this.toolBtnMoveUp_Click);
             // 
             // toolBtnMoveDown
@@ -205,6 +215,7 @@
             this.toolBtnMoveDown.Name = "toolBtnMoveDown";
             this.toolBtnMoveDown.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveDown.Text = "toolStripButton4";
+            this.toolBtnMoveDown.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_move_down;
             this.toolBtnMoveDown.Click += new System.EventHandler(this.toolBtnMoveDown_Click);
             // 
             // toolBtnRemoveDuplicate
@@ -215,6 +226,7 @@
             this.toolBtnRemoveDuplicate.Name = "toolBtnRemoveDuplicate";
             this.toolBtnRemoveDuplicate.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRemoveDuplicate.Text = "toolStripButton5";
+            this.toolBtnRemoveDuplicate.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_delete_duplicate;
             this.toolBtnRemoveDuplicate.Click += new System.EventHandler(this.toolBtnRemoveDuplicate_Click);
             // 
             // toolStripSeparator2
@@ -230,6 +242,7 @@
             this.toolBtnOpen.Name = "toolBtnOpen";
             this.toolBtnOpen.Size = new System.Drawing.Size(23, 22);
             this.toolBtnOpen.Text = "toolStripButton6";
+            this.toolBtnOpen.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_open;
             this.toolBtnOpen.Click += new System.EventHandler(this.toolBtnOpen_Click);
             // 
             // toolBtnSaveAs
@@ -240,30 +253,52 @@
             this.toolBtnSaveAs.Name = "toolBtnSaveAs";
             this.toolBtnSaveAs.Size = new System.Drawing.Size(23, 22);
             this.toolBtnSaveAs.Text = "toolStripButton7";
+            this.toolBtnSaveAs.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_save_as;
             this.toolBtnSaveAs.Click += new System.EventHandler(this.toolBtnSaveAs_Click);
             // 
             // lstKeywords
             // 
             this.lstKeywords.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstKeywords.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lstKeywords.Font = new System.Drawing.Font("SimSun", 10F);
             this.lstKeywords.FormattingEnabled = true;
-            this.lstKeywords.ItemHeight = 12;
+            this.lstKeywords.ItemHeight = 14;
             this.lstKeywords.Location = new System.Drawing.Point(3, 111);
             this.lstKeywords.Name = "lstKeywords";
-            this.lstKeywords.Size = new System.Drawing.Size(365, 466);
+            this.lstKeywords.Size = new System.Drawing.Size(365, 614);
             this.lstKeywords.TabIndex = 5;
             this.lstKeywords.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstKeywords_DrawItem);
             this.lstKeywords.SelectedIndexChanged += new System.EventHandler(this.lstKeywords_SelectedIndexChanged);
             this.lstKeywords.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lstKeywords_MouseDown);
+            this.lstKeywords.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lstKeywords_MouseMove);
+            // 
+            // statusKeywordList
+            // 
+            this.statusKeywordList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabelKeywordList});
+            this.statusKeywordList.Location = new System.Drawing.Point(0, 728);
+            this.statusKeywordList.Name = "statusKeywordList";
+            this.statusKeywordList.Size = new System.Drawing.Size(371, 22);
+            this.statusKeywordList.TabIndex = 6;
+            this.statusKeywordList.Text = "statusStrip1";
+            // 
+            // statusLabelKeywordList
+            // 
+            this.statusLabelKeywordList.Name = "statusLabelKeywordList";
+            this.statusLabelKeywordList.Size = new System.Drawing.Size(356, 17);
+            this.statusLabelKeywordList.Spring = true;
+            this.statusLabelKeywordList.Text = "status";
+            this.statusLabelKeywordList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmQuickSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 580);
+            this.ClientSize = new System.Drawing.Size(371, 750);
             this.Controls.Add(this.tabLayoutQuickSearch);
             this.Name = "frmQuickSearch";
             this.Text = "Qucik Search";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQuickSearch_FormClosing);
             this.tabLayoutQuickSearch.ResumeLayout(false);
             this.tabLayoutQuickSearch.PerformLayout();
             this.flowLayoutSearchOptions.ResumeLayout(false);
@@ -272,6 +307,8 @@
             this.flowLayoutKeywordType.PerformLayout();
             this.toolStripKeywrodList.ResumeLayout(false);
             this.toolStripKeywrodList.PerformLayout();
+            this.statusKeywordList.ResumeLayout(false);
+            this.statusKeywordList.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -297,6 +334,9 @@
         private System.Windows.Forms.ToolStripButton toolBtnOpen;
         private System.Windows.Forms.ToolStripButton toolBtnSaveAs;
         private System.Windows.Forms.ListBox lstKeywords;
+        private System.Windows.Forms.StatusStrip statusKeywordList;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabelKeywordList;
+        private System.Windows.Forms.ToolTip toolTipKeywordList;
 
     }
 }

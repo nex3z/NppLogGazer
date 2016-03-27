@@ -59,10 +59,13 @@
   <ItemGroup>
     <Compile Include="DllExport\DllExportAttribute.cs" />
     <Compile Include="QuickSearch\QuickSearchPanel.cs" />
+    <Compile Include="QuickSearch\QuickSearchSettings.cs" />
     <Compile Include="QuickSearch\Repository\IKeywordRepository.cs" />
     <Compile Include="QuickSearch\Repository\LoadKeywordListException.cs" />
     <Compile Include="QuickSearch\Repository\SaveKeyworkListException.cs" />
     <Compile Include="QuickSearch\View\Event\AddKeywordEventArgs.cs" />
+    <Compile Include="QuickSearch\View\Event\OnClosingEventArgs.cs" />
+    <Compile Include="QuickSearch\View\Event\OnKeywordSelectedEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OpenKeywordListEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\RemoveKeywordAtEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\SaveKeywordListEventArgs.cs" />
@@ -73,7 +76,7 @@
     <Compile Include="PatternTracer\View\frmPatternTracer.Designer.cs">
       <DependentUpon>frmPatternTracer.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuickSearch\View\Event\SelectedKeywordChangedEventArgs.cs" />
+    <Compile Include="QuickSearch\View\Event\OnSelectedKeywordChangedEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\SwapPositionEventArgs.cs" />
     <Compile Include="QuickSearch\View\frmQuickSearch.cs">
       <SubType>Form</SubType>
@@ -92,11 +95,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="proto\Search.cs" />
-    <Compile Include="proto\Scintilla.cs" />
     <Compile Include="QuickSearch\Presenter\QuickSearchPresenter.cs" />
     <Compile Include="QuickSearch\Repository\KeywordRepository.cs" />
     <Compile Include="QuickSearch\View\IQuickSearchView.cs" />
     <Compile Include="QuickSearch\Model\KeywordModel.cs" />
+    <Compile Include="Scintilla.cs" />
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifier.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\magnifier_bmp.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildProjectDirectory)\DllExport\NppPlugin.DllExport.targets" />

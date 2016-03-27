@@ -5,7 +5,7 @@ using NppPluginNET;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace NppLogGazer.proto
+namespace NppQuickSearchPanel
 {
     class Scintilla : IDisposable
     {

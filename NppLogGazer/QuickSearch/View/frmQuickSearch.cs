@@ -14,8 +14,6 @@ namespace NppLogGazer
 {
     public partial class frmQuickSearch : Form, IQuickSearchView
     {
-        public event EventHandler<SearchEventArgs> PerformSearch;
-
         public event EventHandler<AddKeywordEventArgs> AddKeyword;
         public event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
         public event EventHandler<SwapPositionEventArgs> SwapKeywordPosition;
@@ -23,6 +21,10 @@ namespace NppLogGazer
         public event EventHandler<SaveKeywordListEventArgs> SaveKeywordList;
         public event EventHandler<OpenKeywordListEventArgs> OpenKeywordList;
         public event EventHandler<OnSelectedKeywordChangedEventArgs> OnSelectedKeywordChanged;
+        public event EventHandler<OnClosingEventArgs> OnPluginClosing;
+        public event EventHandler<OnKeywordSelectedEventArgs> OnKeywordSelected;
+
+        int lastHoveredIndex = -1;
 
         public frmQuickSearch()
         {
@@ -66,12 +68,58 @@ namespace NppLogGazer
                 lstKeywords.SelectedIndex = position;
         }
 
+        public void ShowStatusMessage(string message, Color color)
+        {
+            statusLabelKeywordList.Text = message;
+            statusLabelKeywordList.ForeColor = color;
+        }
+
+        public void SetMatchWord(bool matchWord)
+        {
+            chkMatchWord.Checked = matchWord;
+        }
+
+        public void SetMatchCase(bool matchCase)
+        {
+            chkMatchCase.Checked = matchCase;
+        }
+
+        public void SetWrapSearch(bool wrapSearch)
+        {
+            chkWrapSearch.Checked = wrapSearch;
+        }
+
         private void lstKeywords_MouseDown(object sender, MouseEventArgs e)
         {
-            int index = lstKeywords.IndexFromPoint(e.X, e.Y);
-            if (PerformSearch != null)
+            if (OnKeywordSelected != null)
             {
-                PerformSearch(null, new SearchEventArgs());
+                OnKeywordSelectedEventArgs args = new OnKeywordSelectedEventArgs();
+                int index = lstKeywords.IndexFromPoint(e.X, e.Y);
+                args.Index = index;
+
+                if (e.Button == MouseButtons.Left)
+                {
+                    args.Mouse = OnKeywordSelectedEventArgs.MouseButton.Left;
+                }
+                else if (e.Button == MouseButtons.Right)
+                {
+                    args.Mouse = OnKeywordSelectedEventArgs.MouseButton.Right;
+                }
+
+                if ((ModifierKeys & Keys.Control) == Keys.Control)
+                {
+                    args.Key = OnKeywordSelectedEventArgs.KeyboardButton.Ctrl;
+                }
+                else if ((ModifierKeys & Keys.Shift) == Keys.Shift)
+                {
+                    args.Key = OnKeywordSelectedEventArgs.KeyboardButton.Shift;
+                }
+
+                args.MatchWord = chkMatchWord.Checked;
+                args.MatchCase = chkMatchCase.Checked;
+                args.WrapSearch = chkWrapSearch.Checked;
+
+                OnKeywordSelected(null, args);
             }
         }
 
@@ -174,6 +222,43 @@ namespace NppLogGazer
                 g.DrawString(keyword.ToString(), e.Font, new SolidBrush(Color.Blue), new PointF(e.Bounds.X, e.Bounds.Y));
 
             e.DrawFocusRectangle();
+        }
+
+        private void frmQuickSearch_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (OnPluginClosing != null)
+            {
+                OnPluginClosing(null, new OnClosingEventArgs(chkMatchWord.Checked, chkMatchCase.Checked, chkWrapSearch.Checked));
+            }
+        }
+
+        private void lstKeywords_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point screenPosition = ListBox.MousePosition;
+            Point listBoxClientAreaPosition =lstKeywords.PointToClient(screenPosition);
+
+            int hoveredIndex = lstKeywords.IndexFromPoint(listBoxClientAreaPosition);
+
+            if (hoveredIndex >= 0 && hoveredIndex != lastHoveredIndex)
+            {
+                toolTipKeywordList.Hide(lstKeywords);
+
+                Graphics g = lstKeywords.CreateGraphics();
+                int itemWidth = (int)g.MeasureString(lstKeywords.Items[hoveredIndex].ToString(), lstKeywords.Font).Width;
+                int listWidth = lstKeywords.Width;
+
+                int visiableItems = lstKeywords.ClientSize.Height / lstKeywords.ItemHeight;
+                if (lstKeywords.Items.Count > visiableItems)
+                {
+                    listWidth -= System.Windows.Forms.SystemInformation.VerticalScrollBarWidth;
+                }
+
+                if (itemWidth >= listWidth)
+                {
+                    toolTipKeywordList.SetToolTip(lstKeywords, lstKeywords.Items[hoveredIndex].ToString());
+                    lastHoveredIndex = hoveredIndex;
+                }
+            }
         }
 
     }

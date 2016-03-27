@@ -131,6 +131,16 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap magnifier_bmp {
+            get {
+                object obj = ResourceManager.GetObject("magnifier_bmp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Match Case.
         /// </summary>
         internal static string match_case {
@@ -163,6 +173,96 @@ namespace NppLogGazer.Properties {
         internal static string quick_search_dlg_label {
             get {
                 return ResourceManager.GetString("quick_search_dlg_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t find the keyword..
+        /// </summary>
+        internal static string quick_search_status_could_not_find {
+            get {
+                return ResourceManager.GetString("quick_search_status_could_not_find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found at line.
+        /// </summary>
+        internal static string quick_search_status_found_at_line {
+            get {
+                return ResourceManager.GetString("quick_search_status_found_at_line", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to search. Ctrl + Click to launch Find dialog..
+        /// </summary>
+        internal static string quick_search_status_initial_message {
+            get {
+                return ResourceManager.GetString("quick_search_status_initial_message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string quick_search_tooltip_add {
+            get {
+                return ResourceManager.GetString("quick_search_tooltip_add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete duplicates.
+        /// </summary>
+        internal static string quick_search_tooltip_delete_duplicate {
+            get {
+                return ResourceManager.GetString("quick_search_tooltip_delete_duplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move down.
+        /// </summary>
+        internal static string quick_search_tooltip_move_down {
+            get {
+                return ResourceManager.GetString("quick_search_tooltip_move_down", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move up.
+        /// </summary>
+        internal static string quick_search_tooltip_move_up {
+            get {
+                return ResourceManager.GetString("quick_search_tooltip_move_up", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open....
+        /// </summary>
+        internal static string quick_search_tooltip_open {
+            get {
+                return ResourceManager.GetString("quick_search_tooltip_open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        internal static string quick_search_tooltip_remove {
+            get {
+                return ResourceManager.GetString("quick_search_tooltip_remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save as....
+        /// </summary>
+        internal static string quick_search_tooltip_save_as {
+            get {
+                return ResourceManager.GetString("quick_search_tooltip_save_as", resourceCulture);
             }
         }
         

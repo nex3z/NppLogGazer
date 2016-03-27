@@ -4,13 +4,12 @@ using System.Text;
 using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.View.Event;
 using System.ComponentModel;
+using System.Drawing;
 
 namespace NppLogGazer.QuickSearch
 {
     public interface IQuickSearchView
     {
-        event EventHandler<SearchEventArgs> PerformSearch;
-
         event EventHandler<AddKeywordEventArgs> AddKeyword;
         event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
         event EventHandler<SwapPositionEventArgs> SwapKeywordPosition;
@@ -18,11 +17,17 @@ namespace NppLogGazer.QuickSearch
         event EventHandler<SaveKeywordListEventArgs> SaveKeywordList;
         event EventHandler<OpenKeywordListEventArgs> OpenKeywordList;
         event EventHandler<OnSelectedKeywordChangedEventArgs> OnSelectedKeywordChanged;
+        event EventHandler<OnClosingEventArgs> OnPluginClosing;
+        event EventHandler<OnKeywordSelectedEventArgs> OnKeywordSelected;
 
         void Bind(BindingList<KeywordModel> keywordList);
         void ShowMessage(string message);
         void SelectKeywordAt(int position);
         bool RequireConfirm(string title, string message);
         void RenderKeyword(KeywordModel keyword);
+        void ShowStatusMessage(string message, Color color);
+        void SetMatchWord(bool matchWord);
+        void SetMatchCase(bool matchCase);
+        void SetWrapSearch(bool wrapSearch);
     }
 }

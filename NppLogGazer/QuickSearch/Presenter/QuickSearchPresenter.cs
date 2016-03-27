@@ -7,6 +7,10 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Linq;
+using System.Drawing;
+using System.Windows.Forms;
+using NppPluginNET;
+using NppQuickSearchPanel;
 
 namespace NppLogGazer.QuickSearch.Presenter
 {
@@ -16,21 +20,31 @@ namespace NppLogGazer.QuickSearch.Presenter
         private IKeywordRepository repository;
 
         private BindingList<KeywordModel> keywords;
+        private int lastSelectedIndex;
 
         public QuickSearchPresenter(IQuickSearchView view, IKeywordRepository repository)
         {
             this.view = view;
             this.repository = repository;
 
-            keywords = new BindingList<KeywordModel>(repository.GetAll());
+            try
+            {
+                keywords = new BindingList<KeywordModel>(repository.GetAll());
+            }
+            catch (LoadKeywordListException ex)
+            {
+                view.ShowMessage(ex.Message);
+                keywords = new BindingList<KeywordModel>();
+            }
+
             view.Bind(keywords);
 
             WireUpEvents();
+            SetupInitialView();
         }
 
         private void WireUpEvents()
         {
-            view.PerformSearch += performSearch;
             view.AddKeyword += AddKeyword;
             view.RemoveKeywordAt += RemoveKeywordAt;
             view.SwapKeywordPosition += SwapKeywordAt;
@@ -38,6 +52,23 @@ namespace NppLogGazer.QuickSearch.Presenter
             view.SaveKeywordList += SaveKeywordList;
             view.OpenKeywordList += OpenKeywordList;
             view.OnSelectedKeywordChanged += OnSelectedKeywordChanged;
+            view.OnPluginClosing += OnClosing;
+            view.OnKeywordSelected += OnKeywordSelected;
+        }
+
+        private void SetupInitialView()
+        {
+            view.SetMatchWord(QuickSearchSettings.Configs.matchWord);
+            view.SetMatchCase(QuickSearchSettings.Configs.matchCase);
+            view.SetWrapSearch(QuickSearchSettings.Configs.wrapSearch);
+
+            if (keywords.Count != 0)
+            {
+                view.SelectKeywordAt(0);
+                view.RenderKeyword(keywords[0]);
+            }
+
+            view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
         }
 
         private void AddKeyword(Object sender, AddKeywordEventArgs args)
@@ -47,12 +78,12 @@ namespace NppLogGazer.QuickSearch.Presenter
                 keywords.Insert(0, args.Keyword);
                 view.SelectKeywordAt(0);
             }
-                
         }
 
         private void RemoveKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
         {
-            keywords.RemoveAt(args.Position);
+            if (args.Position >= 0 && args.Position < keywords.Count)
+                keywords.RemoveAt(args.Position);
         }
 
         private void SwapKeywordAt(Object sender, SwapPositionEventArgs args)
@@ -80,7 +111,8 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                //repository.ReplaceAll(new FileInfo(args.Path));
+                IKeywordRepository tempRepo = new KeywordRepository(new FileInfo(args.Path));
+                tempRepo.ReplaceAll(keywords.ToList());
             }
             catch(SaveKeyworkListException ex)
             {
@@ -92,13 +124,14 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                //repository.Load(args.Path);
+                IKeywordRepository tempRepo = new KeywordRepository(new FileInfo(args.Path));
+                keywords = new BindingList<KeywordModel>(tempRepo.GetAll());
+                view.Bind(keywords);
             }
             catch(LoadKeywordListException ex)
             {
                 view.ShowMessage(ex.Message);
             }
-            //view.Bind(repository.KeywordList);
         }
 
         private void OnSelectedKeywordChanged(Object sender, OnSelectedKeywordChangedEventArgs args)
@@ -109,8 +142,75 @@ namespace NppLogGazer.QuickSearch.Presenter
             }
         }
 
-        private void performSearch(Object sender, SearchEventArgs args)
+        private void OnClosing(Object sender, OnClosingEventArgs args)
         {
+            QuickSearchSettings.Configs.matchCase = args.MatchCaseStatus;
+            QuickSearchSettings.Configs.matchWord = args.MatchWordStatus;
+            QuickSearchSettings.Configs.wrapSearch = args.WrapSearchStatus;
+
+            repository.ReplaceAll(keywords.ToList());
+        }
+
+        private void OnKeywordSelected(Object sender, OnKeywordSelectedEventArgs args)
+        {
+            int index = args.Index;
+            if (index < 0 || index >= keywords.Count)
+                return;
+
+            bool isSelectedIndexChanged = false;
+            if (index != lastSelectedIndex)
+            {
+                isSelectedIndexChanged = true;
+                lastSelectedIndex = index;
+                view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
+            }
+
+            KeywordModel keyword = keywords[index];
+            if (args.Mouse == OnKeywordSelectedEventArgs.MouseButton.Left)
+            {
+                if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.Ctrl)
+                {
+                    // lstEntry.SetSelected(index, true);
+                    Clipboard.SetText(keyword.ToString());
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_MENUCOMMAND, 0, NppMenuCmd.IDM_SEARCH_FIND);
+                    SendKeys.SendWait("^{v}");
+                }
+                else if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.Shift)
+                {
+                    using (Scintilla sci = new Scintilla())
+                    {
+                        int pos = sci.SearchBackward(keyword.ToString(),
+                            keyword.Type == KeywordType.RegExp, args.MatchWord, args.MatchCase, args.WrapSearch);
+                        updateSearchResult(sci, pos);
+                    }
+                } else if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.None)
+                {
+                    if (!isSelectedIndexChanged)
+                    {
+                        using (Scintilla sci = new Scintilla())
+                        {
+                            int pos = sci.SearchForward(keyword.ToString(),
+                                keyword.Type == KeywordType.RegExp, args.MatchWord, args.MatchCase, args.WrapSearch);
+                            updateSearchResult(sci, pos);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void updateSearchResult(Scintilla sci, int pos)
+        {
+            if (pos < 0)
+            {
+                view.ShowStatusMessage(Properties.Resources.quick_search_status_could_not_find, Color.Red);
+            }
+            else
+            {
+                int line = sci.GetLineFromPosition(pos) + 1;
+                string message = Properties.Resources.quick_search_status_found_at_line + line + ".";
+                view.ShowStatusMessage(message, Color.Green);
+            }
         }
     }
+
 }

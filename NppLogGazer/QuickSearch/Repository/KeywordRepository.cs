@@ -18,7 +18,7 @@ namespace NppLogGazer.QuickSearch.Repository
             this.file = file;
         }
 
-        public IList<KeywordModel> GetAll()
+        public List<KeywordModel> GetAll()
         {
             if (!file.Exists)
             {
@@ -27,31 +27,30 @@ namespace NppLogGazer.QuickSearch.Repository
 
             using (FileStream fs = File.Open(file.FullName, FileMode.OpenOrCreate))
             {
-                XmlSerializer ser = new XmlSerializer(typeof(BindingList<KeywordModel>));
+                XmlSerializer ser = new XmlSerializer(typeof(List<KeywordModel>));
                 try
                 {
-                    IList<KeywordModel> keywords = (IList<KeywordModel>)ser.Deserialize(fs);
+                    List<KeywordModel> keywords = (List<KeywordModel>)ser.Deserialize(fs);
                     return keywords;
                 }
-                catch (InvalidOperationException exception)
+                catch (Exception exception)
                 {
                     throw (new LoadKeywordListException(exception.Message));
                 }
             }
         }
 
-        public void ReplaceAll(IList<KeywordModel> keywords)
+        public void ReplaceAll(List<KeywordModel> keywords)
         {
             try
             {
                 TextWriter writer = new StreamWriter(file.FullName);
-                XmlSerializer ser = new XmlSerializer(typeof(IList<KeywordModel>));
+                XmlSerializer ser = new XmlSerializer(typeof(List<KeywordModel>));
                 ser.Serialize(writer, keywords);
                 writer.Close();
             }
             catch (Exception ex)
             {
-                File.Delete(file.FullName);
                 throw (new SaveKeyworkListException(ex.Message));
             }
         }

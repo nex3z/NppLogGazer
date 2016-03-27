@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using NppPluginNET;
 using NppPlugin.DllExport;
+using NppLogGazer.QuickSearch;
 
 namespace NppLogGazer
 {
@@ -55,6 +56,13 @@ namespace NppLogGazer
             {
                 Main.PluginCleanUp();
                 Marshal.FreeHGlobal(_ptrPluginName);
+            }
+            else if (nc.nmhdr.code == (uint)NppMsg.NPPN_READY)
+            {
+                if (QuickSearchSettings.Configs.showOnStartup)
+                {
+                    Main.ShowQuickSearchDlg();
+                }
             }
         }
     }

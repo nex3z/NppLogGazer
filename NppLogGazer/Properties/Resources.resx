@@ -175,4 +175,37 @@
   <data name="remove_dup_dlg_title" xml:space="preserve">
     <value>Remove duplicated keywords</value>
   </data>
+  <data name="magnifier_bmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\magnifier_bmp.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quick_search_status_initial_message" xml:space="preserve">
+    <value>Click to search. Ctrl + Click to launch Find dialog.</value>
+  </data>
+  <data name="quick_search_status_could_not_find" xml:space="preserve">
+    <value>Couldn't find the keyword.</value>
+  </data>
+  <data name="quick_search_status_found_at_line" xml:space="preserve">
+    <value>Found at line</value>
+  </data>
+  <data name="quick_search_tooltip_add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="quick_search_tooltip_delete_duplicate" xml:space="preserve">
+    <value>Delete duplicates</value>
+  </data>
+  <data name="quick_search_tooltip_move_down" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="quick_search_tooltip_move_up" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="quick_search_tooltip_open" xml:space="preserve">
+    <value>Open...</value>
+  </data>
+  <data name="quick_search_tooltip_remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="quick_search_tooltip_save_as" xml:space="preserve">
+    <value>Save as...</value>
+  </data>
 </root>
