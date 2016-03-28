@@ -7,14 +7,14 @@ namespace NppLogGazer.PatternExtractor.Model
     public enum PatternType { Normal, RegExp };
 
     [Serializable]
-    class Pattern
+    public class PatternModel
     {
         public List<string> PatternText { get; set; }
         public PatternType Type { get; set; }
 
-        public Pattern() { }
+        public PatternModel() { }
 
-        public Pattern(List<string> pattern, PatternType type)
+        public PatternModel(List<string> pattern, PatternType type)
         {
             this.PatternText = pattern;
             this.Type = type;

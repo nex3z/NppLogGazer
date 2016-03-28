@@ -58,6 +58,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DllExport\DllExportAttribute.cs" />
+    <Compile Include="PatternTracer\PatternTracerPanel.cs" />
+    <Compile Include="PatternTracer\Presenter\PatternTracerPresenter.cs" />
+    <Compile Include="PatternTracer\Repository\IPatternRepository.cs" />
+    <Compile Include="PatternTracer\Repository\LoadPatternListException.cs" />
+    <Compile Include="PatternTracer\Repository\PatternRepository.cs" />
+    <Compile Include="PatternTracer\Repository\SavePatternListException.cs" />
+    <Compile Include="PatternTracer\View\IPatternTracerView.cs" />
     <Compile Include="QuickSearch\QuickSearchPanel.cs" />
     <Compile Include="QuickSearch\QuickSearchSettings.cs" />
     <Compile Include="QuickSearch\Repository\IKeywordRepository.cs" />
@@ -87,7 +94,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="NppPluginNETBase.cs" />
     <Compile Include="NppPluginNETHelper.cs" />
-    <Compile Include="PatternTracer\Model\Pattern.cs" />
+    <Compile Include="PatternTracer\Model\PatternModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

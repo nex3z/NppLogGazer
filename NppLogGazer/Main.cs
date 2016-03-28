@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using NppPluginNET;
 using NppLogGazer.QuickSearch;
 using NppLogGazer.QuickSearch.Presenter;
+using NppLogGazer.PatternTracer;
 
 namespace NppLogGazer
 {
@@ -18,8 +19,9 @@ namespace NppLogGazer
         public const string PluginVersion = "0.8.0";
         static string iniFilePath = null;
         static string defaultKeywordListFile = null;
+        static string defaultPatternListFile = null;
         static bool someSetting = false;
-        static frmPatternTracer frmPatternTracer = null;
+        static Form frmPatternTracer = null;
         static Form frmQuickSearch = null;
         static int idPatternTracerDlg = -1;
         static int idQuickSearchDlg = -1;
@@ -39,8 +41,8 @@ namespace NppLogGazer
             iniFilePath = sbIniFilePath.ToString();
             if (!Directory.Exists(iniFilePath)) Directory.CreateDirectory(iniFilePath);
             defaultKeywordListFile = Path.Combine(iniFilePath, PluginName + "Keywords.xml");
+            defaultPatternListFile = Path.Combine(iniFilePath, PluginName + "Patterns.xml");
             LoadConfig(iniFilePath);
-            // iniFilePath = Path.Combine(iniFilePath, PluginName + ".ini");
             
             someSetting = (Win32.GetPrivateProfileInt("SomeSection", "SomeKey", 0, iniFilePath) != 0);
 
@@ -79,6 +81,10 @@ namespace NppLogGazer
         {
             return defaultKeywordListFile;
         }
+        public static string GetDefaultPatternListPath()
+        {
+            return defaultPatternListFile;
+        }
         internal static void LoadConfig(string iniFilePath)
         {
             QuickSearchSettings.ConfigDir = iniFilePath;
@@ -95,7 +101,7 @@ namespace NppLogGazer
         {
             if (frmPatternTracer == null)
             {
-                frmPatternTracer = new frmPatternTracer();
+                frmPatternTracer = PatternTracerPanel.Instance.Form;
 
                 using (Bitmap newBmp = new Bitmap(16, 16))
                 {
@@ -121,10 +127,21 @@ namespace NppLogGazer
                 Marshal.StructureToPtr(_nppTbData, _ptrNppTbData, false);
 
                 Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMREGASDCKDLG, 0, _ptrNppTbData);
+                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idPatternTracerDlg]._cmdID, 1);
+
             }
             else
             {
-                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, frmPatternTracer.Handle);
+                if (frmPatternTracer.Visible)
+                {
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMHIDE, 0, frmPatternTracer.Handle);
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idPatternTracerDlg]._cmdID, 0);
+                }
+                else
+                {
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, frmPatternTracer.Handle);
+                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idPatternTracerDlg]._cmdID, 1);
+                }
             }
         }
 
@@ -173,7 +190,6 @@ namespace NppLogGazer
                     Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, frmQuickSearch.Handle);
                     Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idQuickSearchDlg]._cmdID, 1);
                 }
-                // Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_DMMSHOW, 0, frmQuickSearch.Handle);
             }
         }
         #endregion
