@@ -124,7 +124,7 @@
   <data name="remove_duplicate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delete_repeat.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="wrap_search" xml:space="preserve">
+  <data name="wrap_search_text" xml:space="preserve">
     <value>Wrap Search</value>
   </data>
   <data name="pattern_tracer_dlg_label" xml:space="preserve">
@@ -151,13 +151,13 @@
   <data name="star" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>star.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="match_case" xml:space="preserve">
+  <data name="match_case_text" xml:space="preserve">
     <value>Match Case</value>
   </data>
   <data name="disk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\disk.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="match_word" xml:space="preserve">
+  <data name="match_word_text" xml:space="preserve">
     <value>Match Word</value>
   </data>
   <data name="folder_page_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -207,5 +207,17 @@
   </data>
   <data name="quick_search_tooltip_save_as" xml:space="preserve">
     <value>Save as...</value>
+  </data>
+  <data name="match_case_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\match_case_icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="match_word_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\match_word_icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reg_exp_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reg_exp_icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wrap_search_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wrap_search_icon.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

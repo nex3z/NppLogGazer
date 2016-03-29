@@ -100,7 +100,7 @@
             this.chkMatchWord.Name = "chkMatchWord";
             this.chkMatchWord.Size = new System.Drawing.Size(84, 16);
             this.chkMatchWord.TabIndex = 0;
-            this.chkMatchWord.Text = global::NppLogGazer.Properties.Resources.match_word;
+            this.chkMatchWord.Text = global::NppLogGazer.Properties.Resources.match_word_text;
             this.chkMatchWord.UseVisualStyleBackColor = true;
             // 
             // chkMatchCase
@@ -110,7 +110,7 @@
             this.chkMatchCase.Name = "chkMatchCase";
             this.chkMatchCase.Size = new System.Drawing.Size(84, 16);
             this.chkMatchCase.TabIndex = 1;
-            this.chkMatchCase.Text = global::NppLogGazer.Properties.Resources.match_case;
+            this.chkMatchCase.Text = global::NppLogGazer.Properties.Resources.match_case_text;
             this.chkMatchCase.UseVisualStyleBackColor = true;
             // 
             // chkWrapSearch
@@ -120,7 +120,7 @@
             this.chkWrapSearch.Name = "chkWrapSearch";
             this.chkWrapSearch.Size = new System.Drawing.Size(90, 16);
             this.chkWrapSearch.TabIndex = 2;
-            this.chkWrapSearch.Text = global::NppLogGazer.Properties.Resources.wrap_search;
+            this.chkWrapSearch.Text = global::NppLogGazer.Properties.Resources.wrap_search_text;
             this.chkWrapSearch.UseVisualStyleBackColor = true;
             // 
             // txtKeyword

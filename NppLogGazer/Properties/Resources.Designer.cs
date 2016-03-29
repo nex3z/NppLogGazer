@@ -141,20 +141,40 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap match_case_icon {
+            get {
+                object obj = ResourceManager.GetObject("match_case_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Match Case.
         /// </summary>
-        internal static string match_case {
+        internal static string match_case_text {
             get {
-                return ResourceManager.GetString("match_case", resourceCulture);
+                return ResourceManager.GetString("match_case_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap match_word_icon {
+            get {
+                object obj = ResourceManager.GetObject("match_word_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Match Word.
         /// </summary>
-        internal static string match_word {
+        internal static string match_word_text {
             get {
-                return ResourceManager.GetString("match_word", resourceCulture);
+                return ResourceManager.GetString("match_word_text", resourceCulture);
             }
         }
         
@@ -267,6 +287,16 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reg_exp_icon {
+            get {
+                object obj = ResourceManager.GetObject("reg_exp_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Regular Expression.
         /// </summary>
         internal static string regular_expression {
@@ -334,11 +364,21 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wrap_search_icon {
+            get {
+                object obj = ResourceManager.GetObject("wrap_search_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wrap Search.
         /// </summary>
-        internal static string wrap_search {
+        internal static string wrap_search_text {
             get {
-                return ResourceManager.GetString("wrap_search", resourceCulture);
+                return ResourceManager.GetString("wrap_search_text", resourceCulture);
             }
         }
     }
