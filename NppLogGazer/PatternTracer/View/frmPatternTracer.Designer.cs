@@ -43,11 +43,11 @@
             this.toolStripContainerPatternList = new System.Windows.Forms.ToolStripContainer();
             this.lstPattern = new System.Windows.Forms.ListBox();
             this.toolStripListMgmt = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnAddPattern = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnDeletePattern = new System.Windows.Forms.ToolStripButton();
             this.toolStripListIO = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnSavePatternList = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnOpenPatternList = new System.Windows.Forms.ToolStripButton();
             this.tabLayoutPatternTracer.SuspendLayout();
             this.splitPatternExtractor.Panel1.SuspendLayout();
             this.splitPatternExtractor.Panel2.SuspendLayout();
@@ -138,7 +138,7 @@
             this.toolBtnWrapSearch});
             this.toolStripPatternInput.Location = new System.Drawing.Point(3, 0);
             this.toolStripPatternInput.Name = "toolStripPatternInput";
-            this.toolStripPatternInput.Size = new System.Drawing.Size(170, 25);
+            this.toolStripPatternInput.Size = new System.Drawing.Size(139, 25);
             this.toolStripPatternInput.TabIndex = 0;
             // 
             // toolStripBtnSearch
@@ -225,8 +225,8 @@
             // lstPattern
             // 
             this.lstPattern.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstPattern.Font = new System.Drawing.Font("SimSun", 10F);
             this.lstPattern.FormattingEnabled = true;
-            this.lstPattern.ItemHeight = 12;
             this.lstPattern.Location = new System.Drawing.Point(0, 0);
             this.lstPattern.Name = "lstPattern";
             this.lstPattern.Size = new System.Drawing.Size(394, 226);
@@ -236,59 +236,61 @@
             // 
             this.toolStripListMgmt.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripListMgmt.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2});
+            this.toolBtnAddPattern,
+            this.toolBtnDeletePattern});
             this.toolStripListMgmt.Location = new System.Drawing.Point(3, 0);
             this.toolStripListMgmt.Name = "toolStripListMgmt";
             this.toolStripListMgmt.Size = new System.Drawing.Size(58, 25);
             this.toolStripListMgmt.TabIndex = 0;
             // 
-            // toolStripButton1
+            // toolBtnAddPattern
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::NppLogGazer.Properties.Resources.add;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolBtnAddPattern.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnAddPattern.Image = global::NppLogGazer.Properties.Resources.add;
+            this.toolBtnAddPattern.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnAddPattern.Name = "toolBtnAddPattern";
+            this.toolBtnAddPattern.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnAddPattern.Text = "toolStripButton1";
+            this.toolBtnAddPattern.Click += new System.EventHandler(this.toolBtnAddPattern_Click);
             // 
-            // toolStripButton2
+            // toolBtnDeletePattern
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::NppLogGazer.Properties.Resources.delete;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolBtnDeletePattern.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnDeletePattern.Image = global::NppLogGazer.Properties.Resources.delete;
+            this.toolBtnDeletePattern.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnDeletePattern.Name = "toolBtnDeletePattern";
+            this.toolBtnDeletePattern.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnDeletePattern.Text = "toolStripButton2";
+            this.toolBtnDeletePattern.Click += new System.EventHandler(this.toolBtnDeletePattern_Click);
             // 
             // toolStripListIO
             // 
             this.toolStripListIO.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStripListIO.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton3,
-            this.toolStripButton4});
+            this.toolBtnSavePatternList,
+            this.toolBtnOpenPatternList});
             this.toolStripListIO.Location = new System.Drawing.Point(61, 0);
             this.toolStripListIO.Name = "toolStripListIO";
             this.toolStripListIO.Size = new System.Drawing.Size(58, 25);
             this.toolStripListIO.TabIndex = 1;
             // 
-            // toolStripButton3
+            // toolBtnSavePatternList
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::NppLogGazer.Properties.Resources.disk;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.toolBtnSavePatternList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnSavePatternList.Image = global::NppLogGazer.Properties.Resources.disk;
+            this.toolBtnSavePatternList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnSavePatternList.Name = "toolBtnSavePatternList";
+            this.toolBtnSavePatternList.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnSavePatternList.Text = "toolStripButton3";
             // 
-            // toolStripButton4
+            // toolBtnOpenPatternList
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::NppLogGazer.Properties.Resources.folder_page_white;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.toolBtnOpenPatternList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnOpenPatternList.Image = global::NppLogGazer.Properties.Resources.folder_page_white;
+            this.toolBtnOpenPatternList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnOpenPatternList.Name = "toolBtnOpenPatternList";
+            this.toolBtnOpenPatternList.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnOpenPatternList.Text = "toolStripButton4";
             // 
             // frmPatternTracer
             // 
@@ -334,11 +336,11 @@
         private System.Windows.Forms.ToolStripContainer toolStripContainerPatternList;
         private System.Windows.Forms.ListBox lstPattern;
         private System.Windows.Forms.ToolStrip toolStripListMgmt;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton toolBtnAddPattern;
+        private System.Windows.Forms.ToolStripButton toolBtnDeletePattern;
         private System.Windows.Forms.ToolStrip toolStripListIO;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton toolBtnSavePatternList;
+        private System.Windows.Forms.ToolStripButton toolBtnOpenPatternList;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton toolBtnRegExp;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
