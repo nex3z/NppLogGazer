@@ -271,7 +271,7 @@
             this.toolBtnOpenPatternList});
             this.toolStripListIO.Location = new System.Drawing.Point(61, 0);
             this.toolStripListIO.Name = "toolStripListIO";
-            this.toolStripListIO.Size = new System.Drawing.Size(58, 25);
+            this.toolStripListIO.Size = new System.Drawing.Size(89, 25);
             this.toolStripListIO.TabIndex = 1;
             // 
             // toolBtnSavePatternList
@@ -282,6 +282,7 @@
             this.toolBtnSavePatternList.Name = "toolBtnSavePatternList";
             this.toolBtnSavePatternList.Size = new System.Drawing.Size(23, 22);
             this.toolBtnSavePatternList.Text = "toolStripButton3";
+            this.toolBtnSavePatternList.Click += new System.EventHandler(this.toolBtnSavePatternList_Click);
             // 
             // toolBtnOpenPatternList
             // 
@@ -291,6 +292,7 @@
             this.toolBtnOpenPatternList.Name = "toolBtnOpenPatternList";
             this.toolBtnOpenPatternList.Size = new System.Drawing.Size(23, 22);
             this.toolBtnOpenPatternList.Text = "toolStripButton4";
+            this.toolBtnOpenPatternList.Click += new System.EventHandler(this.toolBtnOpenPatternList_Click);
             // 
             // frmPatternTracer
             // 

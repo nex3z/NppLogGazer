@@ -6,6 +6,7 @@ using NppLogGazer.QuickSearch.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -41,6 +42,8 @@ namespace NppLogGazer.PatternTracer.Presenter
         {
             view.AddPattern += AddPattern;
             view.RemovePatternAt += RemovePatternAt;
+            view.SavePatternList += SavePatternList;
+            view.OpenPatternList += OpenPatternList;
         }
 
         private void AddPattern(Object sender, AddPatternEventArgs args) 
@@ -56,6 +59,33 @@ namespace NppLogGazer.PatternTracer.Presenter
             if (args.Position >= 0 && args.Position < patterns.Count)
             {
                 patterns.RemoveAt(args.Position);
+            }
+        }
+
+        private void SavePatternList(Object sender, SavePaternListEventArgs args)
+        {
+            try
+            {
+                IPatternRepository tempRepo = new PatternRepository(new FileInfo(args.Path));
+                tempRepo.ReplaceAll(patterns.ToList());
+            }
+            catch (SaveKeyworkListException ex)
+            {
+                view.ShowMessage(ex.Message);
+            }
+        }
+
+        private void OpenPatternList(Object sender, OpenPatternListEventArgs args)
+        {
+            try
+            {
+                IPatternRepository tempRepo = new PatternRepository(new FileInfo(args.Path));
+                patterns = new BindingList<PatternModel>(tempRepo.GetAll());
+                view.Bind(patterns);
+            }
+            catch (LoadKeywordListException ex)
+            {
+                view.ShowMessage(ex.Message);
             }
         }
     }
