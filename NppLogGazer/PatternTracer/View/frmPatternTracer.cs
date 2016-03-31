@@ -1,6 +1,7 @@
 ﻿using NppLogGazer.PatternExtractor.Model;
 using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
+using NppLogGazer.QuickSearch.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace NppLogGazer
         public event EventHandler<RemovePatternAtEventArgs> RemovePatternAt;
         public event EventHandler<SavePaternListEventArgs> SavePatternList;
         public event EventHandler<OpenPatternListEventArgs> OpenPatternList;
+        public event EventHandler<OnClosingEventArgs> OnPluginClosing;
+        public event EventHandler<OnSelectedPatternChangedEventArgs> OnSelectedPatternChanged;
 
         public frmPatternTracer()
         {
@@ -30,6 +33,37 @@ namespace NppLogGazer
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);
+        }
+
+        public void SelectPatternAt(int position)
+        {
+            lstPattern.SelectedIndex = position;
+        }
+
+        public void RenderPattern(PatternModel pattern)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (string keyword in pattern.PatternText) 
+                sb.AppendLine(keyword);
+
+            txtPatternInput.Text = sb.ToString();
+
+            toolBtnRegExp.Checked = pattern.Type == PatternType.RegExp ? true : false;
+        }
+
+        public void SetMatchWord(bool matchWord)
+        {
+            toolBtnMatchWord.Checked = matchWord;
+        }
+
+        public void SetMatchCase(bool matchCase)
+        {
+            toolBtnMatchCase.Checked = matchCase;
+        }
+
+        public void SetWrapSearch(bool wrapSearch)
+        {
+            toolBtnWrapSearch.Checked = wrapSearch;
         }
 
         private void toolStripBtnSearch_Click(object sender, EventArgs e)
@@ -89,6 +123,22 @@ namespace NppLogGazer
                 OpenPatternList(null, new OpenPatternListEventArgs(openFileDlg.FileName));
             }
 
+        }
+
+        private void frmPatternTracer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (OnPluginClosing != null)
+            {
+                OnPluginClosing(null, new OnClosingEventArgs(toolBtnMatchWord.Checked, toolBtnMatchCase.Checked, toolBtnWrapSearch.Checked));
+            }
+        }
+
+        private void lstPattern_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (OnSelectedPatternChanged != null)
+            {
+                OnSelectedPatternChanged(null, new OnSelectedPatternChangedEventArgs(lstPattern.SelectedIndex));
+            }
         }
     }
 }

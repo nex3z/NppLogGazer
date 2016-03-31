@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using NppPluginNET;
 using NppPlugin.DllExport;
 using NppLogGazer.QuickSearch;
+using NppLogGazer.PatternTracer;
 
 namespace NppLogGazer
 {
@@ -62,7 +63,12 @@ namespace NppLogGazer
                 if (QuickSearchSettings.Configs.showOnStartup)
                 {
                     Main.ShowQuickSearchDlg();
+                } 
+                else if (PatternTracerSettings.Configs.showOnStartup)
+                {
+                    Main.ShowPatternTracerDlg();
                 }
+
             }
         }
     }

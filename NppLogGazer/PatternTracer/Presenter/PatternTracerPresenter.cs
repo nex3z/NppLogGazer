@@ -33,9 +33,10 @@ namespace NppLogGazer.PatternTracer.Presenter
                 view.ShowMessage(ex.Message);
                 patterns = new BindingList<PatternModel>();
             }
+            view.Bind(patterns);
 
             WireUpEvents();
-            view.Bind(patterns);
+            SetupInitialView();
         }
 
         private void WireUpEvents() 
@@ -44,6 +45,23 @@ namespace NppLogGazer.PatternTracer.Presenter
             view.RemovePatternAt += RemovePatternAt;
             view.SavePatternList += SavePatternList;
             view.OpenPatternList += OpenPatternList;
+            view.OnPluginClosing += OnPluginClosing;
+            view.OnSelectedPatternChanged += OnSelectedPatternChanged;
+        }
+
+        private void SetupInitialView()
+        {
+            view.SetMatchWord(PatternTracerSettings.Configs.matchWord);
+            view.SetMatchCase(PatternTracerSettings.Configs.matchCase);
+            view.SetWrapSearch(PatternTracerSettings.Configs.wrapSearch);
+
+            if (patterns.Count != 0)
+            {
+                view.SelectPatternAt(0);
+                view.RenderPattern(patterns[0]);
+            }
+
+            // view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
         }
 
         private void AddPattern(Object sender, AddPatternEventArgs args) 
@@ -60,6 +78,14 @@ namespace NppLogGazer.PatternTracer.Presenter
             {
                 patterns.RemoveAt(args.Position);
             }
+        }
+
+        private void OnSelectedPatternChanged(Object sender, OnSelectedPatternChangedEventArgs args)
+        {
+             if (args.SelectedIndex >= 0 && args.SelectedIndex < patterns.Count)
+             {
+                 view.RenderPattern(patterns[args.SelectedIndex]);
+             }
         }
 
         private void SavePatternList(Object sender, SavePaternListEventArgs args)
@@ -87,6 +113,15 @@ namespace NppLogGazer.PatternTracer.Presenter
             {
                 view.ShowMessage(ex.Message);
             }
+        }
+
+        private void OnPluginClosing(Object sender, OnClosingEventArgs args)
+        {
+            PatternTracerSettings.Configs.matchCase = args.MatchCaseStatus;
+            PatternTracerSettings.Configs.matchWord = args.MatchWordStatus;
+            PatternTracerSettings.Configs.wrapSearch = args.WrapSearchStatus;
+
+            repository.ReplaceAll(patterns.ToList());
         }
     }
 }

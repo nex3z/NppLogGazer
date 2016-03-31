@@ -75,6 +75,16 @@ namespace NppLogGazer
                 frmQuickSearch.Close();
             }
 
+            if (frmPatternTracer != null)
+            {
+                if (frmPatternTracer.Visible)
+                    PatternTracerSettings.Configs.showOnStartup = true;
+                else
+                    PatternTracerSettings.Configs.showOnStartup = false;
+
+                frmPatternTracer.Close();
+            }
+
             SaveConfig(iniFilePath);
         }
         public static string GetDefaultKeywordListPath()
@@ -89,10 +99,14 @@ namespace NppLogGazer
         {
             QuickSearchSettings.ConfigDir = iniFilePath;
             QuickSearchSettings.LoadConfigs();
+
+            PatternTracerSettings.ConfigDir = iniFilePath;
+            PatternTracerSettings.LoadConfigs();
         }
         internal static void SaveConfig(string iniFilePath)
         {
             QuickSearchSettings.SaveConfigs();
+            PatternTracerSettings.SaveConfigs();
         }
         #endregion
 

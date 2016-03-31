@@ -59,16 +59,19 @@
   <ItemGroup>
     <Compile Include="DllExport\DllExportAttribute.cs" />
     <Compile Include="PatternTracer\PatternTracerPanel.cs" />
+    <Compile Include="PatternTracer\PatternTracerSettings.cs" />
     <Compile Include="PatternTracer\Presenter\PatternTracerPresenter.cs" />
     <Compile Include="PatternTracer\Repository\IPatternRepository.cs" />
     <Compile Include="PatternTracer\Repository\LoadPatternListException.cs" />
     <Compile Include="PatternTracer\Repository\PatternRepository.cs" />
     <Compile Include="PatternTracer\Repository\SavePatternListException.cs" />
     <Compile Include="PatternTracer\View\Event\AddPatternEventArgs.cs" />
+    <Compile Include="PatternTracer\View\Event\OnSelectedPatternChangedEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\OpenPatternListEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\RemovePatternAtEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\SavePaternListEventArgs.cs" />
     <Compile Include="PatternTracer\View\IPatternTracerView.cs" />
+    <Compile Include="PatternTracer\View\Event\OnClosingEventArgs.cs" />
     <Compile Include="QuickSearch\QuickSearchPanel.cs" />
     <Compile Include="QuickSearch\QuickSearchSettings.cs" />
     <Compile Include="QuickSearch\Repository\IKeywordRepository.cs" />

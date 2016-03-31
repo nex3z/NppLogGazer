@@ -231,6 +231,7 @@
             this.lstPattern.Name = "lstPattern";
             this.lstPattern.Size = new System.Drawing.Size(394, 226);
             this.lstPattern.TabIndex = 0;
+            this.lstPattern.SelectedIndexChanged += new System.EventHandler(this.lstPattern_SelectedIndexChanged);
             // 
             // toolStripListMgmt
             // 
@@ -271,7 +272,7 @@
             this.toolBtnOpenPatternList});
             this.toolStripListIO.Location = new System.Drawing.Point(61, 0);
             this.toolStripListIO.Name = "toolStripListIO";
-            this.toolStripListIO.Size = new System.Drawing.Size(89, 25);
+            this.toolStripListIO.Size = new System.Drawing.Size(58, 25);
             this.toolStripListIO.TabIndex = 1;
             // 
             // toolBtnSavePatternList
@@ -302,6 +303,7 @@
             this.Controls.Add(this.tabLayoutPatternTracer);
             this.Name = "frmPatternTracer";
             this.Text = "Pattern Tracer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPatternTracer_FormClosing);
             this.tabLayoutPatternTracer.ResumeLayout(false);
             this.splitPatternExtractor.Panel1.ResumeLayout(false);
             this.splitPatternExtractor.Panel2.ResumeLayout(false);
