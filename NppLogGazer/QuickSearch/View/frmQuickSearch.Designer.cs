@@ -153,6 +153,7 @@
             // 
             // toolStripKeywrodList
             // 
+            this.toolStripKeywrodList.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripKeywrodList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolBtnAdd,
             this.toolBtnRemove,
