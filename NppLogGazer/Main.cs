@@ -95,6 +95,14 @@ namespace NppLogGazer
         {
             return defaultPatternListFile;
         }
+        public static int GetQuickSearchDlgId()
+        {
+            return idQuickSearchDlg;
+        }
+        public static int GetPatternTracerDlgId()
+        {
+            return idPatternTracerDlg;
+        }
         internal static void LoadConfig(string iniFilePath)
         {
             QuickSearchSettings.ConfigDir = iniFilePath;

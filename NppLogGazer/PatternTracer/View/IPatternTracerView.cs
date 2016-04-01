@@ -16,6 +16,8 @@ namespace NppLogGazer.PatternTracer.View
         event EventHandler<OpenPatternListEventArgs> OpenPatternList;
         event EventHandler<OnClosingEventArgs> OnPluginClosing;
         event EventHandler<OnSelectedPatternChangedEventArgs> OnSelectedPatternChanged;
+        event EventHandler ClearPatternInput;
+        event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
 
         void Bind(BindingList<PatternModel> patternList);
         void ShowMessage(string message);
@@ -24,5 +26,6 @@ namespace NppLogGazer.PatternTracer.View
         void SetMatchWord(bool matchWord);
         void SetMatchCase(bool matchCase);
         void SetWrapSearch(bool wrapSearch);
+        void SetPatternInput(string pattern);
     }
 }

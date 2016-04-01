@@ -40,6 +40,8 @@
             this.toolBtnMatchWord = new System.Windows.Forms.ToolStripButton();
             this.toolBtnMatchCase = new System.Windows.Forms.ToolStripButton();
             this.toolBtnWrapSearch = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolBtnClearPatternInput = new System.Windows.Forms.ToolStripButton();
             this.toolStripContainerPatternList = new System.Windows.Forms.ToolStripContainer();
             this.lstPattern = new System.Windows.Forms.ListBox();
             this.toolStripListMgmt = new System.Windows.Forms.ToolStrip();
@@ -135,10 +137,12 @@
             this.toolStripSeparator2,
             this.toolBtnMatchWord,
             this.toolBtnMatchCase,
-            this.toolBtnWrapSearch});
+            this.toolBtnWrapSearch,
+            this.toolStripSeparator3,
+            this.toolBtnClearPatternInput});
             this.toolStripPatternInput.Location = new System.Drawing.Point(3, 0);
             this.toolStripPatternInput.Name = "toolStripPatternInput";
-            this.toolStripPatternInput.Size = new System.Drawing.Size(139, 25);
+            this.toolStripPatternInput.Size = new System.Drawing.Size(168, 25);
             this.toolStripPatternInput.TabIndex = 0;
             // 
             // toolStripBtnSearch
@@ -200,6 +204,21 @@
             this.toolBtnWrapSearch.Name = "toolBtnWrapSearch";
             this.toolBtnWrapSearch.Size = new System.Drawing.Size(23, 22);
             this.toolBtnWrapSearch.Text = "toolStripButton8";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolBtnClearPatternInput
+            // 
+            this.toolBtnClearPatternInput.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnClearPatternInput.Image = global::NppLogGazer.Properties.Resources.delete_input;
+            this.toolBtnClearPatternInput.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnClearPatternInput.Name = "toolBtnClearPatternInput";
+            this.toolBtnClearPatternInput.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnClearPatternInput.Text = "toolStripButton1";
+            this.toolBtnClearPatternInput.Click += new System.EventHandler(this.toolBtnClearPatternInput_Click);
             // 
             // toolStripContainerPatternList
             // 
@@ -304,6 +323,7 @@
             this.Name = "frmPatternTracer";
             this.Text = "Pattern Tracer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPatternTracer_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.frmPatternTracer_VisibleChanged);
             this.tabLayoutPatternTracer.ResumeLayout(false);
             this.splitPatternExtractor.Panel1.ResumeLayout(false);
             this.splitPatternExtractor.Panel2.ResumeLayout(false);
@@ -351,6 +371,8 @@
         private System.Windows.Forms.ToolStripButton toolBtnMatchWord;
         private System.Windows.Forms.ToolStripButton toolBtnMatchCase;
         private System.Windows.Forms.ToolStripButton toolBtnWrapSearch;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton toolBtnClearPatternInput;
 
     }
 }

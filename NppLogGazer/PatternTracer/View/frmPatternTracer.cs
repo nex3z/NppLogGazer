@@ -19,6 +19,8 @@ namespace NppLogGazer
         public event EventHandler<OpenPatternListEventArgs> OpenPatternList;
         public event EventHandler<OnClosingEventArgs> OnPluginClosing;
         public event EventHandler<OnSelectedPatternChangedEventArgs> OnSelectedPatternChanged;
+        public event EventHandler ClearPatternInput;
+        public event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
 
         public frmPatternTracer()
         {
@@ -64,6 +66,11 @@ namespace NppLogGazer
         public void SetWrapSearch(bool wrapSearch)
         {
             toolBtnWrapSearch.Checked = wrapSearch;
+        }
+
+        public void SetPatternInput(string pattern)
+        {
+            txtPatternInput.Text = pattern;
         }
 
         private void toolStripBtnSearch_Click(object sender, EventArgs e)
@@ -138,6 +145,22 @@ namespace NppLogGazer
             if (OnSelectedPatternChanged != null)
             {
                 OnSelectedPatternChanged(null, new OnSelectedPatternChangedEventArgs(lstPattern.SelectedIndex));
+            }
+        }
+
+        private void toolBtnClearPatternInput_Click(object sender, EventArgs e)
+        {
+            if (ClearPatternInput != null)
+            {
+                ClearPatternInput(null, EventArgs.Empty);
+            }
+        }
+
+        private void frmPatternTracer_VisibleChanged(object sender, EventArgs e)
+        {
+            if (PluginVisibleChanged != null)
+            {
+                PluginVisibleChanged(null, new VisibleChangedEventArgs(this.Visible));
             }
         }
     }

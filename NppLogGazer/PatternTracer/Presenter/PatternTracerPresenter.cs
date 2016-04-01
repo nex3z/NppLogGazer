@@ -3,6 +3,7 @@ using NppLogGazer.PatternTracer.Repository;
 using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
 using NppLogGazer.QuickSearch.Repository;
+using NppPluginNET;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,6 +48,8 @@ namespace NppLogGazer.PatternTracer.Presenter
             view.OpenPatternList += OpenPatternList;
             view.OnPluginClosing += OnPluginClosing;
             view.OnSelectedPatternChanged += OnSelectedPatternChanged;
+            view.ClearPatternInput += ClearPatternInput;
+            view.PluginVisibleChanged += PluginVisibleChanged;
         }
 
         private void SetupInitialView()
@@ -78,6 +81,11 @@ namespace NppLogGazer.PatternTracer.Presenter
             {
                 patterns.RemoveAt(args.Position);
             }
+        }
+
+        private void ClearPatternInput(Object sender, EventArgs args)
+        {
+            view.SetPatternInput("");
         }
 
         private void OnSelectedPatternChanged(Object sender, OnSelectedPatternChangedEventArgs args)
@@ -122,6 +130,14 @@ namespace NppLogGazer.PatternTracer.Presenter
             PatternTracerSettings.Configs.wrapSearch = args.WrapSearchStatus;
 
             repository.ReplaceAll(patterns.ToList());
+        }
+
+        private void PluginVisibleChanged(Object sender, VisibleChangedEventArgs args)
+        {
+            if (!args.Visible)
+            {
+                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[Main.GetPatternTracerDlgId()]._cmdID, 0);
+            }
         }
     }
 }

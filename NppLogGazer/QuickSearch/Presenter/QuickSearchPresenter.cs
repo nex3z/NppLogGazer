@@ -54,6 +54,7 @@ namespace NppLogGazer.QuickSearch.Presenter
             view.OnSelectedKeywordChanged += OnSelectedKeywordChanged;
             view.OnPluginClosing += OnClosing;
             view.OnKeywordSelected += OnKeywordSelected;
+            view.PluginVisibleChanged += PluginVisibleChanged;
         }
 
         private void SetupInitialView()
@@ -181,7 +182,7 @@ namespace NppLogGazer.QuickSearch.Presenter
                     {
                         int pos = sci.SearchBackward(keyword.ToString(),
                             keyword.Type == KeywordType.RegExp, args.MatchWord, args.MatchCase, args.WrapSearch);
-                        updateSearchResult(sci, pos);
+                        UpdateSearchResult(sci, pos);
                     }
                 } else if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.None)
                 {
@@ -191,14 +192,14 @@ namespace NppLogGazer.QuickSearch.Presenter
                         {
                             int pos = sci.SearchForward(keyword.ToString(),
                                 keyword.Type == KeywordType.RegExp, args.MatchWord, args.MatchCase, args.WrapSearch);
-                            updateSearchResult(sci, pos);
+                            UpdateSearchResult(sci, pos);
                         }
                     }
                 }
             }
         }
 
-        private void updateSearchResult(Scintilla sci, int pos)
+        private void UpdateSearchResult(Scintilla sci, int pos)
         {
             if (pos < 0)
             {
@@ -209,6 +210,14 @@ namespace NppLogGazer.QuickSearch.Presenter
                 int line = sci.GetLineFromPosition(pos) + 1;
                 string message = Properties.Resources.quick_search_status_found_at_line + line + ".";
                 view.ShowStatusMessage(message, Color.Green);
+            }
+        }
+
+        private void PluginVisibleChanged(Object sender, VisibleChangedEventArgs args)
+        {
+            if (!args.Visible)
+            {
+                Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[Main.GetQuickSearchDlgId()]._cmdID, 0);
             }
         }
     }

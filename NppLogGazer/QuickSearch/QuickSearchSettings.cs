@@ -38,7 +38,7 @@ namespace NppLogGazer.QuickSearch
             catch (Exception ex)
             {
                 // File.Delete(configFileName);
-                MessageBox.Show("ex " + ex.Message);
+                // MessageBox.Show("ex " + ex.Message);
                 Configs = new QuickSearchSettings.Config();
             }
         }

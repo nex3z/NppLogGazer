@@ -23,6 +23,7 @@ namespace NppLogGazer
         public event EventHandler<OnSelectedKeywordChangedEventArgs> OnSelectedKeywordChanged;
         public event EventHandler<OnClosingEventArgs> OnPluginClosing;
         public event EventHandler<OnKeywordSelectedEventArgs> OnKeywordSelected;
+        public event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
 
         int lastHoveredIndex = -1;
 
@@ -258,6 +259,14 @@ namespace NppLogGazer
                     toolTipKeywordList.SetToolTip(lstKeywords, lstKeywords.Items[hoveredIndex].ToString());
                     lastHoveredIndex = hoveredIndex;
                 }
+            }
+        }
+
+        private void frmQuickSearch_VisibleChanged(object sender, EventArgs e)
+        {
+            if (PluginVisibleChanged != null)
+            {
+                PluginVisibleChanged(null, new VisibleChangedEventArgs(this.Visible));
             }
         }
 

@@ -299,6 +299,7 @@
             this.Name = "frmQuickSearch";
             this.Text = "Qucik Search";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQuickSearch_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.frmQuickSearch_VisibleChanged);
             this.tabLayoutQuickSearch.ResumeLayout(false);
             this.tabLayoutQuickSearch.PerformLayout();
             this.flowLayoutSearchOptions.ResumeLayout(false);
