@@ -44,12 +44,14 @@ namespace NppLogGazer.PatternTracer.Presenter
         {
             view.AddPattern += AddPattern;
             view.RemovePatternAt += RemovePatternAt;
+            view.UpdatePatternAt += UpdatePatternAt;
             view.SavePatternList += SavePatternList;
             view.OpenPatternList += OpenPatternList;
             view.OnPluginClosing += OnPluginClosing;
             view.OnSelectedPatternChanged += OnSelectedPatternChanged;
             view.ClearPatternInput += ClearPatternInput;
             view.PluginVisibleChanged += PluginVisibleChanged;
+            view.SwapPatternPosition += SwapPatternAt;
         }
 
         private void SetupInitialView()
@@ -80,6 +82,25 @@ namespace NppLogGazer.PatternTracer.Presenter
             if (args.Position >= 0 && args.Position < patterns.Count)
             {
                 patterns.RemoveAt(args.Position);
+            }
+        }
+
+        private void UpdatePatternAt(Object sender, UpdatePatternAtEventArgs args)
+        {
+            if (args.Position >= 0 && args.Position < patterns.Count)
+            {
+                patterns[args.Position] = args.Pattern;
+            }
+        }
+
+        private void SwapPatternAt(Object sender, SwapPatternPositionEventArgs args)
+        {
+            if (args.Src >= 0 && args.Src < patterns.Count && args.Dest >= 0 && args.Dest < patterns.Count)
+            {
+                PatternModel tmp = patterns[args.Src];
+                patterns[args.Src] = patterns[args.Dest];
+                patterns[args.Dest] = tmp;
+                view.SelectPatternAt(args.Dest);
             }
         }
 

@@ -24,6 +24,7 @@ namespace NppLogGazer
         public event EventHandler<OnClosingEventArgs> OnPluginClosing;
         public event EventHandler<OnKeywordSelectedEventArgs> OnKeywordSelected;
         public event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
+        public event EventHandler<UpdateKeywordAtEventArgs> UpdateKeywordAt;
 
         int lastHoveredIndex = -1;
 
@@ -128,9 +129,7 @@ namespace NppLogGazer
         {
             if (AddKeyword != null)
             {
-                AddKeywordEventArgs args = new AddKeywordEventArgs();
-                args.Keyword.KeywordText = txtKeyword.Text;
-                args.Keyword.Type = chkRegExp.Checked ? KeywordType.RegExp : KeywordType.Normal;
+                AddKeywordEventArgs args = new AddKeywordEventArgs(GetKeyword());
                 AddKeyword(null, args);
             }
         }
@@ -268,6 +267,23 @@ namespace NppLogGazer
             {
                 PluginVisibleChanged(null, new VisibleChangedEventArgs(this.Visible));
             }
+        }
+
+        private void toolBtnReplace_Click(object sender, EventArgs e)
+        {
+            if (UpdateKeywordAt != null)
+            {
+                UpdateKeywordAtEventArgs args = new UpdateKeywordAtEventArgs(lstKeywords.SelectedIndex ,GetKeyword());
+                UpdateKeywordAt(null, args);
+            }
+        }
+
+        private KeywordModel GetKeyword()
+        {
+            KeywordModel keyword = new KeywordModel();
+            keyword.KeywordText = txtKeyword.Text; ;
+            keyword.Type = chkRegExp.Checked ? KeywordType.RegExp : KeywordType.Normal;
+            return keyword;
         }
 
     }

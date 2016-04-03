@@ -70,6 +70,8 @@
     <Compile Include="PatternTracer\View\Event\OpenPatternListEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\RemovePatternAtEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\SavePaternListEventArgs.cs" />
+    <Compile Include="PatternTracer\View\Event\SwapPatternPositionEventArgs.cs" />
+    <Compile Include="PatternTracer\View\Event\UpdatePatternAtEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\VisibleChangedEventArgs.cs" />
     <Compile Include="PatternTracer\View\IPatternTracerView.cs" />
     <Compile Include="PatternTracer\View\Event\OnClosingEventArgs.cs" />
@@ -93,6 +95,7 @@
     </Compile>
     <Compile Include="QuickSearch\View\Event\OnSelectedKeywordChangedEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\SwapPositionEventArgs.cs" />
+    <Compile Include="QuickSearch\View\Event\UpdateKeywordAtEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\VisibleChangedEventArgs.cs" />
     <Compile Include="QuickSearch\View\frmQuickSearch.cs">
       <SubType>Form</SubType>
@@ -194,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\delete_input.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_replace.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildProjectDirectory)\DllExport\NppPlugin.DllExport.targets" />

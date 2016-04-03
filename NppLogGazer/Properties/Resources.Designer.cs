@@ -376,6 +376,16 @@ namespace NppLogGazer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap text_replace {
+            get {
+                object obj = ResourceManager.GetObject("text_replace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap wrap_search_icon {
             get {
                 object obj = ResourceManager.GetObject("wrap_search_icon", resourceCulture);

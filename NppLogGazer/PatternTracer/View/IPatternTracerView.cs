@@ -12,12 +12,14 @@ namespace NppLogGazer.PatternTracer.View
     {
         event EventHandler<AddPatternEventArgs> AddPattern;
         event EventHandler<RemovePatternAtEventArgs> RemovePatternAt;
+        event EventHandler<UpdatePatternAtEventArgs> UpdatePatternAt;
         event EventHandler<SavePaternListEventArgs> SavePatternList;
         event EventHandler<OpenPatternListEventArgs> OpenPatternList;
         event EventHandler<OnClosingEventArgs> OnPluginClosing;
         event EventHandler<OnSelectedPatternChangedEventArgs> OnSelectedPatternChanged;
         event EventHandler ClearPatternInput;
         event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
+        event EventHandler<SwapPatternPositionEventArgs> SwapPatternPosition;
 
         void Bind(BindingList<PatternModel> patternList);
         void ShowMessage(string message);

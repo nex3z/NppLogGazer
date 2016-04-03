@@ -47,6 +47,7 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             view.AddKeyword += AddKeyword;
             view.RemoveKeywordAt += RemoveKeywordAt;
+            view.UpdateKeywordAt += UpdateKeywordAt;
             view.SwapKeywordPosition += SwapKeywordAt;
             view.RemoveDuplicates += RemoveDuplicates;
             view.SaveKeywordList += SaveKeywordList;
@@ -87,6 +88,14 @@ namespace NppLogGazer.QuickSearch.Presenter
                 keywords.RemoveAt(args.Position);
         }
 
+        private void UpdateKeywordAt(Object sender, UpdateKeywordAtEventArgs args)
+        {
+            if (args.Position >= 0 && args.Position < keywords.Count)
+            {
+                keywords[args.Position] = args.Keyword;
+            }
+        }
+
         private void SwapKeywordAt(Object sender, SwapPositionEventArgs args)
         {
             if (args.Src >= 0 && args.Src < keywords.Count && args.Dest >= 0 && args.Dest < keywords.Count)
@@ -94,8 +103,8 @@ namespace NppLogGazer.QuickSearch.Presenter
                 KeywordModel tmp = keywords[args.Src];
                 keywords[args.Src] = keywords[args.Dest];
                 keywords[args.Dest] = tmp;
+                view.SelectKeywordAt(args.Dest);
             }
-            view.SelectKeywordAt(args.Dest);
         }
 
         private void RemoveDuplicates(Object sender, EventArgs args)

@@ -15,12 +15,14 @@ namespace NppLogGazer
     {
         public event EventHandler<AddPatternEventArgs> AddPattern;
         public event EventHandler<RemovePatternAtEventArgs> RemovePatternAt;
+        public event EventHandler<UpdatePatternAtEventArgs> UpdatePatternAt;
         public event EventHandler<SavePaternListEventArgs> SavePatternList;
         public event EventHandler<OpenPatternListEventArgs> OpenPatternList;
         public event EventHandler<OnClosingEventArgs> OnPluginClosing;
         public event EventHandler<OnSelectedPatternChangedEventArgs> OnSelectedPatternChanged;
         public event EventHandler ClearPatternInput;
         public event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
+        public event EventHandler<SwapPatternPositionEventArgs> SwapPatternPosition;
 
         public frmPatternTracer()
         {
@@ -39,7 +41,8 @@ namespace NppLogGazer
 
         public void SelectPatternAt(int position)
         {
-            lstPattern.SelectedIndex = position;
+            if (position >= 0 && position < lstPattern.Items.Count)
+                lstPattern.SelectedIndex = position;
         }
 
         public void RenderPattern(PatternModel pattern)
@@ -82,11 +85,7 @@ namespace NppLogGazer
         {
             if (AddPattern != null)
             {
-                List<string> patternText = GetPatternText();
-                PatternType type = toolBtnRegExp.Checked == true ? PatternType.RegExp : PatternType.Normal;
-                PatternModel pattern = new PatternModel(patternText, type);
-
-                AddPattern(null, new AddPatternEventArgs(pattern));
+                AddPattern(null, new AddPatternEventArgs(GetPattern()));
             }
         }
 
@@ -163,5 +162,44 @@ namespace NppLogGazer
                 PluginVisibleChanged(null, new VisibleChangedEventArgs(this.Visible));
             }
         }
+
+        private void toolBtnMoveUp_Click(object sender, EventArgs e)
+        {
+            int selectedIdx = lstPattern.SelectedIndex;
+            if (selectedIdx > 0 && SwapPatternPosition != null)
+            {
+                SwapPatternPosition(null, new SwapPatternPositionEventArgs(selectedIdx, selectedIdx - 1));
+            }
+
+        }
+
+        private void toolBtnMoveDown_Click(object sender, EventArgs e)
+        {
+            int selectedIdx = lstPattern.SelectedIndex;
+            if (selectedIdx >= 0 && selectedIdx <= lstPattern.Items.Count && SwapPatternPosition != null)
+            {
+                SwapPatternPosition(null, new SwapPatternPositionEventArgs(selectedIdx, selectedIdx + 1));
+            }
+
+        }
+
+        private void toolBtnReplace_Click(object sender, EventArgs e)
+        {
+            if (UpdatePatternAt != null)
+            {
+                UpdatePatternAtEventArgs args = new UpdatePatternAtEventArgs(lstPattern.SelectedIndex, GetPattern());
+                UpdatePatternAt(null, args);
+            }
+        }
+
+        private PatternModel GetPattern()
+        {
+            List<string> patternText = GetPatternText();
+            PatternType type = toolBtnRegExp.Checked == true ? PatternType.RegExp : PatternType.Normal;
+            PatternModel pattern = new PatternModel(patternText, type);
+
+            return pattern;
+        }
+
     }
 }

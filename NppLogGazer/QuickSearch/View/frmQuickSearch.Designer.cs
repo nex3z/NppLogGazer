@@ -40,6 +40,7 @@
             this.toolStripKeywrodList = new System.Windows.Forms.ToolStrip();
             this.toolBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.toolBtnRemove = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnReplace = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBtnMoveUp = new System.Windows.Forms.ToolStripButton();
             this.toolBtnMoveDown = new System.Windows.Forms.ToolStripButton();
@@ -157,6 +158,7 @@
             this.toolStripKeywrodList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolBtnAdd,
             this.toolBtnRemove,
+            this.toolBtnReplace,
             this.toolStripSeparator1,
             this.toolBtnMoveUp,
             this.toolBtnMoveDown,
@@ -191,6 +193,16 @@
             this.toolBtnRemove.Text = "toolStripButton2";
             this.toolBtnRemove.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_remove;
             this.toolBtnRemove.Click += new System.EventHandler(this.toolBtnRemove_Click);
+            // 
+            // toolBtnReplace
+            // 
+            this.toolBtnReplace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnReplace.Image = global::NppLogGazer.Properties.Resources.text_replace;
+            this.toolBtnReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnReplace.Name = "toolBtnReplace";
+            this.toolBtnReplace.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnReplace.Text = "toolStripButton1";
+            this.toolBtnReplace.Click += new System.EventHandler(this.toolBtnReplace_Click);
             // 
             // toolStripSeparator1
             // 
@@ -339,6 +351,7 @@
         private System.Windows.Forms.StatusStrip statusKeywordList;
         private System.Windows.Forms.ToolStripStatusLabel statusLabelKeywordList;
         private System.Windows.Forms.ToolTip toolTipKeywordList;
+        private System.Windows.Forms.ToolStripButton toolBtnReplace;
 
     }
 }

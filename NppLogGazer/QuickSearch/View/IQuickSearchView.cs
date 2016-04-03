@@ -20,6 +20,7 @@ namespace NppLogGazer.QuickSearch
         event EventHandler<OnClosingEventArgs> OnPluginClosing;
         event EventHandler<OnKeywordSelectedEventArgs> OnKeywordSelected;
         event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
+        event EventHandler<UpdateKeywordAtEventArgs> UpdateKeywordAt;
 
         void Bind(BindingList<KeywordModel> keywordList);
         void ShowMessage(string message);
