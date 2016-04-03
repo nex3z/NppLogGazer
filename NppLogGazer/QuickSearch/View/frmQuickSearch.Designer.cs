@@ -180,7 +180,7 @@
             this.toolBtnAdd.Name = "toolBtnAdd";
             this.toolBtnAdd.Size = new System.Drawing.Size(23, 22);
             this.toolBtnAdd.Text = "toolStripButton1";
-            this.toolBtnAdd.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_add;
+            this.toolBtnAdd.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_add;
             this.toolBtnAdd.Click += new System.EventHandler(this.toolBtnAdd_Click);
             // 
             // toolBtnRemove
@@ -191,7 +191,7 @@
             this.toolBtnRemove.Name = "toolBtnRemove";
             this.toolBtnRemove.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRemove.Text = "toolStripButton2";
-            this.toolBtnRemove.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_remove;
+            this.toolBtnRemove.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_remove;
             this.toolBtnRemove.Click += new System.EventHandler(this.toolBtnRemove_Click);
             // 
             // toolBtnReplace
@@ -202,6 +202,7 @@
             this.toolBtnReplace.Name = "toolBtnReplace";
             this.toolBtnReplace.Size = new System.Drawing.Size(23, 22);
             this.toolBtnReplace.Text = "toolStripButton1";
+            this.toolBtnReplace.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_replace;
             this.toolBtnReplace.Click += new System.EventHandler(this.toolBtnReplace_Click);
             // 
             // toolStripSeparator1
@@ -217,7 +218,7 @@
             this.toolBtnMoveUp.Name = "toolBtnMoveUp";
             this.toolBtnMoveUp.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveUp.Text = "toolStripButton3";
-            this.toolBtnMoveUp.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_move_up;
+            this.toolBtnMoveUp.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_move_up;
             this.toolBtnMoveUp.Click += new System.EventHandler(this.toolBtnMoveUp_Click);
             // 
             // toolBtnMoveDown
@@ -228,7 +229,7 @@
             this.toolBtnMoveDown.Name = "toolBtnMoveDown";
             this.toolBtnMoveDown.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveDown.Text = "toolStripButton4";
-            this.toolBtnMoveDown.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_move_down;
+            this.toolBtnMoveDown.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_move_down;
             this.toolBtnMoveDown.Click += new System.EventHandler(this.toolBtnMoveDown_Click);
             // 
             // toolBtnRemoveDuplicate
@@ -239,7 +240,7 @@
             this.toolBtnRemoveDuplicate.Name = "toolBtnRemoveDuplicate";
             this.toolBtnRemoveDuplicate.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRemoveDuplicate.Text = "toolStripButton5";
-            this.toolBtnRemoveDuplicate.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_delete_duplicate;
+            this.toolBtnRemoveDuplicate.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_delete_duplicate;
             this.toolBtnRemoveDuplicate.Click += new System.EventHandler(this.toolBtnRemoveDuplicate_Click);
             // 
             // toolStripSeparator2
@@ -255,7 +256,7 @@
             this.toolBtnOpen.Name = "toolBtnOpen";
             this.toolBtnOpen.Size = new System.Drawing.Size(23, 22);
             this.toolBtnOpen.Text = "toolStripButton6";
-            this.toolBtnOpen.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_open;
+            this.toolBtnOpen.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_open;
             this.toolBtnOpen.Click += new System.EventHandler(this.toolBtnOpen_Click);
             // 
             // toolBtnSaveAs
@@ -266,7 +267,7 @@
             this.toolBtnSaveAs.Name = "toolBtnSaveAs";
             this.toolBtnSaveAs.Size = new System.Drawing.Size(23, 22);
             this.toolBtnSaveAs.Text = "toolStripButton7";
-            this.toolBtnSaveAs.ToolTipText = global::NppLogGazer.Properties.Resources.quick_search_tooltip_save_as;
+            this.toolBtnSaveAs.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_save_as;
             this.toolBtnSaveAs.Click += new System.EventHandler(this.toolBtnSaveAs_Click);
             // 
             // lstKeywords

@@ -187,25 +187,25 @@
   <data name="quick_search_status_found_at_line" xml:space="preserve">
     <value>Found at line</value>
   </data>
-  <data name="quick_search_tooltip_add" xml:space="preserve">
+  <data name="tooltip_add" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="quick_search_tooltip_delete_duplicate" xml:space="preserve">
+  <data name="tooltip_delete_duplicate" xml:space="preserve">
     <value>Delete duplicates</value>
   </data>
-  <data name="quick_search_tooltip_move_down" xml:space="preserve">
+  <data name="tooltip_move_down" xml:space="preserve">
     <value>Move down</value>
   </data>
-  <data name="quick_search_tooltip_move_up" xml:space="preserve">
+  <data name="tooltip_move_up" xml:space="preserve">
     <value>Move up</value>
   </data>
-  <data name="quick_search_tooltip_open" xml:space="preserve">
+  <data name="tooltip_open" xml:space="preserve">
     <value>Open...</value>
   </data>
-  <data name="quick_search_tooltip_remove" xml:space="preserve">
+  <data name="tooltip_remove" xml:space="preserve">
     <value>Remove</value>
   </data>
-  <data name="quick_search_tooltip_save_as" xml:space="preserve">
+  <data name="tooltip_save_as" xml:space="preserve">
     <value>Save as...</value>
   </data>
   <data name="match_case_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -225,5 +225,8 @@
   </data>
   <data name="text_replace" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text_replace.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tooltip_replace" xml:space="preserve">
+    <value>Replace selected item</value>
   </data>
 </root>

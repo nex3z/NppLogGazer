@@ -198,6 +198,7 @@
             this.toolBtnAddPattern.Name = "toolBtnAddPattern";
             this.toolBtnAddPattern.Size = new System.Drawing.Size(23, 22);
             this.toolBtnAddPattern.Text = "toolStripButton1";
+            this.toolBtnAddPattern.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_add;
             this.toolBtnAddPattern.Click += new System.EventHandler(this.toolBtnAddPattern_Click);
             // 
             // toolBtnDeletePattern
@@ -208,6 +209,7 @@
             this.toolBtnDeletePattern.Name = "toolBtnDeletePattern";
             this.toolBtnDeletePattern.Size = new System.Drawing.Size(23, 22);
             this.toolBtnDeletePattern.Text = "toolStripButton2";
+            this.toolBtnDeletePattern.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_remove;
             this.toolBtnDeletePattern.Click += new System.EventHandler(this.toolBtnDeletePattern_Click);
             // 
             // toolStripSeparator4
@@ -223,6 +225,7 @@
             this.toolBtnMoveUp.Name = "toolBtnMoveUp";
             this.toolBtnMoveUp.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveUp.Text = "toolStripButton1";
+            this.toolBtnMoveUp.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_move_up;
             this.toolBtnMoveUp.Click += new System.EventHandler(this.toolBtnMoveUp_Click);
             // 
             // toolBtnMoveDown
@@ -233,6 +236,7 @@
             this.toolBtnMoveDown.Name = "toolBtnMoveDown";
             this.toolBtnMoveDown.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMoveDown.Text = "toolStripButton2";
+            this.toolBtnMoveDown.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_move_down;
             this.toolBtnMoveDown.Click += new System.EventHandler(this.toolBtnMoveDown_Click);
             // 
             // toolStripSeparator5
@@ -248,6 +252,7 @@
             this.toolBtnSavePatternList.Name = "toolBtnSavePatternList";
             this.toolBtnSavePatternList.Size = new System.Drawing.Size(23, 22);
             this.toolBtnSavePatternList.Text = "toolStripButton3";
+            this.toolBtnSavePatternList.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_save_as;
             this.toolBtnSavePatternList.Click += new System.EventHandler(this.toolBtnSavePatternList_Click);
             // 
             // toolBtnOpenPatternList
@@ -258,6 +263,7 @@
             this.toolBtnOpenPatternList.Name = "toolBtnOpenPatternList";
             this.toolBtnOpenPatternList.Size = new System.Drawing.Size(23, 22);
             this.toolBtnOpenPatternList.Text = "toolStripButton4";
+            this.toolBtnOpenPatternList.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_open;
             this.toolBtnOpenPatternList.Click += new System.EventHandler(this.toolBtnOpenPatternList_Click);
             // 
             // tabPatternTracer
@@ -287,6 +293,7 @@
             this.toolBtnReplace.Name = "toolBtnReplace";
             this.toolBtnReplace.Size = new System.Drawing.Size(23, 22);
             this.toolBtnReplace.Text = "toolStripButton1";
+            this.toolBtnReplace.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_replace;
             this.toolBtnReplace.Click += new System.EventHandler(this.toolBtnReplace_Click);
             // 
             // frmPatternTracer
