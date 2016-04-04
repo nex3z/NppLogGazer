@@ -23,6 +23,7 @@ namespace NppLogGazer
         public event EventHandler ClearPatternInput;
         public event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
         public event EventHandler<SwapPatternPositionEventArgs> SwapPatternPosition;
+        public event EventHandler<SearchPatternEventArgs> SearchPattern;
 
         public frmPatternTracer()
         {
@@ -48,11 +49,17 @@ namespace NppLogGazer
         public void RenderPattern(PatternModel pattern)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (string keyword in pattern.PatternText) 
-                sb.AppendLine(keyword);
+            int num = pattern.PatternText.Count, i = 0;
+            if (num < 0) 
+                return;
 
+            for (i = 0; i < num - 1; ++i)
+            {
+                sb.AppendLine(pattern.PatternText[i]);
+            }
+            sb.Append(pattern.PatternText[i]);
+            
             txtPatternInput.Text = sb.ToString();
-
             toolBtnRegExp.Checked = pattern.Type == PatternType.RegExp ? true : false;
         }
 
@@ -78,7 +85,12 @@ namespace NppLogGazer
 
         private void toolStripBtnSearch_Click(object sender, EventArgs e)
         {
-       
+            if (SearchPattern != null)
+            {
+                PatternModel pattern = GetPattern();
+                SearchPatternEventArgs args = new SearchPatternEventArgs(pattern, toolBtnMatchWord.Checked, toolBtnMatchCase.Checked, toolBtnWrapSearch.Checked);
+                SearchPattern(null, args);
+            }
         }
 
         private void toolBtnAddPattern_Click(object sender, EventArgs e)

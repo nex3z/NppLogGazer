@@ -4,12 +4,14 @@ using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
 using NppLogGazer.QuickSearch.Repository;
 using NppPluginNET;
+using NppQuickSearchPanel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace NppLogGazer.PatternTracer.Presenter
 {
@@ -52,6 +54,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             view.ClearPatternInput += ClearPatternInput;
             view.PluginVisibleChanged += PluginVisibleChanged;
             view.SwapPatternPosition += SwapPatternAt;
+            view.SearchPattern += SearchPattern;
         }
 
         private void SetupInitialView()
@@ -69,9 +72,15 @@ namespace NppLogGazer.PatternTracer.Presenter
             // view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
         }
 
+        private void SearchPattern(Object sender, SearchPatternEventArgs args)
+        {
+            string result = PerformSearch(args.Pattern, args.MatchWord, args.MatchWord);
+            ShowResult(result);
+        }
+
         private void AddPattern(Object sender, AddPatternEventArgs args) 
         {
-            if (args.Pattern != null)
+            if (args.Pattern != null && args.Pattern.PatternText.Count != 0)
             {
                 patterns.Add(args.Pattern);
             }
@@ -159,6 +168,46 @@ namespace NppLogGazer.PatternTracer.Presenter
             {
                 Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[Main.GetPatternTracerDlgId()]._cmdID, 0);
             }
+        }
+
+        private string PerformSearch(PatternModel pattern, bool matchWord, bool matchCase)
+        {
+            int keywordNum = pattern.PatternText.Count;
+            int[] lines = new int[keywordNum];
+            using (Scintilla sci = new Scintilla())
+            {
+                for (int i = 0; i < keywordNum; i++)
+                {
+                    int pos = sci.SearchForward(pattern.PatternText[i].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
+                    if (pos != -1)
+                    {
+                        lines[i] = pos;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            string result = FormatResult(lines);
+            return result;
+        }
+
+        private string FormatResult(int[] lines)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (int line in lines)
+            {
+                sb.AppendLine("Position: " + line);
+            }
+            return sb.ToString();
+        }
+
+        private void ShowResult(string result)
+        {
+            IResultView resultFrm = new frmResult();
+            resultFrm.ShowResult(result);
         }
     }
 }

@@ -20,6 +20,7 @@ namespace NppLogGazer.PatternTracer.View
         event EventHandler ClearPatternInput;
         event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
         event EventHandler<SwapPatternPositionEventArgs> SwapPatternPosition;
+        event EventHandler<SearchPatternEventArgs> SearchPattern;
 
         void Bind(BindingList<PatternModel> patternList);
         void ShowMessage(string message);

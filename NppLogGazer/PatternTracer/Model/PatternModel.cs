@@ -35,11 +35,15 @@ namespace NppLogGazer.PatternExtractor.Model
             {
                 sb.Append(Title);
             }
-            foreach (var pattern in this.PatternText)
+
+            int num = PatternText.Count, i = 0;
+            for (i = 0; i < num - 1; ++i)
             {
-                sb.Append(pattern);
+                sb.Append(PatternText[i]);
                 sb.Append(", ");
             }
+            sb.Append(PatternText[i]);
+
             return sb.ToString();
         }
     }
