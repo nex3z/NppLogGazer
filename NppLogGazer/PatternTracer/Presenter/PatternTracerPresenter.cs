@@ -1,4 +1,5 @@
 ﻿using NppLogGazer.PatternExtractor.Model;
+using NppLogGazer.PatternTracer.Model;
 using NppLogGazer.PatternTracer.Repository;
 using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
@@ -173,33 +174,71 @@ namespace NppLogGazer.PatternTracer.Presenter
         private string PerformSearch(PatternModel pattern, bool matchWord, bool matchCase)
         {
             int keywordNum = pattern.PatternText.Count;
-            int[] lines = new int[keywordNum];
+            int hit = 0;
+            bool reachedEnd = false;
+            List<int[]> resultList = new List<int[]>();
+            List<ResultModel> results = new List<ResultModel>();
             using (Scintilla sci = new Scintilla())
             {
-                for (int i = 0; i < keywordNum; i++)
+                sci.SetCurrentPos(0);
+                sci.SetAnchor(0);
+
+                while (!reachedEnd)
                 {
-                    int pos = sci.SearchForward(pattern.PatternText[i].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
-                    if (pos != -1)
+                    int[] positions = new int[keywordNum];
+                    for (int i = 0; i < keywordNum; i++)
                     {
-                        lines[i] = pos;
+                        int pos = sci.SearchForward(pattern.PatternText[i].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
+                        positions[i] = pos;
+                        if (pos != -1)
+                        {
+                            hit++;
+                        }
+                        else
+                        {
+                            reachedEnd = true;
+                            break;
+                        }
                     }
-                    else
+                    resultList.Add(positions);
+                }
+
+                
+                foreach (int[] result in resultList) 
+                {
+                    ResultModel resultModel = new ResultModel();
+                    for (int i = 0; i < keywordNum; i++)
                     {
-                        break;
+                        if (result[i] != -1)
+                        {
+                            int lineNum = sci.GetLineFromPosition(result[i]);
+                            string text = sci.GetLine(lineNum);
+                            lineNum += 1;
+                            ResultEntryModel entry = new ResultEntryModel(result[i], lineNum, text);
+                            resultModel.Result.Add(entry);
+                        }
+                        else
+                        {
+                            break;
+                        }
                     }
+                    results.Add(resultModel);
                 }
             }
 
-            string result = FormatResult(lines);
-            return result;
+            string resultText = FormatResult(results);
+            return resultText;
         }
 
-        private string FormatResult(int[] lines)
+        private string FormatResult(List<ResultModel> resultList)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (int line in lines)
+            foreach (ResultModel result in resultList)
             {
-                sb.AppendLine("Position: " + line);
+                foreach (ResultEntryModel entry in result.Result) 
+                {
+                    sb.AppendLine("Line: " + entry.LineNumber + " " + entry.LineText);
+                }
             }
             return sb.ToString();
         }

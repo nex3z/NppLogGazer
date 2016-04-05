@@ -4,6 +4,7 @@ using System.Text;
 using NppPluginNET;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.IO;
 
 namespace NppQuickSearchPanel
 {
@@ -175,6 +176,14 @@ namespace NppQuickSearchPanel
         {
             int line = (int)Win32.SendMessage(curScintilla, SciMsg.SCI_LINEFROMPOSITION, pos, 0);
             return line;
+        }
+
+        public string GetLine(int line)
+        {
+            StringBuilder sb = new StringBuilder();
+            Win32.SendMessage(curScintilla, SciMsg.SCI_GETLINE, line, sb);
+            StringReader sr = new StringReader(sb.ToString());
+            return sr.ReadLine();
         }
 
         public void Dispose()
