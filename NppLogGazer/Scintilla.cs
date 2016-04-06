@@ -180,10 +180,16 @@ namespace NppQuickSearchPanel
 
         public string GetLine(int line)
         {
-            StringBuilder sb = new StringBuilder();
+            int length = LineLength(line);
+            StringBuilder sb = new StringBuilder(length);
             Win32.SendMessage(curScintilla, SciMsg.SCI_GETLINE, line, sb);
-            StringReader sr = new StringReader(sb.ToString());
-            return sr.ReadLine();
+            return new StringReader(sb.ToString()).ReadLine();
+        }
+
+        public int LineLength(int line)
+        {
+            int length = (int)Win32.SendMessage(curScintilla, SciMsg.SCI_LINELENGTH, line, 0);
+            return length;
         }
 
         public void Dispose()
