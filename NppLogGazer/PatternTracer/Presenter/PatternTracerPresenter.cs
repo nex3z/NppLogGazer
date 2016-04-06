@@ -43,7 +43,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             SetupInitialView();
         }
 
-        private void WireUpEvents() 
+        private void WireUpEvents()
         {
             view.AddPattern += AddPattern;
             view.RemovePatternAt += RemovePatternAt;
@@ -79,14 +79,14 @@ namespace NppLogGazer.PatternTracer.Presenter
             ShowResult(result);
         }
 
-        private void AddPattern(Object sender, AddPatternEventArgs args) 
+        private void AddPattern(Object sender, AddPatternEventArgs args)
         {
             if (args.Pattern != null && args.Pattern.PatternText.Count != 0)
             {
                 patterns.Add(args.Pattern);
             }
         }
-        
+
         private void RemovePatternAt(Object sender, RemovePatternAtEventArgs args)
         {
             if (args.Position >= 0 && args.Position < patterns.Count)
@@ -121,10 +121,10 @@ namespace NppLogGazer.PatternTracer.Presenter
 
         private void OnSelectedPatternChanged(Object sender, OnSelectedPatternChangedEventArgs args)
         {
-             if (args.SelectedIndex >= 0 && args.SelectedIndex < patterns.Count)
-             {
-                 view.RenderPattern(patterns[args.SelectedIndex]);
-             }
+            if (args.SelectedIndex >= 0 && args.SelectedIndex < patterns.Count)
+            {
+                view.RenderPattern(patterns[args.SelectedIndex]);
+            }
         }
 
         private void SavePatternList(Object sender, SavePaternListEventArgs args)
@@ -174,7 +174,7 @@ namespace NppLogGazer.PatternTracer.Presenter
         private string PerformSearch(PatternModel pattern, bool matchWord, bool matchCase)
         {
             int keywordNum = pattern.PatternText.Count;
-            int hit = 0;
+            int totalHit = 0;
             bool reachedEnd = false;
             List<int[]> resultList = new List<int[]>();
             List<ResultModel> results = new List<ResultModel>();
@@ -186,13 +186,15 @@ namespace NppLogGazer.PatternTracer.Presenter
                 while (!reachedEnd)
                 {
                     int[] positions = new int[keywordNum];
+                    int keywordHit = 0;
                     for (int i = 0; i < keywordNum; i++)
                     {
                         int pos = sci.SearchForward(pattern.PatternText[i].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
                         positions[i] = pos;
                         if (pos != -1)
                         {
-                            hit++;
+                            keywordHit++;
+                            totalHit++;
                         }
                         else
                         {
@@ -200,11 +202,11 @@ namespace NppLogGazer.PatternTracer.Presenter
                             break;
                         }
                     }
-                    resultList.Add(positions);
+                    if (keywordHit != 0)
+                        resultList.Add(positions);
                 }
 
-                
-                foreach (int[] result in resultList) 
+                foreach (int[] result in resultList)
                 {
                     ResultModel resultModel = new ResultModel();
                     for (int i = 0; i < keywordNum; i++)
@@ -233,12 +235,13 @@ namespace NppLogGazer.PatternTracer.Presenter
         private string FormatResult(List<ResultModel> resultList)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (ResultModel result in resultList)
+            for (int i = 0; i < resultList.Count; i++)
             {
-                foreach (ResultEntryModel entry in result.Result) 
+                foreach (ResultEntryModel entry in resultList[i].Result)
                 {
                     sb.AppendLine("Line: " + entry.LineNumber + " " + entry.LineText);
                 }
+                if (i != (resultList.Count - 1)) sb.AppendLine();
             }
             return sb.ToString();
         }
