@@ -10,6 +10,9 @@ namespace NppQuickSearchPanel
 {
     class Scintilla : IDisposable
     {
+        readonly int CURRENT_CODE_PAGE = Encoding.Default.CodePage;
+        readonly int UTF8_CODE_PAGE = Encoding.UTF8.CodePage;
+
         IntPtr curScintilla;
         bool disposed = false;
 
@@ -183,7 +186,14 @@ namespace NppQuickSearchPanel
             int length = LineLength(line);
             StringBuilder sb = new StringBuilder(length);
             Win32.SendMessage(curScintilla, SciMsg.SCI_GETLINE, line, sb);
-            return new StringReader(sb.ToString()).ReadLine();
+            string text = decode(sb.ToString());
+            return new StringReader(text).ReadLine();
+        }
+
+        private string decode(string text)
+        {
+            byte[] raw = Encoding.GetEncoding(CURRENT_CODE_PAGE).GetBytes(text);
+            return Encoding.GetEncoding(UTF8_CODE_PAGE).GetString(raw);
         }
 
         public int LineLength(int line)
