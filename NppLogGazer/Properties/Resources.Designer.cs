@@ -189,6 +189,26 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pattern_tracer {
+            get {
+                object obj = ResourceManager.GetObject("pattern_tracer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pattern_tracer_bmp {
+            get {
+                object obj = ResourceManager.GetObject("pattern_tracer_bmp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pattern Tracer.
         /// </summary>
         internal static string pattern_tracer_dlg_label {
@@ -262,7 +282,7 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove duplicated keywords.
+        ///   Looks up a localized string similar to Delete duplicated keywords.
         /// </summary>
         internal static string remove_dup_dlg_title {
             get {
@@ -330,7 +350,25 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete duplicates.
+        ///   Looks up a localized string similar to Clear Input.
+        /// </summary>
+        internal static string tooltip_clear_input {
+            get {
+                return ResourceManager.GetString("tooltip_clear_input", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string tooltip_delete {
+            get {
+                return ResourceManager.GetString("tooltip_delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Duplicates.
         /// </summary>
         internal static string tooltip_delete_duplicate {
             get {
@@ -339,7 +377,25 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move down.
+        ///   Looks up a localized string similar to Match Case.
+        /// </summary>
+        internal static string tooltip_match_case {
+            get {
+                return ResourceManager.GetString("tooltip_match_case", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Match Word.
+        /// </summary>
+        internal static string tooltip_match_word {
+            get {
+                return ResourceManager.GetString("tooltip_match_word", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Move Down.
         /// </summary>
         internal static string tooltip_move_down {
             get {
@@ -348,7 +404,7 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move up.
+        ///   Looks up a localized string similar to Move Up.
         /// </summary>
         internal static string tooltip_move_up {
             get {
@@ -366,16 +422,16 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Remove.
+        ///   Looks up a localized string similar to Regular expression.
         /// </summary>
-        internal static string tooltip_remove {
+        internal static string tooltip_reg_exp {
             get {
-                return ResourceManager.GetString("tooltip_remove", resourceCulture);
+                return ResourceManager.GetString("tooltip_reg_exp", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replace selected item.
+        ///   Looks up a localized string similar to Replace Selected Item.
         /// </summary>
         internal static string tooltip_replace {
             get {
@@ -384,11 +440,29 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save as....
+        ///   Looks up a localized string similar to Save As....
         /// </summary>
         internal static string tooltip_save_as {
             get {
                 return ResourceManager.GetString("tooltip_save_as", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        internal static string tooltip_search {
+            get {
+                return ResourceManager.GetString("tooltip_search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrap Search.
+        /// </summary>
+        internal static string tooltip_wrap_search {
+            get {
+                return ResourceManager.GetString("tooltip_wrap_search", resourceCulture);
             }
         }
         

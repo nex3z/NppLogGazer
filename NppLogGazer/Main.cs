@@ -25,8 +25,8 @@ namespace NppLogGazer
         static Form frmQuickSearch = null;
         static int idPatternTracerDlg = -1;
         static int idQuickSearchDlg = -1;
-        static Bitmap tbPatternTracerBmp = Properties.Resources.star;
-        static Bitmap tbPatternTracerBmp_tbTab = Properties.Resources.star_bmp;
+        static Bitmap tbPatternTracerBmp = Properties.Resources.pattern_tracer;
+        static Bitmap tbPatternTracerBmp_tbTab = Properties.Resources.pattern_tracer_bmp;
         static Bitmap tbQuickSearchBmp = Properties.Resources.magnifier;
         static Bitmap tbQuickSearchBmp_tbTab = Properties.Resources.magnifier_bmp;
         static Icon tbPatternTracerIcon = null;

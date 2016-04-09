@@ -191,7 +191,7 @@
             this.toolBtnRemove.Name = "toolBtnRemove";
             this.toolBtnRemove.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRemove.Text = "toolStripButton2";
-            this.toolBtnRemove.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_remove;
+            this.toolBtnRemove.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_delete;
             this.toolBtnRemove.Click += new System.EventHandler(this.toolBtnRemove_Click);
             // 
             // toolBtnReplace

@@ -43,6 +43,7 @@
             this.toolStripListMgmt = new System.Windows.Forms.ToolStrip();
             this.toolBtnAddPattern = new System.Windows.Forms.ToolStripButton();
             this.toolBtnDeletePattern = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnReplace = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBtnMoveUp = new System.Windows.Forms.ToolStripButton();
             this.toolBtnMoveDown = new System.Windows.Forms.ToolStripButton();
@@ -50,7 +51,6 @@
             this.toolBtnSavePatternList = new System.Windows.Forms.ToolStripButton();
             this.toolBtnOpenPatternList = new System.Windows.Forms.ToolStripButton();
             this.tabPatternTracer = new System.Windows.Forms.TableLayoutPanel();
-            this.toolBtnReplace = new System.Windows.Forms.ToolStripButton();
             this.toolStripPatternInput.SuspendLayout();
             this.toolStripListMgmt.SuspendLayout();
             this.tabPatternTracer.SuspendLayout();
@@ -68,7 +68,7 @@
             // 
             // toolStripPatternInput
             // 
-            this.toolStripPatternInput.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripPatternInput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripPatternInput.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripPatternInput.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBtnSearch,
@@ -82,7 +82,7 @@
             this.toolBtnClearPatternInput});
             this.toolStripPatternInput.Location = new System.Drawing.Point(0, 0);
             this.toolStripPatternInput.Name = "toolStripPatternInput";
-            this.toolStripPatternInput.Size = new System.Drawing.Size(159, 25);
+            this.toolStripPatternInput.Size = new System.Drawing.Size(345, 25);
             this.toolStripPatternInput.TabIndex = 0;
             // 
             // toolStripBtnSearch
@@ -93,6 +93,7 @@
             this.toolStripBtnSearch.Name = "toolStripBtnSearch";
             this.toolStripBtnSearch.Size = new System.Drawing.Size(23, 22);
             this.toolStripBtnSearch.Text = "toolStripButton4";
+            this.toolStripBtnSearch.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_search;
             this.toolStripBtnSearch.Click += new System.EventHandler(this.toolStripBtnSearch_Click);
             // 
             // toolStripSeparator1
@@ -109,6 +110,7 @@
             this.toolBtnRegExp.Name = "toolBtnRegExp";
             this.toolBtnRegExp.Size = new System.Drawing.Size(23, 22);
             this.toolBtnRegExp.Text = "toolStripButton5";
+            this.toolBtnRegExp.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_reg_exp;
             // 
             // toolStripSeparator2
             // 
@@ -124,6 +126,7 @@
             this.toolBtnMatchWord.Name = "toolBtnMatchWord";
             this.toolBtnMatchWord.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMatchWord.Text = "toolStripButton6";
+            this.toolBtnMatchWord.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_match_word;
             // 
             // toolBtnMatchCase
             // 
@@ -134,6 +137,7 @@
             this.toolBtnMatchCase.Name = "toolBtnMatchCase";
             this.toolBtnMatchCase.Size = new System.Drawing.Size(23, 22);
             this.toolBtnMatchCase.Text = "toolStripButton7";
+            this.toolBtnMatchCase.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_match_case;
             // 
             // toolBtnWrapSearch
             // 
@@ -144,6 +148,7 @@
             this.toolBtnWrapSearch.Name = "toolBtnWrapSearch";
             this.toolBtnWrapSearch.Size = new System.Drawing.Size(23, 22);
             this.toolBtnWrapSearch.Text = "toolStripButton8";
+            this.toolBtnWrapSearch.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_wrap_search;
             // 
             // toolStripSeparator3
             // 
@@ -159,21 +164,24 @@
             this.toolBtnClearPatternInput.Size = new System.Drawing.Size(23, 22);
             this.toolBtnClearPatternInput.Text = "toolStripButton1";
             this.toolBtnClearPatternInput.Click += new System.EventHandler(this.toolBtnClearPatternInput_Click);
+            this.toolBtnClearPatternInput.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_clear_input;
             // 
             // lstPattern
             // 
             this.lstPattern.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstPattern.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.lstPattern.Font = new System.Drawing.Font("SimSun", 10F);
             this.lstPattern.FormattingEnabled = true;
             this.lstPattern.Location = new System.Drawing.Point(3, 231);
             this.lstPattern.Name = "lstPattern";
             this.lstPattern.Size = new System.Drawing.Size(339, 327);
             this.lstPattern.TabIndex = 3;
+            this.lstPattern.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstPattern_DrawItem);
             this.lstPattern.SelectedIndexChanged += new System.EventHandler(this.lstPattern_SelectedIndexChanged);
             // 
             // toolStripListMgmt
             // 
-            this.toolStripListMgmt.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStripListMgmt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripListMgmt.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStripListMgmt.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolBtnAddPattern,
@@ -187,7 +195,7 @@
             this.toolBtnOpenPatternList});
             this.toolStripListMgmt.Location = new System.Drawing.Point(0, 203);
             this.toolStripListMgmt.Name = "toolStripListMgmt";
-            this.toolStripListMgmt.Size = new System.Drawing.Size(207, 25);
+            this.toolStripListMgmt.Size = new System.Drawing.Size(345, 25);
             this.toolStripListMgmt.TabIndex = 2;
             // 
             // toolBtnAddPattern
@@ -209,8 +217,19 @@
             this.toolBtnDeletePattern.Name = "toolBtnDeletePattern";
             this.toolBtnDeletePattern.Size = new System.Drawing.Size(23, 22);
             this.toolBtnDeletePattern.Text = "toolStripButton2";
-            this.toolBtnDeletePattern.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_remove;
+            this.toolBtnDeletePattern.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_delete;
             this.toolBtnDeletePattern.Click += new System.EventHandler(this.toolBtnDeletePattern_Click);
+            // 
+            // toolBtnReplace
+            // 
+            this.toolBtnReplace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnReplace.Image = global::NppLogGazer.Properties.Resources.text_replace;
+            this.toolBtnReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnReplace.Name = "toolBtnReplace";
+            this.toolBtnReplace.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnReplace.Text = "toolStripButton1";
+            this.toolBtnReplace.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_replace;
+            this.toolBtnReplace.Click += new System.EventHandler(this.toolBtnReplace_Click);
             // 
             // toolStripSeparator4
             // 
@@ -284,17 +303,6 @@
             this.tabPatternTracer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tabPatternTracer.Size = new System.Drawing.Size(345, 561);
             this.tabPatternTracer.TabIndex = 4;
-            // 
-            // toolBtnReplace
-            // 
-            this.toolBtnReplace.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolBtnReplace.Image = global::NppLogGazer.Properties.Resources.text_replace;
-            this.toolBtnReplace.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolBtnReplace.Name = "toolBtnReplace";
-            this.toolBtnReplace.Size = new System.Drawing.Size(23, 22);
-            this.toolBtnReplace.Text = "toolStripButton1";
-            this.toolBtnReplace.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_replace;
-            this.toolBtnReplace.Click += new System.EventHandler(this.toolBtnReplace_Click);
             // 
             // frmPatternTracer
             // 

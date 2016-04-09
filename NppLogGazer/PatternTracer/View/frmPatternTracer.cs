@@ -213,5 +213,29 @@ namespace NppLogGazer
             return pattern;
         }
 
+        private void lstPattern_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            e.DrawBackground();
+            Graphics g = e.Graphics;
+
+            // Hightlight selected item.
+            g.FillRectangle(new SolidBrush(Color.White), e.Bounds);
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                e.Graphics.FillRectangle(new SolidBrush(Color.LightGray), e.Bounds);
+
+            // Change font color according to KeywordsType.
+            ListBox lb = (ListBox)sender;
+            PatternModel pattern = (PatternModel)lb.Items[e.Index];
+            if (pattern.Type == PatternType.Normal)
+                g.DrawString(pattern.ToString(), e.Font, new SolidBrush(Color.Black), new PointF(e.Bounds.X, e.Bounds.Y));
+            else
+                g.DrawString(pattern.ToString(), e.Font, new SolidBrush(Color.Blue), new PointF(e.Bounds.X, e.Bounds.Y));
+
+            e.DrawFocusRectangle();
+        }
+
     }
 }
