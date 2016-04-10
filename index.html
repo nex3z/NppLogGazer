@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>NppLogGazer by nex3z</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>NppLogGazer</h1>
+        <h2>A Notepad++ plugin for log analysis.</h2>
+        <a href="https://github.com/nex3z/NppLogGazer" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h2>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h2>
+
+<p><a href="https://github.com/nex3z/NppLogGazer/releases/download/0.8.0/NppLogGazer.zip">Click to download</a></p>
+
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h2>
+
+<p><strong>NppLogGazer</strong> is a notepad++ plugin with extra search features, providing fast and convenient searching especially for log analysis.</p>
+
+<h2>
+<a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to install</h2>
+
+<p>Copy the <strong>NppLogGazer.dll</strong> to the <strong>plugins</strong> folder in your Notepad++ directory.</p>
+
+<p><strong>Important Note:</strong> NppQuickSearchPanel only support the <strong>Unicode</strong> version of Notepad++.</p>
+
+<h2>
+<a id="patterntracer" class="anchor" href="#patterntracer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PatternTracer</h2>
+
+<p><img src="Images/pattern_tracer_screenshot.png" alt="screenshot"></p>
+
+<h3>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Build keyword pattern and track them down in the document by one click.</li>
+<li>Save your frequently used patterns in a list.</li>
+<li>Provide multiple search options and regular expression support.</li>
+</ul>
+
+<h3>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
+
+<p>Open up Notepad++, click the <img src="Images/Icons/pattern_tracer.png" alt="plugin_icon"><strong>Show PatternTracer</strong> button in the toolbar, or use menu <strong>Plugins / NppLogGazer / Show PatternTracer</strong>.</p>
+
+<ul>
+<li>Input pattern in the text box. A pattern is a keyword list. Each keyword takes one line and will be searched in the same order as they are positioned in the list. Select <img src="Images/Icons/reg_exp.png" alt="reg_exp"><strong>Regular Expression</strong> if you use regular expression.</li>
+<li>Select search options: <img src="Images/Icons/match_word.png" alt="match_word"><strong>Match Word</strong>, <img src="Images/Icons/match_case.png" alt="match_case"><strong>Match Case</strong> and <img src="Images/Icons/wrap_search.png" alt="wrap_search"><strong>Wrap Search</strong>.</li>
+<li>Click <img src="Images/Icons/search.png" alt="search"><strong>Search</strong> to search the pattern in the current document.</li>
+<li>Use <img src="Images/Icons/add.png" alt="add"><strong>Add</strong> to add current pattern to the list and <img src="Images/Icons/delete.png" alt="delete"><strong>Remove</strong> to remove the selected pattern. You can also change the order of selected pattern item by using <img src="Images/Icons/move_up.png" alt="move_up"><strong>Move up</strong> and <img src="Images/Icons/move_down.png" alt="move_down"><strong>Move down</strong>.</li>
+<li>Use <img src="Images/Icons/open.png" alt="open"><strong>Open</strong>/<img src="Images/Icons/save.png" alt="save"><strong>Save</strong> to load/save current keywords list.</li>
+</ul>
+
+<h2>
+<a id="quicksearchpanel" class="anchor" href="#quicksearchpanel" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>QuickSearchPanel</h2>
+
+<p><img src="Images/quick_search_panel_screenshot.png" alt="screenshot"></p>
+
+<h3>
+<a id="features-1" class="anchor" href="#features-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h3>
+
+<ul>
+<li>Save your frequently used keywords in a list.</li>
+<li>Click on keywords to search.</li>
+<li>Provide multiple search options and regular expression support.</li>
+</ul>
+
+<h3>
+<a id="how-to-use-1" class="anchor" href="#how-to-use-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h3>
+
+<p>Open up Notepad++, click the <img src="Images/Icons/quick_search_panel.png" alt="pluginicon"><strong>Show QuickSearchPanel</strong> button in the toolbar, or use menu <strong>Plugins / NppLogGazer / Show QuickSearchPanel</strong>.</p>
+
+<ul>
+<li>Input keyword in the text box. Click <img src="Images/Icons/add.png" alt="add"><strong>Add</strong> button or just press <kbd><strong>Enter</strong></kbd> to add the keyword to the list.</li>
+<li>
+<kbd><strong>Click</strong></kbd> on the keyword in the list to search forward. <kbd><strong>Shift</strong></kbd> + <kbd><strong>Click</strong></kbd> to search backward.</li>
+<li>
+<kbd><strong>Ctrl</strong></kbd> + <kbd><strong>Click</strong></kbd> on the keyword to launch Notepad++ Find dialog with selected keyword pasted in "Find what" automatically.</li>
+<li>Use <img src="Images/Icons/delete.png" alt="delete"><strong>Remove</strong> button to remove the selected keyword. You can also change the order of selected keyword by using <img src="Images/Icons/move_up.png" alt="move_up"><strong>Move up</strong> and <img src="Images/Icons/move_down.png" alt="move_down"><strong>Move down</strong>.</li>
+<li>Use <img src="Images/Icons/open.png" alt="open"><strong>Open</strong>/<img src="Images/Icons/save.png" alt="save"><strong>Save</strong> to load/save current keywords list.</li>
+</ul>
+
+<h2>
+<a id="how-to-build" class="anchor" href="#how-to-build" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to build</h2>
+
+<p>Build with Visual Studio 2013. If you encounter a "The system cannot find the file specified" error when building the project, add the location of <strong>NETFX Tools</strong> to your <strong>Path</strong> environment variable.</p>
+
+<p>For 64-bit system and Visual Studio 2013, the typical location of <strong>NETFX Tools</strong> is</p>
+
+<pre><code>C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools
+</code></pre>
+
+<p>For 32-bit system, the typical location is</p>
+
+<pre><code>C:\Program Files\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools
+</code></pre>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Credits</h2>
+
+<ul>
+<li>
+<a href="http://sourceforge.net/projects/sourcecookifier/files/other%20plugins/">NppPlugin.NET.v0.6</a>, the C# Notepad++ plugin template is brought to you by ufo-pu55y.</li>
+<li>The nice toolbar icons come from <a href="http://www.famfamfam.com/">famfamfam.com</a>, under <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 License</a>.</li>
+</ul>
+
+<h2>
+<a id="about-notepad" class="anchor" href="#about-notepad" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About Notepad++</h2>
+
+<p>Notepad++ is a free (as in "free speech" and also as in "free beer") source code editor and Notepad replacement that supports several languages. Running in the MS Windows environment, its use is governed by GPL License.
+For more information, please visit the <a href="https://notepad-plus-plus.org/">official site</a>.</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/nex3z/NppLogGazer/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/nex3z/NppLogGazer/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/nex3z/NppLogGazer"></a> is maintained by <a href="https://github.com/nex3z">nex3z</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
