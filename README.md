@@ -4,8 +4,6 @@
 
 **NppLogGazer** is a notepad++ plugin with extra search features, providing fast and convenient searching especially for log analysis.
 
-![screenshot][quick_search_panel_screenshot]
-
 
 ## How to install
 
@@ -15,6 +13,8 @@ Copy the **NppLogGazer.dll** to the **plugins** folder in your Notepad++ directo
 
 
 ## PatternTracer
+
+![screenshot][pattern_tracer_screenshot]
 
 ### Features
 
@@ -34,6 +34,8 @@ Open up Notepad++, click the ![plugin_icon][pattern_tracer_icon]**Show PatternTr
 
 
 ## QuickSearchPanel
+
+![screenshot][quick_search_panel_screenshot]
 
 ### Features
 
@@ -78,6 +80,7 @@ Notepad++ is a free (as in "free speech" and also as in "free beer") source code
 For more information, please visit the [official site].
 
 
+[pattern_tracer_screenshot]: Images/pattern_tracer_screenshot.png
 [quick_search_panel_screenshot]: Images/quick_search_panel_screenshot.png
 [pattern_tracer_icon]: Images/Icons/pattern_tracer.png
 [reg_exp_icon]: Images/Icons/reg_exp.png
