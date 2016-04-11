@@ -218,6 +218,16 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon pattern_tracer_icon {
+            get {
+                object obj = ResourceManager.GetObject("pattern_tracer_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quick Search.
         /// </summary>
         internal static string quick_search_dlg_label {

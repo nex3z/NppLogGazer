@@ -33,6 +33,7 @@
             this.flowButton = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
+            this.Icon = Properties.Resources.pattern_tracer_icon;
             this.tabResult.SuspendLayout();
             this.flowButton.SuspendLayout();
             this.SuspendLayout();
