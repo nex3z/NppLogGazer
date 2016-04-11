@@ -189,7 +189,7 @@ namespace NppLogGazer.PatternTracer.Presenter
                     int keywordHit = 0;
                     for (int i = 0; i < keywordNum; i++)
                     {
-                        int pos = sci.SearchForward(pattern.PatternText[i].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
+                        int pos = sci.SearchForwardSilent(pattern.PatternText[i].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
                         positions[i] = pos;
                         if (pos != -1)
                         {

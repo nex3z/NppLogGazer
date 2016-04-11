@@ -121,6 +121,20 @@ namespace NppQuickSearchPanel
             return pos;
         }
 
+        public int SearchForwardSilent(string keywords, bool isRegExp, bool wholeWord, bool matchCase)
+        {
+            int currPos = this.GetCurrentPos();
+            int anchor = this.GetAnchor();
+            int startPos = currPos > anchor ? currPos : anchor;
+            this.SetCurrentPos(startPos);
+            this.SetAnchor(startPos);
+
+            this.SetSearchAnchor();
+            int pos = this.SearchNext(keywords, isRegExp, wholeWord, matchCase);
+
+            return pos;
+        }
+
         public int SearchForward(string keywords, bool isRegExp, bool wholeWord, bool matchCase, bool wrapSearch)
         {
             int pos = SearchForward(keywords, isRegExp, wholeWord, matchCase);
