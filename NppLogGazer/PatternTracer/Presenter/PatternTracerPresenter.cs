@@ -12,7 +12,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 namespace NppLogGazer.PatternTracer.Presenter
 {

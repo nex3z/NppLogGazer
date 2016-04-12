@@ -1,10 +1,7 @@
 ﻿using NppLogGazer.PatternExtractor.Model;
 using NppLogGazer.PatternTracer.View.Event;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
 
 namespace NppLogGazer.PatternTracer.View
 {

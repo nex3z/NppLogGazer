@@ -1,14 +1,13 @@
-﻿using System;
+﻿using NppLogGazer.PatternTracer;
+using NppLogGazer.QuickSearch;
+using NppPluginNET;
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
-using NppPluginNET;
-using NppLogGazer.QuickSearch;
-using NppLogGazer.QuickSearch.Presenter;
-using NppLogGazer.PatternTracer;
 
 namespace NppLogGazer
 {

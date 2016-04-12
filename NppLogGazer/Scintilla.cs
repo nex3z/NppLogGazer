@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NppPluginNET;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+﻿using NppPluginNET;
+using System;
 using System.IO;
+using System.Text;
 
 namespace NppQuickSearchPanel
 {

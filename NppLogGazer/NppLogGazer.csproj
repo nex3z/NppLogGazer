@@ -123,7 +123,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="proto\Search.cs" />
     <Compile Include="QuickSearch\Presenter\QuickSearchPresenter.cs" />
     <Compile Include="QuickSearch\Repository\KeywordRepository.cs" />
     <Compile Include="QuickSearch\View\IQuickSearchView.cs" />
@@ -187,9 +186,7 @@
   <ItemGroup>
     <None Include="Resources\report_disk.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\magnifier.bmp" />
   </ItemGroup>

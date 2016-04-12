@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using NppLogGazer.QuickSearch.Model;
+﻿using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.View.Event;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 

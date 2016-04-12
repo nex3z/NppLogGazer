@@ -1,7 +1,6 @@
 ﻿using NppLogGazer.PatternExtractor.Model;
 using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
-using NppLogGazer.QuickSearch.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
