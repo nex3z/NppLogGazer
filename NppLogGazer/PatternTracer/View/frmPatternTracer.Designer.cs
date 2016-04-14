@@ -149,6 +149,7 @@
             this.toolBtnWrapSearch.Size = new System.Drawing.Size(23, 22);
             this.toolBtnWrapSearch.Text = "toolStripButton8";
             this.toolBtnWrapSearch.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_wrap_search;
+            this.toolBtnWrapSearch.Visible = false;
             // 
             // toolStripSeparator3
             // 
@@ -163,8 +164,8 @@
             this.toolBtnClearPatternInput.Name = "toolBtnClearPatternInput";
             this.toolBtnClearPatternInput.Size = new System.Drawing.Size(23, 22);
             this.toolBtnClearPatternInput.Text = "toolStripButton1";
-            this.toolBtnClearPatternInput.Click += new System.EventHandler(this.toolBtnClearPatternInput_Click);
             this.toolBtnClearPatternInput.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_clear_input;
+            this.toolBtnClearPatternInput.Click += new System.EventHandler(this.toolBtnClearPatternInput_Click);
             // 
             // lstPattern
             // 
