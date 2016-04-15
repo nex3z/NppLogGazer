@@ -1,4 +1,5 @@
 ﻿using NppLogGazer.PatternTracer;
+using NppLogGazer.PatternTracer.View;
 using NppLogGazer.QuickSearch;
 using NppPluginNET;
 using System;
@@ -45,8 +46,9 @@ namespace NppLogGazer
             
             someSetting = (Win32.GetPrivateProfileInt("SomeSection", "SomeKey", 0, iniFilePath) != 0);
 
-            PluginBase.SetCommand(0, Properties.Resources.pattern_tracer_dlg_label, ShowPatternTracerDlg); idPatternTracerDlg = 0;
-            PluginBase.SetCommand(1, Properties.Resources.quick_search_dlg_label, ShowQuickSearchDlg); idQuickSearchDlg = 1;
+            PluginBase.SetCommand(0, Properties.Resources.show_pattern_tracer, ShowPatternTracerDlg); idPatternTracerDlg = 0;
+            PluginBase.SetCommand(1, Properties.Resources.show_quick_search_panel, ShowQuickSearchDlg); idQuickSearchDlg = 1;
+            PluginBase.SetCommand(2, Properties.Resources.show_about, ShowAbout); 
         }
         internal static void SetToolBarIcon()
         {
@@ -212,6 +214,12 @@ namespace NppLogGazer
                     Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[idQuickSearchDlg]._cmdID, 1);
                 }
             }
+        }
+        internal static void ShowAbout()
+        {
+            FrmAbout about = new FrmAbout();
+            about.Text = PluginName + " v" + PluginVersion;
+            about.ShowDialog();
         }
         #endregion
     }

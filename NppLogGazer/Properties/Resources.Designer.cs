@@ -321,6 +321,33 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About....
+        /// </summary>
+        internal static string show_about {
+            get {
+                return ResourceManager.GetString("show_about", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show PatternTracer.
+        /// </summary>
+        internal static string show_pattern_tracer {
+            get {
+                return ResourceManager.GetString("show_pattern_tracer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show QuickSearchPanel.
+        /// </summary>
+        internal static string show_quick_search_panel {
+            get {
+                return ResourceManager.GetString("show_quick_search_panel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap star {

@@ -67,6 +67,12 @@
     <Compile Include="PatternTracer\Repository\PatternRepository.cs" />
     <Compile Include="PatternTracer\Repository\SavePatternListException.cs" />
     <Compile Include="PatternTracer\Model\ResultEntryModel.cs" />
+    <Compile Include="PatternTracer\View\FrmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatternTracer\View\FrmAbout.Designer.cs">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatternTracer\View\Event\AddPatternEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\OnSelectedPatternChangedEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\OpenPatternListEventArgs.cs" />
@@ -131,6 +137,9 @@
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="PatternTracer\View\FrmAbout.resx">
+      <DependentUpon>FrmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PatternTracer\View\frmPatternTracer.resx">
       <DependentUpon>frmPatternTracer.cs</DependentUpon>
     </EmbeddedResource>

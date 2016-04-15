@@ -256,4 +256,13 @@
   <data name="pattern_tracer_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pattern_tracer_icon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="show_about" xml:space="preserve">
+    <value>About...</value>
+  </data>
+  <data name="show_pattern_tracer" xml:space="preserve">
+    <value>Show PatternTracer</value>
+  </data>
+  <data name="show_quick_search_panel" xml:space="preserve">
+    <value>Show QuickSearchPanel</value>
+  </data>
 </root>
