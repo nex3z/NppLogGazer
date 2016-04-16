@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace NppLogGazer.PatternTracer.View
 {
-    public partial class frmResult : Form, IResultView
+    public partial class FrmResult : Form, IResultView
     {
-        public frmResult()
+        public FrmResult()
         {
             InitializeComponent();
         }

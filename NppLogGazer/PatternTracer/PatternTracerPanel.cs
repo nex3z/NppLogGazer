@@ -17,7 +17,7 @@ namespace NppLogGazer.PatternTracer
 
         private PatternTracerPanel()
         {
-            view = new frmPatternTracer();
+            view = new FrmPatternTracer();
             reposiroty = new PatternRepository(new FileInfo(Main.GetDefaultPatternListPath()));
             presenter = new PatternTracerPresenter(view, reposiroty);
         }

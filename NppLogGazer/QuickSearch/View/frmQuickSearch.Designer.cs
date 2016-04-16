@@ -1,6 +1,6 @@
 ﻿namespace NppLogGazer
 {
-    partial class frmQuickSearch
+    partial class FrmQuickSearch
     {
         /// <summary>
         /// Required designer variable.

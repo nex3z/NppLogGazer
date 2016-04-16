@@ -16,7 +16,7 @@ namespace NppLogGazer.QuickSearch
 
         private QuickSearchPanel()
         {
-            view = new frmQuickSearch();
+            view = new FrmQuickSearch();
             reposiroty = new KeywordRepository(new FileInfo(Main.GetDefaultKeywordListPath()));
             presenter = new QuickSearchPresenter(view, reposiroty);
         }

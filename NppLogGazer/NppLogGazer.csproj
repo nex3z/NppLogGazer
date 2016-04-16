@@ -67,10 +67,10 @@
     <Compile Include="PatternTracer\Repository\PatternRepository.cs" />
     <Compile Include="PatternTracer\Repository\SavePatternListException.cs" />
     <Compile Include="PatternTracer\Model\ResultEntryModel.cs" />
-    <Compile Include="PatternTracer\View\FrmAbout.cs">
+    <Compile Include="Common\About\FrmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatternTracer\View\FrmAbout.Designer.cs">
+    <Compile Include="Common\About\FrmAbout.Designer.cs">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </Compile>
     <Compile Include="PatternTracer\View\Event\AddPatternEventArgs.cs" />
@@ -82,11 +82,11 @@
     <Compile Include="PatternTracer\View\Event\SwapPatternPositionEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\UpdatePatternAtEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\VisibleChangedEventArgs.cs" />
-    <Compile Include="PatternTracer\View\frmResult.cs">
+    <Compile Include="PatternTracer\View\FrmResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatternTracer\View\frmResult.Designer.cs">
-      <DependentUpon>frmResult.cs</DependentUpon>
+    <Compile Include="PatternTracer\View\FrmResult.Designer.cs">
+      <DependentUpon>FrmResult.cs</DependentUpon>
     </Compile>
     <Compile Include="PatternTracer\View\IPatternTracerView.cs" />
     <Compile Include="PatternTracer\View\Event\OnClosingEventArgs.cs" />
@@ -103,21 +103,21 @@
     <Compile Include="QuickSearch\View\Event\RemoveKeywordAtEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\SaveKeywordListEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\SearchEventArgs.cs" />
-    <Compile Include="PatternTracer\View\frmPatternTracer.cs">
+    <Compile Include="PatternTracer\View\FrmPatternTracer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatternTracer\View\frmPatternTracer.Designer.cs">
-      <DependentUpon>frmPatternTracer.cs</DependentUpon>
+    <Compile Include="PatternTracer\View\FrmPatternTracer.Designer.cs">
+      <DependentUpon>FrmPatternTracer.cs</DependentUpon>
     </Compile>
     <Compile Include="QuickSearch\View\Event\OnSelectedKeywordChangedEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\SwapPositionEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\UpdateKeywordAtEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\VisibleChangedEventArgs.cs" />
-    <Compile Include="QuickSearch\View\frmQuickSearch.cs">
+    <Compile Include="QuickSearch\View\FrmQuickSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuickSearch\View\frmQuickSearch.Designer.cs">
-      <DependentUpon>frmQuickSearch.cs</DependentUpon>
+    <Compile Include="QuickSearch\View\FrmQuickSearch.Designer.cs">
+      <DependentUpon>FrmQuickSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="NppPluginNETBase.cs" />
@@ -137,17 +137,17 @@
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="PatternTracer\View\FrmAbout.resx">
+    <EmbeddedResource Include="Common\About\FrmAbout.resx">
       <DependentUpon>FrmAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatternTracer\View\frmPatternTracer.resx">
-      <DependentUpon>frmPatternTracer.cs</DependentUpon>
+    <EmbeddedResource Include="PatternTracer\View\FrmPatternTracer.resx">
+      <DependentUpon>FrmPatternTracer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatternTracer\View\frmResult.resx">
-      <DependentUpon>frmResult.cs</DependentUpon>
+    <EmbeddedResource Include="PatternTracer\View\FrmResult.resx">
+      <DependentUpon>FrmResult.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuickSearch\View\frmQuickSearch.resx">
-      <DependentUpon>frmQuickSearch.cs</DependentUpon>
+    <EmbeddedResource Include="QuickSearch\View\FrmQuickSearch.resx">
+      <DependentUpon>FrmQuickSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

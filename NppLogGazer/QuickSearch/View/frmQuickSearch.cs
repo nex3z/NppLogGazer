@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace NppLogGazer
 {
-    public partial class frmQuickSearch : Form, IQuickSearchView
+    public partial class FrmQuickSearch : Form, IQuickSearchView
     {
         public event EventHandler<AddKeywordEventArgs> AddKeyword;
         public event EventHandler<RemoveKeywordAtEventArgs> RemoveKeywordAt;
@@ -28,7 +28,7 @@ namespace NppLogGazer
 
         int lastHoveredIndex = -1;
 
-        public frmQuickSearch()
+        public FrmQuickSearch()
         {
             InitializeComponent();
         }

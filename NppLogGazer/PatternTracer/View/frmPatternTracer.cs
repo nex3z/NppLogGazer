@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace NppLogGazer
 {
-    public partial class frmPatternTracer : Form, IPatternTracerView
+    public partial class FrmPatternTracer : Form, IPatternTracerView
     {
         public event EventHandler<AddPatternEventArgs> AddPattern;
         public event EventHandler<RemovePatternAtEventArgs> RemovePatternAt;
@@ -24,7 +24,7 @@ namespace NppLogGazer
         public event EventHandler<SwapPatternPositionEventArgs> SwapPatternPosition;
         public event EventHandler<SearchPatternEventArgs> SearchPattern;
 
-        public frmPatternTracer()
+        public FrmPatternTracer()
         {
             InitializeComponent();
         }
