@@ -18,7 +18,7 @@ namespace NppLogGazer.PatternTracer.View
 
         private void btnVisitSite_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://nlg.nex3z.com");
+            System.Diagnostics.Process.Start(Properties.Resources.site_url);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

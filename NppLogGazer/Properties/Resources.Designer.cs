@@ -61,6 +61,21 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NppQuickSearchPanel, Copyright 2016
+        ///Created by Tianxing Li 
+        ///( litianxing9@gmail.com )
+        ///
+        ///Press &quot;Show PatternTracer&quot; / &quot;Show QuickSearchPanel&quot; in the menu or toolbar to get started.
+        ///
+        ///For help, info and updates, visit the site by clicking the &quot;Visit site&quot; button below..
+        /// </summary>
+        internal static string about_info_text {
+            get {
+                return ResourceManager.GetString("about_info_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap add {
@@ -228,6 +243,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pattern not found..
+        /// </summary>
+        internal static string pattern_tracer_status_not_found {
+            get {
+                return ResourceManager.GetString("pattern_tracer_status_not_found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quick Search.
         /// </summary>
         internal static string quick_search_dlg_label {
@@ -344,6 +368,15 @@ namespace NppLogGazer.Properties {
         internal static string show_quick_search_panel {
             get {
                 return ResourceManager.GetString("show_quick_search_panel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://nlg.nex3z.com.
+        /// </summary>
+        internal static string site_url {
+            get {
+                return ResourceManager.GetString("site_url", resourceCulture);
             }
         }
         

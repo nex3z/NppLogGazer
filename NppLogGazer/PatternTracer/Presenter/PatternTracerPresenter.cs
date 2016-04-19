@@ -227,7 +227,11 @@ namespace NppLogGazer.PatternTracer.Presenter
                 }
             }
 
-            string resultText = FormatResult(results);
+            string resultText = Properties.Resources.pattern_tracer_status_not_found;
+            if (results.Count != 0)
+            {
+                resultText = FormatResult(results);
+            }
             return resultText;
         }
 
@@ -238,7 +242,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             {
                 foreach (ResultEntryModel entry in resultList[i].Result)
                 {
-                    sb.AppendLine("Line: " + entry.LineNumber + " " + entry.LineText);
+                    sb.AppendLine("Line " + entry.LineNumber + ": " + entry.LineText);
                 }
                 if (i != (resultList.Count - 1)) sb.AppendLine();
             }

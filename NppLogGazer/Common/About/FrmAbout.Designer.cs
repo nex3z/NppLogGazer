@@ -28,22 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAbout));
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAboutInfo = new System.Windows.Forms.TextBox();
             this.btnVisitSite = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtAboutInfo
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(273, 142);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.txtAboutInfo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAboutInfo.Location = new System.Drawing.Point(12, 12);
+            this.txtAboutInfo.Multiline = true;
+            this.txtAboutInfo.Name = "txtAboutInfo";
+            this.txtAboutInfo.ReadOnly = true;
+            this.txtAboutInfo.Size = new System.Drawing.Size(273, 142);
+            this.txtAboutInfo.TabIndex = 1;
+            this.txtAboutInfo.Text = Properties.Resources.about_info_text;
             // 
             // btnVisitSite
             // 
@@ -72,7 +71,7 @@
             this.ClientSize = new System.Drawing.Size(297, 258);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnVisitSite);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtAboutInfo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -85,7 +84,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAboutInfo;
         private System.Windows.Forms.Button btnVisitSite;
         private System.Windows.Forms.Button btnClose;
 

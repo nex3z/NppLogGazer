@@ -265,4 +265,19 @@
   <data name="show_quick_search_panel" xml:space="preserve">
     <value>Show QuickSearchPanel</value>
   </data>
+  <data name="about_info_text" xml:space="preserve">
+    <value>NppQuickSearchPanel, Copyright 2016
+Created by Tianxing Li 
+( litianxing9@gmail.com )
+
+Press "Show PatternTracer" / "Show QuickSearchPanel" in the menu or toolbar to get started.
+
+For help, info and updates, visit the site by clicking the "Visit site" button below.</value>
+  </data>
+  <data name="pattern_tracer_status_not_found" xml:space="preserve">
+    <value>Pattern not found.</value>
+  </data>
+  <data name="site_url" xml:space="preserve">
+    <value>http://nlg.nex3z.com</value>
+  </data>
 </root>
