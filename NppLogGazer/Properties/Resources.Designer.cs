@@ -61,7 +61,7 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to NppQuickSearchPanel, Copyright 2016
+        ///   Looks up a localized string similar to NppLogGazer, Copyright 2016
         ///Created by Tianxing Li 
         ///( litianxing9@gmail.com )
         ///
