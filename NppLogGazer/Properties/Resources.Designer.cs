@@ -345,6 +345,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Result.
+        /// </summary>
+        internal static string result_dlg_label {
+            get {
+                return ResourceManager.GetString("result_dlg_label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About....
         /// </summary>
         internal static string show_about {

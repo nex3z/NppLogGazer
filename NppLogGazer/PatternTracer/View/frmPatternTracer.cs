@@ -236,5 +236,14 @@ namespace NppLogGazer
             e.DrawFocusRectangle();
         }
 
+        private void txtPatternInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == (Keys.Control | Keys.A))
+            {
+                txtPatternInput.SelectAll();
+                e.Handled = e.SuppressKeyPress = true;
+            }
+        }
+
     }
 }

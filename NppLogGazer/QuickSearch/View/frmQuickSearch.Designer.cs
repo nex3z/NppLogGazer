@@ -159,10 +159,10 @@
             this.toolBtnAdd,
             this.toolBtnRemove,
             this.toolBtnReplace,
+            this.toolBtnRemoveDuplicate,
             this.toolStripSeparator1,
             this.toolBtnMoveUp,
             this.toolBtnMoveDown,
-            this.toolBtnRemoveDuplicate,
             this.toolStripSeparator2,
             this.toolBtnOpen,
             this.toolBtnSaveAs});
@@ -262,7 +262,7 @@
             // toolBtnSaveAs
             // 
             this.toolBtnSaveAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolBtnSaveAs.Image = global::NppLogGazer.Properties.Resources.report_disk;
+            this.toolBtnSaveAs.Image = global::NppLogGazer.Properties.Resources.disk;
             this.toolBtnSaveAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolBtnSaveAs.Name = "toolBtnSaveAs";
             this.toolBtnSaveAs.Size = new System.Drawing.Size(23, 22);
@@ -304,13 +304,13 @@
             this.statusLabelKeywordList.Text = "status";
             this.statusLabelKeywordList.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // frmQuickSearch
+            // FrmQuickSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(371, 750);
             this.Controls.Add(this.tabLayoutQuickSearch);
-            this.Name = "frmQuickSearch";
+            this.Name = "FrmQuickSearch";
             this.Text = "Qucik Search";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmQuickSearch_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.frmQuickSearch_VisibleChanged);

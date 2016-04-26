@@ -65,6 +65,7 @@
             this.txtPatternInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtPatternInput.Size = new System.Drawing.Size(339, 172);
             this.txtPatternInput.TabIndex = 2;
+            this.txtPatternInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPatternInput_KeyDown);
             // 
             // toolStripPatternInput
             // 
@@ -192,8 +193,8 @@
             this.toolBtnMoveUp,
             this.toolBtnMoveDown,
             this.toolStripSeparator5,
-            this.toolBtnSavePatternList,
-            this.toolBtnOpenPatternList});
+            this.toolBtnOpenPatternList,
+            this.toolBtnSavePatternList});
             this.toolStripListMgmt.Location = new System.Drawing.Point(0, 203);
             this.toolStripListMgmt.Name = "toolStripListMgmt";
             this.toolStripListMgmt.Size = new System.Drawing.Size(345, 25);
@@ -305,13 +306,13 @@
             this.tabPatternTracer.Size = new System.Drawing.Size(345, 561);
             this.tabPatternTracer.TabIndex = 4;
             // 
-            // frmPatternTracer
+            // FrmPatternTracer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(345, 561);
             this.Controls.Add(this.tabPatternTracer);
-            this.Name = "frmPatternTracer";
+            this.Name = "FrmPatternTracer";
             this.Text = "Pattern Tracer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPatternTracer_FormClosing);
             this.VisibleChanged += new System.EventHandler(this.frmPatternTracer_VisibleChanged);

@@ -33,7 +33,6 @@
             this.flowButton = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
-            this.Icon = Properties.Resources.pattern_tracer_icon;
             this.tabResult.SuspendLayout();
             this.flowButton.SuspendLayout();
             this.SuspendLayout();
@@ -61,8 +60,11 @@
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
+            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtResult.Size = new System.Drawing.Size(518, 276);
             this.txtResult.TabIndex = 0;
+            this.txtResult.WordWrap = false;
+            this.txtResult.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtResult_KeyDown);
             // 
             // flowButton
             // 
@@ -97,14 +99,15 @@
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
-            // frmResult
+            // FrmResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 317);
             this.Controls.Add(this.tabResult);
-            this.Name = "frmResult";
-            this.Text = "frmResult";
+            this.Icon = global::NppLogGazer.Properties.Resources.pattern_tracer_icon;
+            this.Name = "FrmResult";
+            this.Text = "Result";
             this.tabResult.ResumeLayout(false);
             this.tabResult.PerformLayout();
             this.flowButton.ResumeLayout(false);
