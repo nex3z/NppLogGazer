@@ -28,43 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabResult = new System.Windows.Forms.TableLayoutPanel();
-            this.txtResult = new System.Windows.Forms.TextBox();
             this.flowButton = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
-            this.tabResult.SuspendLayout();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.tabResult = new System.Windows.Forms.TableLayoutPanel();
+            this.rtxtResult = new System.Windows.Forms.RichTextBox();
             this.flowButton.SuspendLayout();
+            this.tabResult.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tabResult
-            // 
-            this.tabResult.ColumnCount = 1;
-            this.tabResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tabResult.Controls.Add(this.txtResult, 0, 0);
-            this.tabResult.Controls.Add(this.flowButton, 0, 1);
-            this.tabResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabResult.Location = new System.Drawing.Point(0, 0);
-            this.tabResult.Name = "tabResult";
-            this.tabResult.RowCount = 2;
-            this.tabResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tabResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tabResult.Size = new System.Drawing.Size(524, 317);
-            this.tabResult.TabIndex = 0;
-            // 
-            // txtResult
-            // 
-            this.txtResult.BackColor = System.Drawing.SystemColors.Window;
-            this.txtResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtResult.Location = new System.Drawing.Point(3, 3);
-            this.txtResult.Multiline = true;
-            this.txtResult.Name = "txtResult";
-            this.txtResult.ReadOnly = true;
-            this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResult.Size = new System.Drawing.Size(518, 276);
-            this.txtResult.TabIndex = 0;
-            this.txtResult.WordWrap = false;
-            this.txtResult.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtResult_KeyDown);
             // 
             // flowButton
             // 
@@ -79,16 +50,6 @@
             this.flowButton.Size = new System.Drawing.Size(518, 29);
             this.flowButton.TabIndex = 1;
             // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(440, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
             // btnCopy
             // 
             this.btnCopy.Location = new System.Drawing.Point(359, 3);
@@ -99,6 +60,41 @@
             this.btnCopy.UseVisualStyleBackColor = true;
             this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(440, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 0;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // tabResult
+            // 
+            this.tabResult.ColumnCount = 1;
+            this.tabResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tabResult.Controls.Add(this.flowButton, 0, 1);
+            this.tabResult.Controls.Add(this.rtxtResult, 0, 0);
+            this.tabResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabResult.Location = new System.Drawing.Point(0, 0);
+            this.tabResult.Name = "tabResult";
+            this.tabResult.RowCount = 2;
+            this.tabResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tabResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tabResult.Size = new System.Drawing.Size(524, 317);
+            this.tabResult.TabIndex = 0;
+            // 
+            // rtxtResult
+            // 
+            this.rtxtResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtResult.Location = new System.Drawing.Point(3, 3);
+            this.rtxtResult.Name = "rtxtResult";
+            this.rtxtResult.Size = new System.Drawing.Size(518, 276);
+            this.rtxtResult.TabIndex = 2;
+            this.rtxtResult.Text = "";
+            this.rtxtResult.WordWrap = false;
+            // 
             // FrmResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -108,19 +104,20 @@
             this.Icon = global::NppLogGazer.Properties.Resources.pattern_tracer_icon;
             this.Name = "FrmResult";
             this.Text = "Result";
+            this.flowButton.ResumeLayout(false);
             this.tabResult.ResumeLayout(false);
             this.tabResult.PerformLayout();
-            this.flowButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tabResult;
-        private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.FlowLayoutPanel flowButton;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCopy;
+        private System.Windows.Forms.TableLayoutPanel tabResult;
+        private System.Windows.Forms.RichTextBox rtxtResult;
+
     }
 }

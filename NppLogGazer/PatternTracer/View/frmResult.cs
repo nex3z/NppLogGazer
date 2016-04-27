@@ -13,7 +13,7 @@ namespace NppLogGazer.PatternTracer.View
         public void ShowResult(string result)
         {
             this.Show();
-            txtResult.Text = result;
+            rtxtResult.Text = result;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -23,16 +23,8 @@ namespace NppLogGazer.PatternTracer.View
 
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(txtResult.Text);
+            Clipboard.SetText(rtxtResult.Text);
         }
 
-        private void txtResult_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == (Keys.Control | Keys.A))
-            {
-                txtResult.SelectAll();
-                e.Handled = e.SuppressKeyPress = true;
-            }
-        }
     }
 }
