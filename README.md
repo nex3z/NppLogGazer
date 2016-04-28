@@ -12,6 +12,26 @@ Copy the **NppLogGazer.dll** to the **plugins** folder in your Notepad++ directo
 **Important Note:** NppQuickSearchPanel only support the **Unicode** version of Notepad++.
 
 
+## QuickSearchPanel
+
+![screenshot][quick_search_panel_screenshot]
+
+### Features
+
+- Save your frequently used keywords in a list.
+- Click on keyword in the list to search.
+- Provide multiple search options and regular expression support.
+
+### How to use
+Open up Notepad++, click the ![pluginicon][quick_search_panel_icon]**Show QuickSearchPanel** button in the toolbar, or use menu **Plugins / NppLogGazer / Show QuickSearchPanel**.
+
+- Input keyword in the text box. Click ![add][add_icon]**Add** button or just press <kbd>**Enter**</kbd> to add the keyword to the list.
+- <kbd>**Click**</kbd> on the keyword in the list to search forward. <kbd>**Shift**</kbd> + <kbd>**Click**</kbd> to search backward.
+- <kbd>**Ctrl**</kbd> + <kbd>**Click**</kbd> on the keyword to launch Notepad++ Find dialog with selected keyword pasted in "Find what" automatically.
+- Use ![delete][delete_icon]**Remove** button to remove the selected keyword. You can also change the order of selected keyword by using ![move_up][move_up_icon]**Move up** and ![move_down][move_down_icon]**Move down**.
+- Use ![open][open_icon]**Open**/![save][save_icon]**Save** to load/save current keywords list.
+
+
 ## PatternTracer
 
 ![screenshot][pattern_tracer_screenshot]
@@ -27,29 +47,9 @@ Copy the **NppLogGazer.dll** to the **plugins** folder in your Notepad++ directo
 Open up Notepad++, click the ![plugin_icon][pattern_tracer_icon]**Show PatternTracer** button in the toolbar, or use menu **Plugins / NppLogGazer / Show PatternTracer**.
 
 - Input pattern in the text box. A pattern is a keyword list. Each keyword takes one line and will be searched in the same order as they are positioned in the list. Select ![reg_exp][reg_exp_icon]**Regular Expression** if you use regular expression.
-- Select search options: ![match_word][match_word_icon]**Match Word**, ![match_case][match_case_icon]**Match Case** and ![wrap_search][wrap_search_icon]**Wrap Search**.
+- Select search options: ![match_word][match_word_icon]**Match Word** and ![match_case][match_case_icon]**Match Case**..
 - Click ![search][search_icon]**Search** to search the pattern in the current document.
 - Use ![add][add_icon]**Add** to add current pattern to the list and ![delete][delete_icon]**Remove** to remove the selected pattern. You can also change the order of selected pattern item by using ![move_up][move_up_icon]**Move up** and ![move_down][move_down_icon]**Move down**.
-- Use ![open][open_icon]**Open**/![save][save_icon]**Save** to load/save current keywords list.
-
-
-## QuickSearchPanel
-
-![screenshot][quick_search_panel_screenshot]
-
-### Features
-
-- Save your frequently used keywords in a list.
-- Click on keywords to search.
-- Provide multiple search options and regular expression support.
-
-### How to use
-Open up Notepad++, click the ![pluginicon][quick_search_panel_icon]**Show QuickSearchPanel** button in the toolbar, or use menu **Plugins / NppLogGazer / Show QuickSearchPanel**.
-
-- Input keyword in the text box. Click ![add][add_icon]**Add** button or just press <kbd>**Enter**</kbd> to add the keyword to the list.
-- <kbd>**Click**</kbd> on the keyword in the list to search forward. <kbd>**Shift**</kbd> + <kbd>**Click**</kbd> to search backward.
-- <kbd>**Ctrl**</kbd> + <kbd>**Click**</kbd> on the keyword to launch Notepad++ Find dialog with selected keyword pasted in "Find what" automatically.
-- Use ![delete][delete_icon]**Remove** button to remove the selected keyword. You can also change the order of selected keyword by using ![move_up][move_up_icon]**Move up** and ![move_down][move_down_icon]**Move down**.
 - Use ![open][open_icon]**Open**/![save][save_icon]**Save** to load/save current keywords list.
 
 
