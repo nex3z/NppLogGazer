@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.flowButton = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnCopy = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.btnCopy = new System.Windows.Forms.Button();
             this.tabResult = new System.Windows.Forms.TableLayoutPanel();
             this.rtxtResult = new System.Windows.Forms.RichTextBox();
             this.flowButton.SuspendLayout();
@@ -50,16 +50,6 @@
             this.flowButton.Size = new System.Drawing.Size(518, 29);
             this.flowButton.TabIndex = 1;
             // 
-            // btnCopy
-            // 
-            this.btnCopy.Location = new System.Drawing.Point(359, 3);
-            this.btnCopy.Name = "btnCopy";
-            this.btnCopy.Size = new System.Drawing.Size(75, 23);
-            this.btnCopy.TabIndex = 1;
-            this.btnCopy.Text = "Copy";
-            this.btnCopy.UseVisualStyleBackColor = true;
-            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(440, 3);
@@ -69,6 +59,16 @@
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(359, 3);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(75, 23);
+            this.btnCopy.TabIndex = 1;
+            this.btnCopy.Text = "Copy";
+            this.btnCopy.UseVisualStyleBackColor = true;
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // tabResult
             // 
@@ -88,6 +88,7 @@
             // rtxtResult
             // 
             this.rtxtResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtResult.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtResult.Location = new System.Drawing.Point(3, 3);
             this.rtxtResult.Name = "rtxtResult";
             this.rtxtResult.Size = new System.Drawing.Size(518, 276);
