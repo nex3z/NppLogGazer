@@ -97,6 +97,7 @@
     <Compile Include="QuickSearch\Repository\LoadKeywordListException.cs" />
     <Compile Include="QuickSearch\Repository\SaveKeyworkListException.cs" />
     <Compile Include="QuickSearch\View\Event\AddKeywordEventArgs.cs" />
+    <Compile Include="QuickSearch\View\Event\LaunchNppSearchDialogEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OnClosingEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OnKeywordSelectedEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OpenKeywordListEventArgs.cs" />

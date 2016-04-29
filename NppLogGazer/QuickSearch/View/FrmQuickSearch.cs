@@ -25,6 +25,7 @@ namespace NppLogGazer
         public event EventHandler<OnKeywordSelectedEventArgs> OnKeywordSelected;
         public event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
         public event EventHandler<UpdateKeywordAtEventArgs> UpdateKeywordAt;
+        public event EventHandler<LaunchNppSearchDialogEventArgs> LaunchNppSearchDialog;
 
         int lastHoveredIndex = -1;
 
@@ -61,7 +62,7 @@ namespace NppLogGazer
         public void RenderKeyword(KeywordModel keyword)
         {
             txtKeyword.Text = keyword.KeywordText;
-            chkRegExp.Checked = keyword.Type == KeywordType.RegExp;
+            toolBtnRegExp.Checked = keyword.Type == KeywordType.RegExp;
         }
 
         public void SelectKeywordAt(int position)
@@ -78,17 +79,17 @@ namespace NppLogGazer
 
         public void SetMatchWord(bool matchWord)
         {
-            chkMatchWord.Checked = matchWord;
+            toolBtnMatchWord.Checked = matchWord;
         }
 
         public void SetMatchCase(bool matchCase)
         {
-            chkMatchCase.Checked = matchCase;
+            toolBtnMatchCase.Checked = matchCase;
         }
 
         public void SetWrapSearch(bool wrapSearch)
         {
-            chkWrapSearch.Checked = wrapSearch;
+            toolBtnWrapSearch.Checked = wrapSearch;
         }
 
         private void lstKeywords_MouseDown(object sender, MouseEventArgs e)
@@ -117,9 +118,9 @@ namespace NppLogGazer
                     args.Key = OnKeywordSelectedEventArgs.KeyboardButton.Shift;
                 }
 
-                args.MatchWord = chkMatchWord.Checked;
-                args.MatchCase = chkMatchCase.Checked;
-                args.WrapSearch = chkWrapSearch.Checked;
+                args.MatchWord = toolBtnMatchWord.Checked;
+                args.MatchCase = toolBtnMatchCase.Checked;
+                args.WrapSearch = toolBtnWrapSearch.Checked;
 
                 OnKeywordSelected(null, args);
             }
@@ -228,7 +229,7 @@ namespace NppLogGazer
         {
             if (OnPluginClosing != null)
             {
-                OnPluginClosing(null, new OnClosingEventArgs(chkMatchWord.Checked, chkMatchCase.Checked, chkWrapSearch.Checked));
+                OnPluginClosing(null, new OnClosingEventArgs(toolBtnMatchWord.Checked, toolBtnMatchCase.Checked, toolBtnWrapSearch.Checked));
             }
         }
 
@@ -282,8 +283,17 @@ namespace NppLogGazer
         {
             KeywordModel keyword = new KeywordModel();
             keyword.KeywordText = txtKeyword.Text; ;
-            keyword.Type = chkRegExp.Checked ? KeywordType.RegExp : KeywordType.Normal;
+            keyword.Type = toolBtnRegExp.Checked ? KeywordType.RegExp : KeywordType.Normal;
             return keyword;
+        }
+
+        private void toolBtnLaunchSearchDlg_Click(object sender, EventArgs e)
+        {
+            if (LaunchNppSearchDialog != null)
+            {
+                LaunchNppSearchDialogEventArgs args = new LaunchNppSearchDialogEventArgs(GetKeyword());
+                LaunchNppSearchDialog(null, args);
+            }
         }
 
     }

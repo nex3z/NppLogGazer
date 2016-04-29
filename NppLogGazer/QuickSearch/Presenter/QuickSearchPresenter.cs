@@ -54,6 +54,7 @@ namespace NppLogGazer.QuickSearch.Presenter
             view.OnPluginClosing += OnClosing;
             view.OnKeywordSelected += OnKeywordSelected;
             view.PluginVisibleChanged += PluginVisibleChanged;
+            view.LaunchNppSearchDialog += LaunchNppSearchDialog;
         }
 
         private void SetupInitialView()
@@ -178,10 +179,7 @@ namespace NppLogGazer.QuickSearch.Presenter
             {
                 if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.Ctrl)
                 {
-                    // lstEntry.SetSelected(index, true);
-                    Clipboard.SetText(keyword.ToString());
-                    Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_MENUCOMMAND, 0, NppMenuCmd.IDM_SEARCH_FIND);
-                    SendKeys.SendWait("^{v}");
+                    LaunchNppSearchDialogWithKeyword(keyword);
                 }
                 else if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.Shift)
                 {
@@ -218,6 +216,18 @@ namespace NppLogGazer.QuickSearch.Presenter
                 string message = Properties.Resources.quick_search_status_found_at_line + line + ".";
                 view.ShowStatusMessage(message, Color.Green);
             }
+        }
+
+        private void LaunchNppSearchDialog(Object sender, LaunchNppSearchDialogEventArgs args)
+        {
+            LaunchNppSearchDialogWithKeyword(args.Keyword);
+        }
+
+        private void LaunchNppSearchDialogWithKeyword(KeywordModel keyword)
+        {
+            if (keyword != null) Clipboard.SetText(keyword.ToString());
+            Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_MENUCOMMAND, 0, NppMenuCmd.IDM_SEARCH_FIND);
+            if (keyword != null) SendKeys.SendWait("^{v}");
         }
 
         private void PluginVisibleChanged(Object sender, VisibleChangedEventArgs args)

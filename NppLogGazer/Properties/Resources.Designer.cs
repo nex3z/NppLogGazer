@@ -456,6 +456,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Launch Notepad++ Search.
+        /// </summary>
+        internal static string tooltip_launch_npp_search_dlg {
+            get {
+                return ResourceManager.GetString("tooltip_launch_npp_search_dlg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Match Case.
         /// </summary>
         internal static string tooltip_match_case {
@@ -501,7 +510,7 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Regular expression.
+        ///   Looks up a localized string similar to Regular Expression.
         /// </summary>
         internal static string tooltip_reg_exp {
             get {

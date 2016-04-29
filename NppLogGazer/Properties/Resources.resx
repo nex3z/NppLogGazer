@@ -245,7 +245,7 @@
     <value>Match Word</value>
   </data>
   <data name="tooltip_reg_exp" xml:space="preserve">
-    <value>Regular expression</value>
+    <value>Regular Expression</value>
   </data>
   <data name="tooltip_search" xml:space="preserve">
     <value>Search</value>
@@ -282,5 +282,8 @@ For help, info and updates, visit the site by clicking the "Visit site" button b
   </data>
   <data name="result_dlg_label" xml:space="preserve">
     <value>Result</value>
+  </data>
+  <data name="tooltip_launch_npp_search_dlg" xml:space="preserve">
+    <value>Launch Notepad++ Search</value>
   </data>
 </root>
