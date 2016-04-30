@@ -83,6 +83,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             if (args.Pattern != null && args.Pattern.PatternText.Count != 0)
             {
                 patterns.Insert(0, args.Pattern);
+                view.SelectPatternAt(0);
             }
         }
 
