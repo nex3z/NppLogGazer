@@ -91,6 +91,7 @@
             this.rtxtResult.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtxtResult.Location = new System.Drawing.Point(3, 3);
             this.rtxtResult.Name = "rtxtResult";
+            this.rtxtResult.ReadOnly = true;
             this.rtxtResult.Size = new System.Drawing.Size(518, 276);
             this.rtxtResult.TabIndex = 2;
             this.rtxtResult.Text = "";

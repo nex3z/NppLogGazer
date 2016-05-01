@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace NppLogGazer.PatternTracer.Presenter
 {
@@ -74,7 +75,8 @@ namespace NppLogGazer.PatternTracer.Presenter
 
         private void SearchPattern(Object sender, SearchPatternEventArgs args)
         {
-            string result = PerformSearch(args.Pattern, args.MatchWord, args.MatchWord);
+            // string result = PerformSearch(args.Pattern, args.MatchWord, args.MatchWord);
+            string result = PerformSearchFull(args.Pattern, args.MatchWord, args.MatchWord);
             ShowResult(result);
         }
 
@@ -171,6 +173,57 @@ namespace NppLogGazer.PatternTracer.Presenter
             }
         }
 
+        private string PerformSearchFull(PatternModel pattern, bool matchWord, bool matchCase)
+        {
+            int keywordNum = pattern.PatternText.Count;
+            List<ResultModel> results = new List<ResultModel>();
+            List<LineInfoModel> positions = new List<LineInfoModel>();
+
+            using (Scintilla sci = new Scintilla())
+            {
+                for (int keywordIdx = 0; keywordIdx < keywordNum; keywordIdx++)
+                {
+                    sci.SetCurrentPos(0);
+                    sci.SetAnchor(0);
+
+                    int pos = sci.SearchForwardSilent(pattern.PatternText[keywordIdx].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
+                    while (pos != -1)
+                    {
+                        positions.Add(new LineInfoModel(pos, keywordIdx));
+                        pos = sci.SearchForwardSilent(pattern.PatternText[keywordIdx].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
+                    }
+                }
+                
+                positions = positions.OrderBy(o => o.Position).ToList();
+               
+                ResultModel resultModel = new ResultModel();
+                int lastKeywordIdx = -1;
+                foreach (LineInfoModel line in positions)
+                {
+                    int lineNum = sci.GetLineFromPosition(line.Position);
+                    line.LineNumber = lineNum + 1;
+                    string text = sci.GetLine(lineNum);
+                    line.LineText = text;
+
+                    if (line.KeywordId < lastKeywordIdx)
+                    {
+                        results.Add(resultModel);
+                        resultModel = new ResultModel();
+                    }
+                    lastKeywordIdx = line.KeywordId;
+                    resultModel.Result.Add(line);
+                }
+                if (resultModel.Result.Count != 0) results.Add(resultModel);
+            }
+            
+            string resultText = Properties.Resources.pattern_tracer_status_not_found;
+            if (results.Count != 0)
+            {
+                resultText = FormatResult(results);
+            }
+            return resultText;
+        }
+
         private string PerformSearch(PatternModel pattern, bool matchWord, bool matchCase)
         {
             int keywordNum = pattern.PatternText.Count;
@@ -216,7 +269,7 @@ namespace NppLogGazer.PatternTracer.Presenter
                             int lineNum = sci.GetLineFromPosition(result[i]);
                             string text = sci.GetLine(lineNum);
                             lineNum += 1;
-                            ResultEntryModel entry = new ResultEntryModel(result[i], lineNum, text);
+                            LineInfoModel entry = new LineInfoModel(result[i], lineNum, text);
                             resultModel.Result.Add(entry);
                         }
                         else
@@ -241,7 +294,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < resultList.Count; i++)
             {
-                foreach (ResultEntryModel entry in resultList[i].Result)
+                foreach (LineInfoModel entry in resultList[i].Result)
                 {
                     sb.AppendLine("Line " + entry.LineNumber + ": " + entry.LineText);
                 }
