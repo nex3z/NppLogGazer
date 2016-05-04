@@ -57,15 +57,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Repository\LoadDataException.cs" />
+    <Compile Include="Common\Repository\SaveDataException.cs" />
+    <Compile Include="Common\Repository\IRepository.cs" />
+    <Compile Include="Common\Repository\XmlRepository.cs" />
     <Compile Include="DllExport\DllExportAttribute.cs" />
     <Compile Include="PatternTracer\Model\ResultModel.cs" />
     <Compile Include="PatternTracer\PatternTracerPanel.cs" />
     <Compile Include="PatternTracer\PatternTracerSettings.cs" />
     <Compile Include="PatternTracer\Presenter\PatternTracerPresenter.cs" />
-    <Compile Include="PatternTracer\Repository\IPatternRepository.cs" />
-    <Compile Include="PatternTracer\Repository\LoadPatternListException.cs" />
     <Compile Include="PatternTracer\Repository\PatternRepository.cs" />
-    <Compile Include="PatternTracer\Repository\SavePatternListException.cs" />
     <Compile Include="PatternTracer\Model\LineInfoModel.cs" />
     <Compile Include="Common\About\FrmAbout.cs">
       <SubType>Form</SubType>
@@ -93,9 +94,7 @@
     <Compile Include="PatternTracer\View\IResultView.cs" />
     <Compile Include="QuickSearch\QuickSearchPanel.cs" />
     <Compile Include="QuickSearch\QuickSearchSettings.cs" />
-    <Compile Include="QuickSearch\Repository\IKeywordRepository.cs" />
-    <Compile Include="QuickSearch\Repository\LoadKeywordListException.cs" />
-    <Compile Include="QuickSearch\Repository\SaveKeyworkListException.cs" />
+    <Compile Include="QuickSearch\Repository\KeywordRepository.cs" />
     <Compile Include="QuickSearch\View\Event\AddKeywordEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\LaunchNppSearchDialogEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OnClosingEventArgs.cs" />
@@ -131,7 +130,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="QuickSearch\Presenter\QuickSearchPresenter.cs" />
-    <Compile Include="QuickSearch\Repository\KeywordRepository.cs" />
     <Compile Include="QuickSearch\View\IQuickSearchView.cs" />
     <Compile Include="QuickSearch\Model\KeywordModel.cs" />
     <Compile Include="Scintilla.cs" />

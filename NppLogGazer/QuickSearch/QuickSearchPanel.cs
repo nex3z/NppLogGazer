@@ -1,4 +1,6 @@
-﻿using NppLogGazer.QuickSearch.Presenter;
+﻿using NppLogGazer.Common.Repository;
+using NppLogGazer.QuickSearch.Model;
+using NppLogGazer.QuickSearch.Presenter;
 using NppLogGazer.QuickSearch.Repository;
 using System;
 using System.IO;
@@ -12,13 +14,13 @@ namespace NppLogGazer.QuickSearch
 
         private IQuickSearchView view;
         private QuickSearchPresenter presenter;
-        private IKeywordRepository reposiroty;
+        private IRepository<KeywordModel> repository;
 
         private QuickSearchPanel()
         {
             view = new FrmQuickSearch();
-            reposiroty = new KeywordRepository(new FileInfo(Main.GetDefaultKeywordListPath()));
-            presenter = new QuickSearchPresenter(view, reposiroty);
+            repository = new KeywordRepository(new FileInfo(Main.GetDefaultKeywordListPath()));
+            presenter = new QuickSearchPresenter(view, repository);
         }
 
         public static QuickSearchPanel Instance

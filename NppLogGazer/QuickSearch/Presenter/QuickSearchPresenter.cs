@@ -1,4 +1,5 @@
-﻿using NppLogGazer.QuickSearch.Model;
+﻿using NppLogGazer.Common.Repository;
+using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.Repository;
 using NppLogGazer.QuickSearch.View.Event;
 using NppPluginNET;
@@ -15,12 +16,12 @@ namespace NppLogGazer.QuickSearch.Presenter
     class QuickSearchPresenter
     {
         private IQuickSearchView view;
-        private IKeywordRepository repository;
+        private IRepository<KeywordModel> repository;
 
         private BindingList<KeywordModel> keywords;
         private int lastSelectedIndex;
 
-        public QuickSearchPresenter(IQuickSearchView view, IKeywordRepository repository)
+        public QuickSearchPresenter(IQuickSearchView view, IRepository<KeywordModel> repository)
         {
             this.view = view;
             this.repository = repository;
@@ -29,7 +30,7 @@ namespace NppLogGazer.QuickSearch.Presenter
             {
                 keywords = new BindingList<KeywordModel>(repository.GetAll());
             }
-            catch (LoadKeywordListException ex)
+            catch (LoadDataException ex)
             {
                 view.ShowMessage(ex.Message);
                 keywords = new BindingList<KeywordModel>();
@@ -120,10 +121,9 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                IKeywordRepository tempRepo = new KeywordRepository(new FileInfo(args.Path));
-                tempRepo.ReplaceAll(keywords.ToList());
+                repository.SaveAs(keywords.ToList(), new FileInfo(args.Path));
             }
-            catch(SaveKeyworkListException ex)
+            catch(SaveDataException ex)
             {
                 view.ShowMessage(ex.Message);
             }
@@ -133,11 +133,10 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                IKeywordRepository tempRepo = new KeywordRepository(new FileInfo(args.Path));
-                keywords = new BindingList<KeywordModel>(tempRepo.GetAll());
+                keywords = new BindingList<KeywordModel>(repository.GetFrom(new FileInfo(args.Path)));
                 view.Bind(keywords);
             }
-            catch(LoadKeywordListException ex)
+            catch(LoadDataException ex)
             {
                 view.ShowMessage(ex.Message);
             }
@@ -157,7 +156,7 @@ namespace NppLogGazer.QuickSearch.Presenter
             QuickSearchSettings.Configs.matchWord = args.MatchWordStatus;
             QuickSearchSettings.Configs.wrapSearch = args.WrapSearchStatus;
 
-            repository.ReplaceAll(keywords.ToList());
+            repository.SaveAll(keywords.ToList());
         }
 
         private void OnKeywordSelected(Object sender, OnKeywordSelectedEventArgs args)

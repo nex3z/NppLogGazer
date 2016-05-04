@@ -32,7 +32,7 @@ namespace NppLogGazer.QuickSearch
                 Configs = (Config)ser.Deserialize(fs);
                 fs.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // File.Delete(configFileName);
                 // MessageBox.Show("ex " + ex.Message);

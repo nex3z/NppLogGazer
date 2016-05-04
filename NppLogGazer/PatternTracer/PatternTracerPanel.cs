@@ -1,4 +1,6 @@
-﻿using NppLogGazer.PatternTracer.Presenter;
+﻿using NppLogGazer.Common.Repository;
+using NppLogGazer.PatternExtractor.Model;
+using NppLogGazer.PatternTracer.Presenter;
 using NppLogGazer.PatternTracer.Repository;
 using NppLogGazer.PatternTracer.View;
 using System;
@@ -13,13 +15,13 @@ namespace NppLogGazer.PatternTracer
 
         private IPatternTracerView view;
         private PatternTracerPresenter presenter;
-        private IPatternRepository reposiroty;
+        private IRepository<PatternModel> repository;
 
         private PatternTracerPanel()
         {
             view = new FrmPatternTracer();
-            reposiroty = new PatternRepository(new FileInfo(Main.GetDefaultPatternListPath()));
-            presenter = new PatternTracerPresenter(view, reposiroty);
+            repository = new PatternRepository(new FileInfo(Main.GetDefaultPatternListPath()));
+            presenter = new PatternTracerPresenter(view, repository);
         }
 
         public static PatternTracerPanel Instance

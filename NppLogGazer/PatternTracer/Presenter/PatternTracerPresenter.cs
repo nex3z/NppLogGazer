@@ -1,4 +1,5 @@
-﻿using NppLogGazer.PatternExtractor.Model;
+﻿using NppLogGazer.Common.Repository;
+using NppLogGazer.PatternExtractor.Model;
 using NppLogGazer.PatternTracer.Model;
 using NppLogGazer.PatternTracer.Repository;
 using NppLogGazer.PatternTracer.View;
@@ -19,11 +20,11 @@ namespace NppLogGazer.PatternTracer.Presenter
     class PatternTracerPresenter
     {
         private IPatternTracerView view;
-        private IPatternRepository repository;
+        private IRepository<PatternModel> repository;
 
         private BindingList<PatternModel> patterns;
 
-        public PatternTracerPresenter(IPatternTracerView view, IPatternRepository repository)
+        public PatternTracerPresenter(IPatternTracerView view, IRepository<PatternModel> repository)
         {
             this.view = view;
             this.repository = repository;
@@ -32,7 +33,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             {
                 patterns = new BindingList<PatternModel>(repository.GetAll());
             }
-            catch (LoadPatternListException ex)
+            catch (LoadDataException ex)
             {
                 view.ShowMessage(ex.Message);
                 patterns = new BindingList<PatternModel>();
@@ -133,10 +134,9 @@ namespace NppLogGazer.PatternTracer.Presenter
         {
             try
             {
-                IPatternRepository tempRepo = new PatternRepository(new FileInfo(args.Path));
-                tempRepo.ReplaceAll(patterns.ToList());
+                repository.SaveAs(patterns.ToList(), new FileInfo(args.Path));
             }
-            catch (SaveKeyworkListException ex)
+            catch (SaveDataException ex)
             {
                 view.ShowMessage(ex.Message);
             }
@@ -146,11 +146,10 @@ namespace NppLogGazer.PatternTracer.Presenter
         {
             try
             {
-                IPatternRepository tempRepo = new PatternRepository(new FileInfo(args.Path));
-                patterns = new BindingList<PatternModel>(tempRepo.GetAll());
+                patterns = new BindingList<PatternModel>(repository.GetFrom(new FileInfo(args.Path)));
                 view.Bind(patterns);
             }
-            catch (LoadKeywordListException ex)
+            catch (LoadDataException ex)
             {
                 view.ShowMessage(ex.Message);
             }
@@ -162,7 +161,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             PatternTracerSettings.Configs.matchWord = args.MatchWordStatus;
             PatternTracerSettings.Configs.wrapSearch = args.WrapSearchStatus;
 
-            repository.ReplaceAll(patterns.ToList());
+            repository.SaveAll(patterns.ToList());
         }
 
         private void PluginVisibleChanged(Object sender, VisibleChangedEventArgs args)
