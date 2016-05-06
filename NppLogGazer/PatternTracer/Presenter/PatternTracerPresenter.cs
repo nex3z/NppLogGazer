@@ -1,4 +1,5 @@
 ﻿using NppLogGazer.Common.Repository;
+using NppLogGazer.Common.Scintilla;
 using NppLogGazer.PatternExtractor.Model;
 using NppLogGazer.PatternTracer.Model;
 using NppLogGazer.PatternTracer.Repository;
@@ -6,7 +7,6 @@ using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
 using NppLogGazer.QuickSearch.Repository;
 using NppPluginNET;
-using NppQuickSearchPanel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

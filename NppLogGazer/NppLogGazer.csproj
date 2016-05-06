@@ -132,7 +132,7 @@
     <Compile Include="QuickSearch\Presenter\QuickSearchPresenter.cs" />
     <Compile Include="QuickSearch\View\IQuickSearchView.cs" />
     <Compile Include="QuickSearch\Model\KeywordModel.cs" />
-    <Compile Include="Scintilla.cs" />
+    <Compile Include="Common\Scintilla\Scintilla.cs" />
     <Compile Include="UnmanagedExports.cs" />
   </ItemGroup>
   <ItemGroup>

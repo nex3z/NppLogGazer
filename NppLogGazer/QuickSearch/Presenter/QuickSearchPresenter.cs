@@ -1,9 +1,9 @@
 ﻿using NppLogGazer.Common.Repository;
+using NppLogGazer.Common.Scintilla;
 using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.Repository;
 using NppLogGazer.QuickSearch.View.Event;
 using NppPluginNET;
-using NppQuickSearchPanel;
 using System;
 using System.ComponentModel;
 using System.Drawing;

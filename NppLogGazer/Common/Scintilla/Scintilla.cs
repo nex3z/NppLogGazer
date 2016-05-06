@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace NppQuickSearchPanel
+namespace NppLogGazer.Common.Scintilla
 {
     class Scintilla : IDisposable
     {
