@@ -1,59 +1,44 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Xml.Serialization;
+﻿using NppLogGazer.Common.Setting;
 
 namespace NppLogGazer.PatternTracer
 {
-    public class PatternTracerSettings
+    public class PatternTracerSettings : Settings<NppLogGazer.PatternTracer.PatternTracerSettings.PatternTracerConfig>
     {
-        public static string ConfigDir = "";
-        public static string Version = Main.PluginVersion;
-        public static string PluginName = Main.PluginName;
-        public static Config Configs;
+        private static PatternTracerSettings instance = null;
 
-        public class Config
+        private PatternTracerSettings()
         {
-            public string version = PatternTracerSettings.Version;
-            public bool showOnStartup = false;
-            public bool matchWord = false;
-            public bool matchCase = false;
-            public bool wrapSearch = true;
-            public bool isRegExp = false;
         }
 
-        public static void LoadConfigs()
+        public static PatternTracerSettings Instance
         {
-            string configFileName = Path.Combine(ConfigDir, PluginName + "PatternTracerConfig.xml");
-            try
+            get
             {
-                FileStream fs = new FileStream(configFileName, FileMode.Open);
-                XmlSerializer ser = new XmlSerializer(typeof(Config));
-                Configs = (Config)ser.Deserialize(fs);
-                fs.Close();
-            }
-            catch (Exception)
-            {
-                // File.Delete(configFileName);
-                // MessageBox.Show("ex " + ex.Message);
-                Configs = new PatternTracerSettings.Config();
+                if (instance == null)
+                {
+                    instance = new PatternTracerSettings();
+                }
+                return instance;
             }
         }
 
-        public static void SaveConfigs()
+        public class PatternTracerConfig : Config
         {
-            string configFileName = Path.Combine(ConfigDir, PluginName + "PatternTracerConfig.xml");
-            try
+            public bool ShowOnStartup { get; set; }
+            public bool MatchWord { get; set; }
+            public bool MatchCase { get; set; }
+            public bool WrapSearch { get; set; }
+            public bool IsRegExp { get; set; }
+
+            public PatternTracerConfig()
             {
-                TextWriter writer = new StreamWriter(configFileName);
-                XmlSerializer ser = new XmlSerializer(typeof(Config));
-                ser.Serialize(writer, Configs);
-                writer.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ex " + ex.Message);
-                File.Delete(configFileName);
+                Version = Main.PluginVersion;
+
+                ShowOnStartup = false;
+                MatchWord = false;
+                MatchCase = false;
+                WrapSearch = true;
+                IsRegExp = false;
             }
         }
     }

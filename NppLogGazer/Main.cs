@@ -69,9 +69,9 @@ namespace NppLogGazer
             if (frmQuickSearch != null)
             {
                 if (frmQuickSearch.Visible)
-                    QuickSearchSettings.Configs.showOnStartup = true;
+                    QuickSearchSettings.Instance.Configs.ShowOnStartup = true;
                 else
-                    QuickSearchSettings.Configs.showOnStartup = false;
+                    QuickSearchSettings.Instance.Configs.ShowOnStartup = false;
 
                 frmQuickSearch.Close();
             }
@@ -79,9 +79,9 @@ namespace NppLogGazer
             if (frmPatternTracer != null)
             {
                 if (frmPatternTracer.Visible)
-                    PatternTracerSettings.Configs.showOnStartup = true;
+                    PatternTracerSettings.Instance.Configs.ShowOnStartup = true;
                 else
-                    PatternTracerSettings.Configs.showOnStartup = false;
+                    PatternTracerSettings.Instance.Configs.ShowOnStartup = false;
 
                 frmPatternTracer.Close();
             }
@@ -106,16 +106,16 @@ namespace NppLogGazer
         }
         internal static void LoadConfig(string iniFilePath)
         {
-            QuickSearchSettings.ConfigDir = iniFilePath;
-            QuickSearchSettings.LoadConfigs();
+            QuickSearchSettings.Instance.ConfigDir = iniFilePath;
+            QuickSearchSettings.Instance.LoadConfigs();
 
-            PatternTracerSettings.ConfigDir = iniFilePath;
-            PatternTracerSettings.LoadConfigs();
+            PatternTracerSettings.Instance.ConfigDir = iniFilePath;
+            PatternTracerSettings.Instance.LoadConfigs();
         }
         internal static void SaveConfig(string iniFilePath)
         {
-            QuickSearchSettings.SaveConfigs();
-            PatternTracerSettings.SaveConfigs();
+            QuickSearchSettings.Instance.SaveConfigs();
+            PatternTracerSettings.Instance.SaveConfigs();
         }
         #endregion
 

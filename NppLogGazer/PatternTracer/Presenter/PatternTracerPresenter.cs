@@ -2,10 +2,8 @@
 using NppLogGazer.Common.Scintilla;
 using NppLogGazer.PatternExtractor.Model;
 using NppLogGazer.PatternTracer.Model;
-using NppLogGazer.PatternTracer.Repository;
 using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
-using NppLogGazer.QuickSearch.Repository;
 using NppPluginNET;
 using System;
 using System.Collections.Generic;
@@ -13,7 +11,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 
 namespace NppLogGazer.PatternTracer.Presenter
 {
@@ -61,9 +58,9 @@ namespace NppLogGazer.PatternTracer.Presenter
 
         private void SetupInitialView()
         {
-            view.SetMatchWord(PatternTracerSettings.Configs.matchWord);
-            view.SetMatchCase(PatternTracerSettings.Configs.matchCase);
-            view.SetWrapSearch(PatternTracerSettings.Configs.wrapSearch);
+            view.SetMatchWord(PatternTracerSettings.Instance.Configs.MatchWord);
+            view.SetMatchCase(PatternTracerSettings.Instance.Configs.MatchCase);
+            view.SetWrapSearch(PatternTracerSettings.Instance.Configs.WrapSearch);
 
             if (patterns.Count != 0)
             {
@@ -157,9 +154,9 @@ namespace NppLogGazer.PatternTracer.Presenter
 
         private void OnPluginClosing(Object sender, OnClosingEventArgs args)
         {
-            PatternTracerSettings.Configs.matchCase = args.MatchCaseStatus;
-            PatternTracerSettings.Configs.matchWord = args.MatchWordStatus;
-            PatternTracerSettings.Configs.wrapSearch = args.WrapSearchStatus;
+            PatternTracerSettings.Instance.Configs.MatchCase = args.MatchCaseStatus;
+            PatternTracerSettings.Instance.Configs.MatchWord = args.MatchWordStatus;
+            PatternTracerSettings.Instance.Configs.WrapSearch = args.WrapSearchStatus;
 
             repository.SaveAll(patterns.ToList());
         }

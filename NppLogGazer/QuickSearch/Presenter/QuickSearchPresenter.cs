@@ -1,7 +1,6 @@
 ﻿using NppLogGazer.Common.Repository;
 using NppLogGazer.Common.Scintilla;
 using NppLogGazer.QuickSearch.Model;
-using NppLogGazer.QuickSearch.Repository;
 using NppLogGazer.QuickSearch.View.Event;
 using NppPluginNET;
 using System;
@@ -60,9 +59,9 @@ namespace NppLogGazer.QuickSearch.Presenter
 
         private void SetupInitialView()
         {
-            view.SetMatchWord(QuickSearchSettings.Configs.matchWord);
-            view.SetMatchCase(QuickSearchSettings.Configs.matchCase);
-            view.SetWrapSearch(QuickSearchSettings.Configs.wrapSearch);
+            view.SetMatchWord(QuickSearchSettings.Instance.Configs.MatchWord);
+            view.SetMatchCase(QuickSearchSettings.Instance.Configs.MatchCase);
+            view.SetWrapSearch(QuickSearchSettings.Instance.Configs.WrapSearch);
 
             if (keywords.Count != 0)
             {
@@ -152,9 +151,9 @@ namespace NppLogGazer.QuickSearch.Presenter
 
         private void OnClosing(Object sender, OnClosingEventArgs args)
         {
-            QuickSearchSettings.Configs.matchCase = args.MatchCaseStatus;
-            QuickSearchSettings.Configs.matchWord = args.MatchWordStatus;
-            QuickSearchSettings.Configs.wrapSearch = args.WrapSearchStatus;
+            QuickSearchSettings.Instance.Configs.MatchCase = args.MatchCaseStatus;
+            QuickSearchSettings.Instance.Configs.MatchWord = args.MatchWordStatus;
+            QuickSearchSettings.Instance.Configs.WrapSearch = args.WrapSearchStatus;
 
             repository.SaveAll(keywords.ToList());
         }

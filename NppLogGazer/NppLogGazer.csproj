@@ -61,6 +61,8 @@
     <Compile Include="Common\Repository\SaveDataException.cs" />
     <Compile Include="Common\Repository\IRepository.cs" />
     <Compile Include="Common\Repository\XmlRepository.cs" />
+    <Compile Include="Common\Setting\Config.cs" />
+    <Compile Include="Common\Setting\Settings.cs" />
     <Compile Include="DllExport\DllExportAttribute.cs" />
     <Compile Include="PatternTracer\Model\ResultModel.cs" />
     <Compile Include="PatternTracer\PatternTracerPanel.cs" />

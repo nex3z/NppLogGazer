@@ -60,11 +60,11 @@ namespace NppLogGazer
             }
             else if (nc.nmhdr.code == (uint)NppMsg.NPPN_READY)
             {
-                if (QuickSearchSettings.Configs.showOnStartup)
+                if (QuickSearchSettings.Instance.Configs.ShowOnStartup)
                 {
                     Main.ShowQuickSearchDlg();
-                } 
-                else if (PatternTracerSettings.Configs.showOnStartup)
+                }
+                else if (PatternTracerSettings.Instance.Configs.ShowOnStartup)
                 {
                     Main.ShowPatternTracerDlg();
                 }
