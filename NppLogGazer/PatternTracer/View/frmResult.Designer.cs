@@ -28,31 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowButton = new System.Windows.Forms.FlowLayoutPanel();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCopy = new System.Windows.Forms.Button();
             this.tabResult = new System.Windows.Forms.TableLayoutPanel();
             this.rtxtResult = new System.Windows.Forms.RichTextBox();
-            this.flowButton.SuspendLayout();
+            this.tabControl = new System.Windows.Forms.TableLayoutPanel();
+            this.chkCompleteMatch = new System.Windows.Forms.CheckBox();
             this.tabResult.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // flowButton
-            // 
-            this.flowButton.AutoSize = true;
-            this.flowButton.Controls.Add(this.btnClose);
-            this.flowButton.Controls.Add(this.btnCopy);
-            this.flowButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowButton.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowButton.Location = new System.Drawing.Point(3, 285);
-            this.flowButton.Name = "flowButton";
-            this.flowButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.flowButton.Size = new System.Drawing.Size(518, 29);
-            this.flowButton.TabIndex = 1;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(440, 3);
+            this.btnClose.Location = new System.Drawing.Point(359, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 0;
@@ -62,7 +50,7 @@
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(359, 3);
+            this.btnCopy.Location = new System.Drawing.Point(440, 3);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(75, 23);
             this.btnCopy.TabIndex = 1;
@@ -74,8 +62,8 @@
             // 
             this.tabResult.ColumnCount = 1;
             this.tabResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tabResult.Controls.Add(this.flowButton, 0, 1);
             this.tabResult.Controls.Add(this.rtxtResult, 0, 0);
+            this.tabResult.Controls.Add(this.tabControl, 0, 1);
             this.tabResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabResult.Location = new System.Drawing.Point(0, 0);
             this.tabResult.Name = "tabResult";
@@ -97,6 +85,36 @@
             this.rtxtResult.Text = "";
             this.rtxtResult.WordWrap = false;
             // 
+            // tabControl
+            // 
+            this.tabControl.AutoSize = true;
+            this.tabControl.ColumnCount = 3;
+            this.tabControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tabControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tabControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tabControl.Controls.Add(this.btnCopy, 2, 0);
+            this.tabControl.Controls.Add(this.btnClose, 1, 0);
+            this.tabControl.Controls.Add(this.chkCompleteMatch, 0, 0);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(3, 285);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.RowCount = 1;
+            this.tabControl.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tabControl.Size = new System.Drawing.Size(518, 29);
+            this.tabControl.TabIndex = 3;
+            // 
+            // chkCompleteMatch
+            // 
+            this.chkCompleteMatch.AutoSize = true;
+            this.chkCompleteMatch.Dock = System.Windows.Forms.DockStyle.Left;
+            this.chkCompleteMatch.Location = new System.Drawing.Point(3, 3);
+            this.chkCompleteMatch.Name = "chkCompleteMatch";
+            this.chkCompleteMatch.Size = new System.Drawing.Size(168, 23);
+            this.chkCompleteMatch.TabIndex = 2;
+            this.chkCompleteMatch.Text = "Only show complete match";
+            this.chkCompleteMatch.UseVisualStyleBackColor = true;
+            this.chkCompleteMatch.CheckedChanged += new System.EventHandler(this.chkCompleteMatch_CheckedChanged);
+            // 
             // FrmResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -106,20 +124,22 @@
             this.Icon = global::NppLogGazer.Properties.Resources.pattern_tracer_icon;
             this.Name = "FrmResult";
             this.Text = "Result";
-            this.flowButton.ResumeLayout(false);
             this.tabResult.ResumeLayout(false);
             this.tabResult.PerformLayout();
+            this.tabControl.ResumeLayout(false);
+            this.tabControl.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowButton;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.TableLayoutPanel tabResult;
         private System.Windows.Forms.RichTextBox rtxtResult;
+        private System.Windows.Forms.TableLayoutPanel tabControl;
+        private System.Windows.Forms.CheckBox chkCompleteMatch;
 
     }
 }

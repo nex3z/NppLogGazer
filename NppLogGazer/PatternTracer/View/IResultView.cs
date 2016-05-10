@@ -1,7 +1,9 @@
-﻿namespace NppLogGazer.PatternTracer.View
+﻿using NppLogGazer.PatternTracer.Model;
+using System.Collections.Generic;
+namespace NppLogGazer.PatternTracer.View
 {
     public interface IResultView
     {
-        void ShowResult(string result);
+        void ShowResult(List<ResultModel> resultList);
     }
 }

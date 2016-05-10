@@ -74,8 +74,8 @@ namespace NppLogGazer.PatternTracer.Presenter
         private void SearchPattern(Object sender, SearchPatternEventArgs args)
         {
             // string result = PerformSearch(args.Pattern, args.MatchWord, args.MatchWord);
-            string result = PerformSearchFull(args.Pattern, args.MatchWord, args.MatchWord);
-            ShowResult(result);
+            List<ResultModel> results = PerformSearchFull(args.Pattern, args.MatchWord, args.MatchWord);
+            ShowResult(results);
         }
 
         private void AddPattern(Object sender, AddPatternEventArgs args)
@@ -169,7 +169,7 @@ namespace NppLogGazer.PatternTracer.Presenter
             }
         }
 
-        private string PerformSearchFull(PatternModel pattern, bool matchWord, bool matchCase)
+        private List<ResultModel> PerformSearchFull(PatternModel pattern, bool matchWord, bool matchCase)
         {
             int keywordNum = pattern.PatternText.Count;
             List<ResultModel> results = new List<ResultModel>();
@@ -191,8 +191,8 @@ namespace NppLogGazer.PatternTracer.Presenter
                 }
                 
                 positions = positions.OrderBy(o => o.Position).ToList();
-               
-                ResultModel resultModel = new ResultModel();
+
+                ResultModel resultModel = new ResultModel(pattern.PatternText.Count);
                 int lastKeywordIdx = -1;
                 foreach (LineInfoModel line in positions)
                 {
@@ -200,106 +200,22 @@ namespace NppLogGazer.PatternTracer.Presenter
                     line.LineNumber = lineNum + 1;
                     string text = sci.GetLine(lineNum);
                     line.LineText = text;
-
-                    if (line.KeywordId < lastKeywordIdx)
+                    if (line.KeywordId <= lastKeywordIdx)
                     {
                         results.Add(resultModel);
-                        resultModel = new ResultModel();
+                        resultModel = new ResultModel(pattern.PatternText.Count);
                     }
                     lastKeywordIdx = line.KeywordId;
                     resultModel.Result.Add(line);
+                    resultModel.MatchCount++;
                 }
                 if (resultModel.Result.Count != 0) results.Add(resultModel);
             }
-            
-            string resultText = Properties.Resources.pattern_tracer_status_not_found;
-            if (results.Count != 0)
-            {
-                resultText = FormatResult(results);
-            }
-            return resultText;
+
+            return results;
         }
 
-        private string PerformSearch(PatternModel pattern, bool matchWord, bool matchCase)
-        {
-            int keywordNum = pattern.PatternText.Count;
-            int totalHit = 0;
-            bool reachedEnd = false;
-            List<int[]> resultList = new List<int[]>();
-            List<ResultModel> results = new List<ResultModel>();
-            using (Scintilla sci = new Scintilla())
-            {
-                sci.SetCurrentPos(0);
-                sci.SetAnchor(0);
-
-                while (!reachedEnd)
-                {
-                    int[] positions = new int[keywordNum];
-                    int keywordHit = 0;
-                    for (int i = 0; i < keywordNum; i++)
-                    {
-                        int pos = sci.SearchForwardSilent(pattern.PatternText[i].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
-                        positions[i] = pos;
-                        if (pos != -1)
-                        {
-                            keywordHit++;
-                            totalHit++;
-                        }
-                        else
-                        {
-                            reachedEnd = true;
-                            break;
-                        }
-                    }
-                    if (keywordHit != 0)
-                        resultList.Add(positions);
-                }
-
-                foreach (int[] result in resultList)
-                {
-                    ResultModel resultModel = new ResultModel();
-                    for (int i = 0; i < keywordNum; i++)
-                    {
-                        if (result[i] != -1)
-                        {
-                            int lineNum = sci.GetLineFromPosition(result[i]);
-                            string text = sci.GetLine(lineNum);
-                            lineNum += 1;
-                            LineInfoModel entry = new LineInfoModel(result[i], lineNum, text);
-                            resultModel.Result.Add(entry);
-                        }
-                        else
-                        {
-                            break;
-                        }
-                    }
-                    results.Add(resultModel);
-                }
-            }
-
-            string resultText = Properties.Resources.pattern_tracer_status_not_found;
-            if (results.Count != 0)
-            {
-                resultText = FormatResult(results);
-            }
-            return resultText;
-        }
-
-        private string FormatResult(List<ResultModel> resultList)
-        {
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < resultList.Count; i++)
-            {
-                foreach (LineInfoModel entry in resultList[i].Result)
-                {
-                    sb.AppendLine("Line " + entry.LineNumber + ": " + entry.LineText);
-                }
-                if (i != (resultList.Count - 1)) sb.AppendLine();
-            }
-            return sb.ToString();
-        }
-
-        private void ShowResult(string result)
+        private void ShowResult(List<ResultModel> result)
         {
             IResultView resultFrm = new FrmResult();
             resultFrm.ShowResult(result);
