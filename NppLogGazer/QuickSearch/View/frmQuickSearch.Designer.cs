@@ -279,12 +279,14 @@
             this.toolBtnLaunchSearchDlg.Name = "toolBtnLaunchSearchDlg";
             this.toolBtnLaunchSearchDlg.Size = new System.Drawing.Size(23, 22);
             this.toolBtnLaunchSearchDlg.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_launch_npp_search_dlg;
+            this.toolBtnLaunchSearchDlg.Visible = false;
             this.toolBtnLaunchSearchDlg.Click += new System.EventHandler(this.toolBtnLaunchSearchDlg_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Visible = false;
             // 
             // toolBtnRegExp
             // 
