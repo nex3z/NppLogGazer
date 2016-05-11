@@ -218,7 +218,8 @@ namespace NppLogGazer.PatternTracer.Presenter
         private void ShowResult(List<ResultModel> result)
         {
             IResultView resultFrm = new FrmResult();
-            resultFrm.ShowResult(result);
+            SearchResultPresenter resultPresenter = new SearchResultPresenter(resultFrm);
+            resultPresenter.RenderResult(result, 0);
         }
     }
 }

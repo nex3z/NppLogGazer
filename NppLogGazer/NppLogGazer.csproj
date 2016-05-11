@@ -68,6 +68,7 @@
     <Compile Include="PatternTracer\PatternTracerPanel.cs" />
     <Compile Include="PatternTracer\PatternTracerSettings.cs" />
     <Compile Include="PatternTracer\Presenter\PatternTracerPresenter.cs" />
+    <Compile Include="PatternTracer\Presenter\SearchResultPresenter.cs" />
     <Compile Include="PatternTracer\Repository\PatternRepository.cs" />
     <Compile Include="PatternTracer\Model\LineInfoModel.cs" />
     <Compile Include="Common\About\FrmAbout.cs">
@@ -80,6 +81,7 @@
     <Compile Include="PatternTracer\View\Event\OnSelectedPatternChangedEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\OpenPatternListEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\RemovePatternAtEventArgs.cs" />
+    <Compile Include="PatternTracer\View\Event\ResultFilterChangedEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\SavePaternListEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\SearchPatternEventArgs.cs" />
     <Compile Include="PatternTracer\View\Event\SwapPatternPositionEventArgs.cs" />
