@@ -58,7 +58,7 @@ namespace NppLogGazer
             }
             sb.Append(pattern.PatternText[i]);
             
-            txtPatternInput.Text = sb.ToString();
+            rtxtPatternInput.Text = sb.ToString();
             toolBtnRegExp.Checked = pattern.Type == PatternType.RegExp ? true : false;
         }
 
@@ -79,7 +79,7 @@ namespace NppLogGazer
 
         public void SetPatternInput(string pattern)
         {
-            txtPatternInput.Text = pattern;
+            rtxtPatternInput.Text = pattern;
         }
 
         private void toolStripBtnSearch_Click(object sender, EventArgs e)
@@ -103,7 +103,7 @@ namespace NppLogGazer
         private List<string> GetPatternText()
         {
             List<string> patternText = new List<string>();
-            foreach (string line in txtPatternInput.Lines)
+            foreach (string line in rtxtPatternInput.Lines)
             {
                 patternText.Add(line);
             }
@@ -236,11 +236,11 @@ namespace NppLogGazer
             e.DrawFocusRectangle();
         }
 
-        private void txtPatternInput_KeyDown(object sender, KeyEventArgs e)
+        private void rtxtPatternInput_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == (Keys.Control | Keys.A))
             {
-                txtPatternInput.SelectAll();
+                rtxtPatternInput.SelectAll();
                 e.Handled = e.SuppressKeyPress = true;
             }
         }

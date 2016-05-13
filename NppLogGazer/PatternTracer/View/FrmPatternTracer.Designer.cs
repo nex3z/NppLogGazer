@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPatternInput = new System.Windows.Forms.TextBox();
             this.toolStripPatternInput = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnSearch = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -48,24 +47,14 @@
             this.toolBtnMoveUp = new System.Windows.Forms.ToolStripButton();
             this.toolBtnMoveDown = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolBtnSavePatternList = new System.Windows.Forms.ToolStripButton();
             this.toolBtnOpenPatternList = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnSavePatternList = new System.Windows.Forms.ToolStripButton();
             this.tabPatternTracer = new System.Windows.Forms.TableLayoutPanel();
+            this.rtxtPatternInput = new System.Windows.Forms.RichTextBox();
             this.toolStripPatternInput.SuspendLayout();
             this.toolStripListMgmt.SuspendLayout();
             this.tabPatternTracer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtPatternInput
-            // 
-            this.txtPatternInput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPatternInput.Location = new System.Drawing.Point(3, 28);
-            this.txtPatternInput.Multiline = true;
-            this.txtPatternInput.Name = "txtPatternInput";
-            this.txtPatternInput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPatternInput.Size = new System.Drawing.Size(339, 172);
-            this.txtPatternInput.TabIndex = 2;
-            this.txtPatternInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPatternInput_KeyDown);
             // 
             // toolStripPatternInput
             // 
@@ -265,17 +254,6 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolBtnSavePatternList
-            // 
-            this.toolBtnSavePatternList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolBtnSavePatternList.Image = global::NppLogGazer.Properties.Resources.disk;
-            this.toolBtnSavePatternList.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolBtnSavePatternList.Name = "toolBtnSavePatternList";
-            this.toolBtnSavePatternList.Size = new System.Drawing.Size(23, 22);
-            this.toolBtnSavePatternList.Text = "toolStripButton3";
-            this.toolBtnSavePatternList.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_save_as;
-            this.toolBtnSavePatternList.Click += new System.EventHandler(this.toolBtnSavePatternList_Click);
-            // 
             // toolBtnOpenPatternList
             // 
             this.toolBtnOpenPatternList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -287,6 +265,17 @@
             this.toolBtnOpenPatternList.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_open;
             this.toolBtnOpenPatternList.Click += new System.EventHandler(this.toolBtnOpenPatternList_Click);
             // 
+            // toolBtnSavePatternList
+            // 
+            this.toolBtnSavePatternList.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnSavePatternList.Image = global::NppLogGazer.Properties.Resources.disk;
+            this.toolBtnSavePatternList.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnSavePatternList.Name = "toolBtnSavePatternList";
+            this.toolBtnSavePatternList.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnSavePatternList.Text = "toolStripButton3";
+            this.toolBtnSavePatternList.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_save_as;
+            this.toolBtnSavePatternList.Click += new System.EventHandler(this.toolBtnSavePatternList_Click);
+            // 
             // tabPatternTracer
             // 
             this.tabPatternTracer.ColumnCount = 1;
@@ -294,7 +283,7 @@
             this.tabPatternTracer.Controls.Add(this.toolStripPatternInput, 0, 0);
             this.tabPatternTracer.Controls.Add(this.lstPattern, 0, 3);
             this.tabPatternTracer.Controls.Add(this.toolStripListMgmt, 0, 2);
-            this.tabPatternTracer.Controls.Add(this.txtPatternInput, 0, 1);
+            this.tabPatternTracer.Controls.Add(this.rtxtPatternInput, 0, 1);
             this.tabPatternTracer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabPatternTracer.Location = new System.Drawing.Point(0, 0);
             this.tabPatternTracer.Name = "tabPatternTracer";
@@ -305,6 +294,17 @@
             this.tabPatternTracer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
             this.tabPatternTracer.Size = new System.Drawing.Size(345, 561);
             this.tabPatternTracer.TabIndex = 4;
+            // 
+            // rtxtPatternInput
+            // 
+            this.rtxtPatternInput.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtxtPatternInput.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtxtPatternInput.Location = new System.Drawing.Point(3, 28);
+            this.rtxtPatternInput.Name = "rtxtPatternInput";
+            this.rtxtPatternInput.Size = new System.Drawing.Size(339, 172);
+            this.rtxtPatternInput.TabIndex = 4;
+            this.rtxtPatternInput.Text = "";
+            this.rtxtPatternInput.WordWrap = false;
             // 
             // FrmPatternTracer
             // 
@@ -346,11 +346,11 @@
         private System.Windows.Forms.ToolStripButton toolBtnMoveUp;
         private System.Windows.Forms.ToolStripButton toolBtnMoveDown;
         private System.Windows.Forms.ListBox lstPattern;
-        private System.Windows.Forms.TextBox txtPatternInput;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.TableLayoutPanel tabPatternTracer;
         private System.Windows.Forms.ToolStripButton toolBtnReplace;
+        private System.Windows.Forms.RichTextBox rtxtPatternInput;
 
     }
 }

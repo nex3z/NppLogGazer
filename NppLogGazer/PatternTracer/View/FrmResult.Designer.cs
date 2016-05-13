@@ -40,7 +40,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(359, 3);
+            this.btnClose.Location = new System.Drawing.Point(440, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(440, 3);
+            this.btnCopy.Location = new System.Drawing.Point(359, 3);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(75, 23);
             this.btnCopy.TabIndex = 1;
@@ -92,9 +92,9 @@
             this.tabControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tabControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tabControl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tabControl.Controls.Add(this.btnCopy, 2, 0);
-            this.tabControl.Controls.Add(this.btnClose, 1, 0);
             this.tabControl.Controls.Add(this.chkCompleteMatch, 0, 0);
+            this.tabControl.Controls.Add(this.btnClose, 2, 0);
+            this.tabControl.Controls.Add(this.btnCopy, 1, 0);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.Location = new System.Drawing.Point(3, 285);
             this.tabControl.Name = "tabControl";
