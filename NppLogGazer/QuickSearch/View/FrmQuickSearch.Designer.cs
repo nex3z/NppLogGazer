@@ -87,16 +87,17 @@
             // txtKeyword
             // 
             this.txtKeyword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtKeyword.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtKeyword.Location = new System.Drawing.Point(3, 28);
             this.txtKeyword.Name = "txtKeyword";
-            this.txtKeyword.Size = new System.Drawing.Size(365, 21);
+            this.txtKeyword.Size = new System.Drawing.Size(365, 22);
             this.txtKeyword.TabIndex = 1;
             // 
             // flowLayoutKeywordType
             // 
             this.flowLayoutKeywordType.AutoSize = true;
             this.flowLayoutKeywordType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutKeywordType.Location = new System.Drawing.Point(3, 55);
+            this.flowLayoutKeywordType.Location = new System.Drawing.Point(3, 56);
             this.flowLayoutKeywordType.Name = "flowLayoutKeywordType";
             this.flowLayoutKeywordType.Size = new System.Drawing.Size(365, 1);
             this.flowLayoutKeywordType.TabIndex = 3;
@@ -115,7 +116,7 @@
             this.toolStripSeparator2,
             this.toolBtnOpen,
             this.toolBtnSaveAs});
-            this.toolStripKeywrodList.Location = new System.Drawing.Point(0, 58);
+            this.toolStripKeywrodList.Location = new System.Drawing.Point(0, 59);
             this.toolStripKeywrodList.Name = "toolStripKeywrodList";
             this.toolStripKeywrodList.Size = new System.Drawing.Size(371, 25);
             this.toolStripKeywrodList.TabIndex = 4;
@@ -223,12 +224,12 @@
             // 
             this.lstKeywords.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstKeywords.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lstKeywords.Font = new System.Drawing.Font("SimSun", 10F);
+            this.lstKeywords.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstKeywords.FormattingEnabled = true;
-            this.lstKeywords.ItemHeight = 14;
-            this.lstKeywords.Location = new System.Drawing.Point(3, 86);
+            this.lstKeywords.ItemHeight = 15;
+            this.lstKeywords.Location = new System.Drawing.Point(3, 87);
             this.lstKeywords.Name = "lstKeywords";
-            this.lstKeywords.Size = new System.Drawing.Size(365, 639);
+            this.lstKeywords.Size = new System.Drawing.Size(365, 638);
             this.lstKeywords.TabIndex = 5;
             this.lstKeywords.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstKeywords_DrawItem);
             this.lstKeywords.SelectedIndexChanged += new System.EventHandler(this.lstKeywords_SelectedIndexChanged);

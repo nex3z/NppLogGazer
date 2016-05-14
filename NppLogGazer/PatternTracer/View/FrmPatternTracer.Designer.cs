@@ -161,8 +161,9 @@
             // 
             this.lstPattern.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstPattern.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lstPattern.Font = new System.Drawing.Font("SimSun", 10F);
+            this.lstPattern.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstPattern.FormattingEnabled = true;
+            this.lstPattern.ItemHeight = 15;
             this.lstPattern.Location = new System.Drawing.Point(3, 231);
             this.lstPattern.Name = "lstPattern";
             this.lstPattern.Size = new System.Drawing.Size(339, 327);
