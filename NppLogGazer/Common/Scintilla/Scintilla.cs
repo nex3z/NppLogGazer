@@ -192,16 +192,22 @@ namespace NppLogGazer.Common.Scintilla
             return line;
         }
 
+        public int GetCodePage()
+        {
+            int codePage = (int)Win32.SendMessage(curScintilla, SciMsg.SCI_GETCODEPAGE, 0, 0);
+            return codePage;
+        }
+
         public string GetLine(int line)
         {
             int length = LineLength(line);
             StringBuilder sb = new StringBuilder(length);
             Win32.SendMessage(curScintilla, SciMsg.SCI_GETLINE, line, sb);
-            string text = decode(sb.ToString());
+            string text = Decode(sb.ToString());
             return new StringReader(text).ReadLine();
         }
 
-        private string decode(string text)
+        private string Decode(string text)
         {
             byte[] raw = Encoding.GetEncoding(CURRENT_CODE_PAGE).GetBytes(text);
             return Encoding.GetEncoding(UTF8_CODE_PAGE).GetString(raw);
