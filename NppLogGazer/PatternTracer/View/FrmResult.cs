@@ -2,6 +2,7 @@
 using NppLogGazer.PatternTracer.View.Event;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,6 +15,9 @@ namespace NppLogGazer.PatternTracer.View
         public FrmResult()
         {
             InitializeComponent();
+            Screen screen = Screen.FromControl(this);
+            Rectangle area = screen.WorkingArea;
+            this.Width = area.Width / 2;
         }
 
         public void ShowResult(string result)
