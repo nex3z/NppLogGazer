@@ -252,6 +252,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Perfect match only.
+        /// </summary>
+        internal static string perfect_match_only {
+            get {
+                return ResourceManager.GetString("perfect_match_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quick Search.
         /// </summary>
         internal static string quick_search_dlg_label {
@@ -270,7 +279,7 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Found at line.
+        ///   Looks up a localized string similar to Found at line .
         /// </summary>
         internal static string quick_search_status_found_at_line {
             get {

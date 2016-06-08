@@ -106,12 +106,14 @@
             // chkCompleteMatch
             // 
             this.chkCompleteMatch.AutoSize = true;
+            this.chkCompleteMatch.Checked = true;
+            this.chkCompleteMatch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkCompleteMatch.Dock = System.Windows.Forms.DockStyle.Left;
             this.chkCompleteMatch.Location = new System.Drawing.Point(3, 3);
             this.chkCompleteMatch.Name = "chkCompleteMatch";
-            this.chkCompleteMatch.Size = new System.Drawing.Size(168, 23);
+            this.chkCompleteMatch.Size = new System.Drawing.Size(132, 23);
             this.chkCompleteMatch.TabIndex = 2;
-            this.chkCompleteMatch.Text = "Only show complete match";
+            this.chkCompleteMatch.Text = global::NppLogGazer.Properties.Resources.perfect_match_only;
             this.chkCompleteMatch.UseVisualStyleBackColor = true;
             this.chkCompleteMatch.CheckedChanged += new System.EventHandler(this.chkCompleteMatch_CheckedChanged);
             // 

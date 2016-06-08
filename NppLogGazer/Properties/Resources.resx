@@ -185,7 +185,7 @@
     <value>Couldn't find the keyword.</value>
   </data>
   <data name="quick_search_status_found_at_line" xml:space="preserve">
-    <value>Found at line</value>
+    <value>Found at line </value>
   </data>
   <data name="tooltip_add" xml:space="preserve">
     <value>Add</value>
@@ -285,5 +285,8 @@ For help, info and updates, visit the site by clicking the "Visit site" button b
   </data>
   <data name="tooltip_launch_npp_search_dlg" xml:space="preserve">
     <value>Launch Notepad++ Search</value>
+  </data>
+  <data name="perfect_match_only" xml:space="preserve">
+    <value>Perfect match only</value>
   </data>
 </root>

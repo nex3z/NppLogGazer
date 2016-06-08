@@ -219,7 +219,7 @@ namespace NppLogGazer.PatternTracer.Presenter
         {
             IResultView resultFrm = new FrmResult();
             SearchResultPresenter resultPresenter = new SearchResultPresenter(resultFrm);
-            resultPresenter.RenderResult(result, 0);
+            resultPresenter.RenderResult(result, result[0].KeywordCount);
         }
     }
 }
