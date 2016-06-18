@@ -2,7 +2,7 @@
 
 ## Description
 
-**NppLogGazer** is a notepad++ plugin with extra search features, providing fast and convenient searching especially for log analysis.
+**NppLogGazer** is a notepad++ plugin with fancy search features, providing fast and convenient searching especially for log analysis.
 
 
 ## How to install
@@ -39,7 +39,7 @@ Open up Notepad++, click the ![pluginicon][quick_search_panel_icon]**Show QuickS
 ### Features
 
 - Build keyword pattern and track them down in the document by one click.
-- Save your frequently used patterns in a list.
+- Save your patterns in a list.
 - Provide multiple search options and regular expression support.
 
 ### How to use
