@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NppLogGazer.Common.Repository
 {
-    class SaveDataException : Exception
+    public abstract class SaveDataException : System.Exception
     {
         public SaveDataException()
         {

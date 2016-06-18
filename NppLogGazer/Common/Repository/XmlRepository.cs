@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NppLogGazer.Common.Repository.Exception;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -31,9 +32,12 @@ namespace NppLogGazer.Common.Repository
                     List<T> patterns = (List<T>)ser.Deserialize(fs);
                     return patterns;
                 }
-                catch (Exception exception)
+                catch (System.Exception exception)
                 {
-                    throw (new LoadDataException(exception.Message));
+                    if (fs != null) fs.Close();
+                    string backupFile = file.FullName + ".bak";
+                    File.Copy(file.FullName, backupFile, true);
+                    throw (new LoadXmlFileException(exception.Message, backupFile));
                 }
             }
         }
@@ -53,9 +57,9 @@ namespace NppLogGazer.Common.Repository
                     List<T> patterns = (List<T>)ser.Deserialize(fs);
                     return patterns;
                 }
-                catch (Exception exception)
+                catch (System.Exception exception)
                 {
-                    throw (new LoadDataException(exception.Message));
+                    throw (new LoadXmlFileException(exception.Message));
                 }
             }
         }
@@ -69,9 +73,9 @@ namespace NppLogGazer.Common.Repository
                 ser.Serialize(writer, patterns);
                 writer.Close();
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                throw (new SaveDataException(ex.Message));
+                throw (new SaveXmlFileException(ex.Message));
             }
         }
 
@@ -84,9 +88,9 @@ namespace NppLogGazer.Common.Repository
                 ser.Serialize(writer, patterns);
                 writer.Close();
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
-                throw (new SaveDataException(ex.Message));
+                throw (new SaveXmlFileException(ex.Message));
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using NppLogGazer.Common.Repository;
 using NppLogGazer.Common.Scintilla;
+using NppLogGazer.Common.Utility;
 using NppLogGazer.PatternExtractor.Model;
 using NppLogGazer.PatternTracer.Model;
 using NppLogGazer.PatternTracer.View;
@@ -26,19 +27,24 @@ namespace NppLogGazer.PatternTracer.Presenter
             this.view = view;
             this.repository = repository;
 
+            LoadPatternsFromDefaultStore();
+            WireUpEvents();
+            SetupInitialView();
+        }
+
+        private void LoadPatternsFromDefaultStore()
+        {
             try
             {
                 patterns = new BindingList<PatternModel>(repository.GetAll());
             }
             catch (LoadDataException ex)
             {
-                view.ShowMessage(ex.Message);
+                string message = ExceptionMessageUtility.BuildLoadDataExceptionMessage(ex);
+                view.ShowMessage(message);
                 patterns = new BindingList<PatternModel>();
             }
             view.Bind(patterns);
-
-            WireUpEvents();
-            SetupInitialView();
         }
 
         private void WireUpEvents()

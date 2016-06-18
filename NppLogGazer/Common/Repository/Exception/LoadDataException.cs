@@ -5,7 +5,7 @@ using System.Text;
 
 namespace NppLogGazer.Common.Repository
 {
-    class LoadDataException : Exception
+    public abstract class LoadDataException : System.Exception
     {
         public LoadDataException()
         {
@@ -13,6 +13,11 @@ namespace NppLogGazer.Common.Repository
 
         public LoadDataException(string message) : base(message)
         {
+        }
+
+        public abstract string BackupInfo
+        {
+            get;
         }
     }
 }

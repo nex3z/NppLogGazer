@@ -1,5 +1,6 @@
 ﻿using NppLogGazer.Common.Repository;
 using NppLogGazer.Common.Scintilla;
+using NppLogGazer.Common.Utility;
 using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.View.Event;
 using NppPluginNET;
@@ -25,20 +26,24 @@ namespace NppLogGazer.QuickSearch.Presenter
             this.view = view;
             this.repository = repository;
 
+            LoadKeywordsFromDefaultStore();
+            WireUpEvents();
+            SetupInitialView();
+        }
+
+        private void LoadKeywordsFromDefaultStore()
+        {
             try
             {
                 keywords = new BindingList<KeywordModel>(repository.GetAll());
             }
             catch (LoadDataException ex)
             {
-                view.ShowMessage(ex.Message);
+                string message = ExceptionMessageUtility.BuildLoadDataExceptionMessage(ex);
+                view.ShowMessage(message);
                 keywords = new BindingList<KeywordModel>();
             }
-
             view.Bind(keywords);
-
-            WireUpEvents();
-            SetupInitialView();
         }
 
         private void WireUpEvents()

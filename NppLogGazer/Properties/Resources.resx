@@ -289,4 +289,10 @@ For help, info and updates, visit the site by clicking the "Visit site" button b
   <data name="perfect_match_only" xml:space="preserve">
     <value>Perfect match only</value>
   </data>
+  <data name="ex_msg_backup_at" xml:space="preserve">
+    <value>Backup at: </value>
+  </data>
+  <data name="ex_msg_error_reading_default_config" xml:space="preserve">
+    <value>Error reading default configuration. </value>
+  </data>
 </root>

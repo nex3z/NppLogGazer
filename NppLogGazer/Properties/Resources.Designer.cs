@@ -136,6 +136,24 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Backup at: .
+        /// </summary>
+        internal static string ex_msg_backup_at {
+            get {
+                return ResourceManager.GetString("ex_msg_backup_at", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error reading default configuration. .
+        /// </summary>
+        internal static string ex_msg_error_reading_default_config {
+            get {
+                return ResourceManager.GetString("ex_msg_error_reading_default_config", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap folder_page_white {

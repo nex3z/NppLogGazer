@@ -57,12 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Repository\LoadDataException.cs" />
-    <Compile Include="Common\Repository\SaveDataException.cs" />
+    <Compile Include="Common\Repository\Exception\LoadDataException.cs" />
+    <Compile Include="Common\Repository\Exception\LoadXmlFileException.cs" />
+    <Compile Include="Common\Repository\Exception\SaveDataException.cs" />
+    <Compile Include="Common\Repository\Exception\SaveXmlFileException.cs" />
     <Compile Include="Common\Repository\IRepository.cs" />
     <Compile Include="Common\Repository\XmlRepository.cs" />
     <Compile Include="Common\Setting\Config.cs" />
     <Compile Include="Common\Setting\Settings.cs" />
+    <Compile Include="Common\Utility\ExceptionMessageUtility.cs" />
     <Compile Include="DllExport\DllExportAttribute.cs" />
     <Compile Include="PatternTracer\Model\ResultModel.cs" />
     <Compile Include="PatternTracer\PatternTracerPanel.cs" />
