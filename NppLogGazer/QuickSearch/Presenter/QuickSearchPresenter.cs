@@ -186,28 +186,35 @@ namespace NppLogGazer.QuickSearch.Presenter
                 }
                 else if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.Shift)
                 {
+                    ShowSearchingIndication();
                     using (Scintilla sci = new Scintilla())
                     {
                         int pos = sci.SearchBackward(keyword.ToString(),
                             keyword.Type == KeywordType.RegExp, args.MatchWord, args.MatchCase, args.WrapSearch);
-                        UpdateSearchResult(sci, pos);
+                        ShowSearchResult(sci, pos);
                     }
                 } else if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.None)
                 {
                     if (!isSelectedIndexChanged)
                     {
+                        ShowSearchingIndication();
                         using (Scintilla sci = new Scintilla())
                         {
                             int pos = sci.SearchForward(keyword.ToString(),
                                 keyword.Type == KeywordType.RegExp, args.MatchWord, args.MatchCase, args.WrapSearch);
-                            UpdateSearchResult(sci, pos);
+                            ShowSearchResult(sci, pos);
                         }
                     }
                 }
             }
         }
 
-        private void UpdateSearchResult(Scintilla sci, int pos)
+        private void ShowSearchingIndication()
+        {
+            view.ShowStatusMessage(Properties.Resources.quick_search_status_searching, Color.Black);
+        }
+
+        private void ShowSearchResult(Scintilla sci, int pos)
         {
             if (pos < 0)
             {

@@ -324,6 +324,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Searching....
+        /// </summary>
+        internal static string quick_search_status_searching {
+            get {
+                return ResourceManager.GetString("quick_search_status_searching", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap reg_exp_icon {

@@ -298,4 +298,7 @@ For help, info and updates, visit the site by clicking the "Visit site" button b
   <data name="plugin_name" xml:space="preserve">
     <value>NppLogGazer</value>
   </data>
+  <data name="quick_search_status_searching" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
 </root>
