@@ -41,7 +41,7 @@ namespace NppLogGazer
 
         public void ShowMessage(string message) 
         {
-            MessageBox.Show(message);
+            MessageBox.Show(message, Properties.Resources.plugin_name);
         }
 
         public bool RequireConfirm(string title, string message)

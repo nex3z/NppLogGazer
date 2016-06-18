@@ -279,6 +279,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NppLogGazer.
+        /// </summary>
+        internal static string plugin_name {
+            get {
+                return ResourceManager.GetString("plugin_name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quick Search.
         /// </summary>
         internal static string quick_search_dlg_label {

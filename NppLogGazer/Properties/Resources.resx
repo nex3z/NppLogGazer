@@ -295,4 +295,7 @@ For help, info and updates, visit the site by clicking the "Visit site" button b
   <data name="ex_msg_error_reading_default_config" xml:space="preserve">
     <value>Error reading default configuration. </value>
   </data>
+  <data name="plugin_name" xml:space="preserve">
+    <value>NppLogGazer</value>
+  </data>
 </root>

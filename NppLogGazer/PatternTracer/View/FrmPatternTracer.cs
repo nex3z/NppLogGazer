@@ -36,7 +36,7 @@ namespace NppLogGazer
 
         public void ShowMessage(string message)
         {
-            MessageBox.Show(message);
+            MessageBox.Show(message, Properties.Resources.plugin_name);
         }
 
         public void SelectPatternAt(int position)
