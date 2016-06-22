@@ -152,9 +152,9 @@ namespace NppLogGazer.QuickSearch.Presenter
 
         private void OnSelectedKeywordChanged(Object sender, OnSelectedKeywordChangedEventArgs args)
         {
-            if (args.SelectedIndex >= 0 && args.SelectedIndex < keywords.Count)
+            if (args.SelectedIndex >= 0)
             {
-                view.RenderKeyword(keywords[args.SelectedIndex]);
+                view.RenderKeyword(GetKeywordModelAt(args.SelectedIndex));
             }
         }
 
@@ -181,7 +181,7 @@ namespace NppLogGazer.QuickSearch.Presenter
                 view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
             }
 
-            KeywordModel keyword = keywords[index];
+            KeywordModel keyword = GetKeywordModelAt(index);
             if (args.Mouse == OnKeywordSelectedEventArgs.MouseButton.Left)
             {
                 if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.Ctrl)
