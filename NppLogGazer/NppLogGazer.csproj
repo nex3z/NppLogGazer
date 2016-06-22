@@ -103,6 +103,7 @@
     <Compile Include="QuickSearch\QuickSearchSettings.cs" />
     <Compile Include="QuickSearch\Repository\KeywordRepository.cs" />
     <Compile Include="QuickSearch\View\Event\AddKeywordEventArgs.cs" />
+    <Compile Include="QuickSearch\View\Event\FilterTextChangedEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\LaunchNppSearchDialogEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OnClosingEventArgs.cs" />
     <Compile Include="QuickSearch\View\Event\OnKeywordSelectedEventArgs.cs" />
@@ -200,7 +201,9 @@
   <ItemGroup>
     <None Include="Resources\report_disk.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\find.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\magnifier.bmp" />
   </ItemGroup>

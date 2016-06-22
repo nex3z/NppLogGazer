@@ -43,6 +43,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBtnOpen = new System.Windows.Forms.ToolStripButton();
             this.toolBtnSaveAs = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolBtnFilter = new System.Windows.Forms.ToolStripButton();
             this.lstKeywords = new System.Windows.Forms.ListBox();
             this.statusKeywordList = new System.Windows.Forms.StatusStrip();
             this.statusLabelKeywordList = new System.Windows.Forms.ToolStripStatusLabel();
@@ -54,6 +56,7 @@
             this.toolBtnMatchWord = new System.Windows.Forms.ToolStripButton();
             this.toolBtnMatchCase = new System.Windows.Forms.ToolStripButton();
             this.toolBtnWrapSearch = new System.Windows.Forms.ToolStripButton();
+            this.txtFilter = new System.Windows.Forms.TextBox();
             this.toolTipKeywordList = new System.Windows.Forms.ToolTip(this.components);
             this.tabLayoutQuickSearch.SuspendLayout();
             this.toolStripKeywrodList.SuspendLayout();
@@ -68,13 +71,15 @@
             this.tabLayoutQuickSearch.Controls.Add(this.txtKeyword, 0, 1);
             this.tabLayoutQuickSearch.Controls.Add(this.flowLayoutKeywordType, 0, 2);
             this.tabLayoutQuickSearch.Controls.Add(this.toolStripKeywrodList, 0, 3);
-            this.tabLayoutQuickSearch.Controls.Add(this.lstKeywords, 0, 4);
-            this.tabLayoutQuickSearch.Controls.Add(this.statusKeywordList, 0, 5);
+            this.tabLayoutQuickSearch.Controls.Add(this.lstKeywords, 0, 5);
+            this.tabLayoutQuickSearch.Controls.Add(this.statusKeywordList, 0, 6);
             this.tabLayoutQuickSearch.Controls.Add(this.toolStripSearch, 0, 0);
+            this.tabLayoutQuickSearch.Controls.Add(this.txtFilter, 0, 4);
             this.tabLayoutQuickSearch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabLayoutQuickSearch.Location = new System.Drawing.Point(0, 0);
             this.tabLayoutQuickSearch.Name = "tabLayoutQuickSearch";
-            this.tabLayoutQuickSearch.RowCount = 6;
+            this.tabLayoutQuickSearch.RowCount = 7;
+            this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tabLayoutQuickSearch.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -109,13 +114,15 @@
             this.toolBtnAdd,
             this.toolBtnRemove,
             this.toolBtnReplace,
-            this.toolBtnRemoveDuplicate,
             this.toolStripSeparator1,
             this.toolBtnMoveUp,
             this.toolBtnMoveDown,
+            this.toolBtnRemoveDuplicate,
             this.toolStripSeparator2,
             this.toolBtnOpen,
-            this.toolBtnSaveAs});
+            this.toolBtnSaveAs,
+            this.toolStripSeparator5,
+            this.toolBtnFilter});
             this.toolStripKeywrodList.Location = new System.Drawing.Point(0, 59);
             this.toolStripKeywrodList.Name = "toolStripKeywrodList";
             this.toolStripKeywrodList.Size = new System.Drawing.Size(371, 25);
@@ -220,6 +227,22 @@
             this.toolBtnSaveAs.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_save_as;
             this.toolBtnSaveAs.Click += new System.EventHandler(this.toolBtnSaveAs_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolBtnFilter
+            // 
+            this.toolBtnFilter.CheckOnClick = true;
+            this.toolBtnFilter.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnFilter.Image = global::NppLogGazer.Properties.Resources.find;
+            this.toolBtnFilter.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnFilter.Name = "toolBtnFilter";
+            this.toolBtnFilter.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnFilter.Text = "toolStripButton1";
+            this.toolBtnFilter.Click += new System.EventHandler(this.toolBtnFilter_Click);
+            // 
             // lstKeywords
             // 
             this.lstKeywords.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -227,9 +250,9 @@
             this.lstKeywords.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstKeywords.FormattingEnabled = true;
             this.lstKeywords.ItemHeight = 15;
-            this.lstKeywords.Location = new System.Drawing.Point(3, 87);
+            this.lstKeywords.Location = new System.Drawing.Point(3, 114);
             this.lstKeywords.Name = "lstKeywords";
-            this.lstKeywords.Size = new System.Drawing.Size(365, 638);
+            this.lstKeywords.Size = new System.Drawing.Size(365, 611);
             this.lstKeywords.TabIndex = 5;
             this.lstKeywords.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstKeywords_DrawItem);
             this.lstKeywords.SelectedIndexChanged += new System.EventHandler(this.lstKeywords_SelectedIndexChanged);
@@ -334,6 +357,16 @@
             this.toolBtnWrapSearch.Size = new System.Drawing.Size(23, 22);
             this.toolBtnWrapSearch.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_wrap_search;
             // 
+            // txtFilter
+            // 
+            this.txtFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFilter.Location = new System.Drawing.Point(3, 87);
+            this.txtFilter.Name = "txtFilter";
+            this.txtFilter.Size = new System.Drawing.Size(365, 21);
+            this.txtFilter.TabIndex = 8;
+            this.txtFilter.Visible = false;
+            this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
+            // 
             // FrmQuickSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -384,6 +417,9 @@
         private System.Windows.Forms.ToolStripButton toolBtnMatchWord;
         private System.Windows.Forms.ToolStripButton toolBtnMatchCase;
         private System.Windows.Forms.ToolStripButton toolBtnWrapSearch;
+        private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolBtnFilter;
 
     }
 }

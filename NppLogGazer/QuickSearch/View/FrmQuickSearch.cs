@@ -26,6 +26,7 @@ namespace NppLogGazer
         public event EventHandler<VisibleChangedEventArgs> PluginVisibleChanged;
         public event EventHandler<UpdateKeywordAtEventArgs> UpdateKeywordAt;
         public event EventHandler<LaunchNppSearchDialogEventArgs> LaunchNppSearchDialog;
+        public event EventHandler<FilterTextChangedEventArgs> FilterTextChanged;
 
         int lastHoveredIndex = -1;
 
@@ -293,6 +294,27 @@ namespace NppLogGazer
             {
                 LaunchNppSearchDialogEventArgs args = new LaunchNppSearchDialogEventArgs(GetKeyword());
                 LaunchNppSearchDialog(null, args);
+            }
+        }
+
+        private void toolBtnFilter_Click(object sender, EventArgs e)
+        {
+            if (toolBtnFilter.Checked == true)
+            {
+                txtFilter.Visible = true;
+            }
+            else
+            {
+                txtFilter.Clear();
+                txtFilter.Visible = false;
+            }
+        }
+
+        private void txtFilter_TextChanged(object sender, EventArgs e)
+        {
+            if (FilterTextChanged != null)
+            {
+                FilterTextChanged(null, new FilterTextChangedEventArgs(txtFilter.Text));
             }
         }
 
