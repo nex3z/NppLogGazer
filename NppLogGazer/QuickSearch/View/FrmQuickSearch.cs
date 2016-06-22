@@ -299,15 +299,7 @@ namespace NppLogGazer
 
         private void toolBtnFilter_Click(object sender, EventArgs e)
         {
-            if (toolBtnFilter.Checked == true)
-            {
-                txtFilter.Visible = true;
-            }
-            else
-            {
-                txtFilter.Clear();
-                txtFilter.Visible = false;
-            }
+            EnableFilter(toolBtnFilter.Checked);
         }
 
         private void txtFilter_TextChanged(object sender, EventArgs e)
@@ -316,6 +308,19 @@ namespace NppLogGazer
             {
                 FilterTextChanged(null, new FilterTextChangedEventArgs(txtFilter.Text));
             }
+        }
+
+        private void EnableFilter(bool enable)
+        {
+            if (!enable)
+            {
+                txtFilter.Clear();
+            }
+            txtFilter.Visible = enable;
+
+            toolBtnMoveUp.Enabled = !enable;
+            toolBtnMoveDown.Enabled = !enable;
+            toolBtnRemoveDuplicate.Enabled = !enable;
         }
 
     }

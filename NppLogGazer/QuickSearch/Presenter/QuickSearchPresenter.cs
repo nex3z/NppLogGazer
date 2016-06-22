@@ -5,6 +5,7 @@ using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.View.Event;
 using NppPluginNET;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -19,6 +20,8 @@ namespace NppLogGazer.QuickSearch.Presenter
         private IRepository<KeywordModel> repository;
 
         private BindingList<KeywordModel> keywords;
+        private BindingList<KeywordModel> filterdKeywords;
+        private bool filterMode = false;
         private int lastSelectedIndex;
 
         public QuickSearchPresenter(IQuickSearchView view, IRepository<KeywordModel> repository)
@@ -60,6 +63,7 @@ namespace NppLogGazer.QuickSearch.Presenter
             view.OnKeywordSelected += OnKeywordSelected;
             view.PluginVisibleChanged += PluginVisibleChanged;
             view.LaunchNppSearchDialog += LaunchNppSearchDialog;
+            view.FilterTextChanged += FilterTextChanged;
         }
 
         private void SetupInitialView()
@@ -81,7 +85,7 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             if (args.Keyword != null && args.Keyword.KeywordText != "")
             {
-                keywords.Insert(0, args.Keyword);
+                AddKeywordModelToList(args.Keyword);
                 view.SelectKeywordAt(0);
             }
         }
@@ -89,14 +93,14 @@ namespace NppLogGazer.QuickSearch.Presenter
         private void RemoveKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
         {
             if (args.Position >= 0 && args.Position < keywords.Count)
-                keywords.RemoveAt(args.Position);
+                RemoveKeywordModelFromList(args.Position);
         }
 
         private void UpdateKeywordAt(Object sender, UpdateKeywordAtEventArgs args)
         {
             if (args.Position >= 0 && args.Position < keywords.Count)
             {
-                keywords[args.Position] = args.Keyword;
+                UpdateKeywordModelAt(args.Keyword, args.Position);
             }
         }
 
@@ -245,6 +249,73 @@ namespace NppLogGazer.QuickSearch.Presenter
             if (!args.Visible)
             {
                 Win32.SendMessage(PluginBase.nppData._nppHandle, NppMsg.NPPM_SETMENUITEMCHECK, PluginBase._funcItems.Items[Main.GetQuickSearchDlgId()]._cmdID, 0);
+            }
+        }
+
+        private void FilterTextChanged(Object sender, FilterTextChangedEventArgs args)
+        {
+            if (args.FilterText != "")
+            {
+                IEnumerable<KeywordModel> selection = keywords.Where(m => m.KeywordText.Contains(args.FilterText) == true);
+                filterdKeywords = new BindingList<KeywordModel>(selection.ToList());
+                view.Bind(filterdKeywords);
+                filterMode = true;
+            }
+            else
+            {
+                view.Bind(keywords);
+                filterMode = false;
+            }
+        }
+
+        private KeywordModel GetKeywordModelAt(int position)
+        {
+            if (filterMode)
+            {
+                return filterdKeywords[position];
+            }
+            else
+            {
+                return keywords[position];
+            }
+        }
+
+        private void AddKeywordModelToList(KeywordModel keyword)
+        {
+            if (filterMode)
+            {
+                filterdKeywords.Insert(0, keyword);
+            }
+            keywords.Insert(0, keyword);
+        }
+
+        private void RemoveKeywordModelFromList(int position)
+        {
+            if (filterMode)
+            {
+                KeywordModel pending = filterdKeywords[position];
+                keywords.Remove(pending);
+
+                filterdKeywords.RemoveAt(position);         
+            }
+            else
+            {
+                keywords.RemoveAt(position);
+            }
+        }
+
+        private void UpdateKeywordModelAt(KeywordModel keyword, int position)
+        {
+            if (filterMode)
+            {
+                KeywordModel pending = filterdKeywords[position];
+                keywords[keywords.IndexOf(pending)] = keyword;
+
+                filterdKeywords[position] = keyword;
+            }
+            else
+            {
+                keywords[position] = keyword;
             }
         }
     }
