@@ -99,6 +99,7 @@
     <Compile Include="PatternTracer\View\IPatternTracerView.cs" />
     <Compile Include="PatternTracer\View\Event\OnClosingEventArgs.cs" />
     <Compile Include="PatternTracer\View\IResultView.cs" />
+    <Compile Include="QuickSearch\Presenter\KeywordBindingList.cs" />
     <Compile Include="QuickSearch\QuickSearchPanel.cs" />
     <Compile Include="QuickSearch\QuickSearchSettings.cs" />
     <Compile Include="QuickSearch\Repository\KeywordRepository.cs" />

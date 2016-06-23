@@ -511,6 +511,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Filter.
+        /// </summary>
+        internal static string tooltip_filter {
+            get {
+                return ResourceManager.GetString("tooltip_filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Launch Notepad++ Search.
         /// </summary>
         internal static string tooltip_launch_npp_search_dlg {

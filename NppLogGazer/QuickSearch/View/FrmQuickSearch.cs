@@ -62,8 +62,11 @@ namespace NppLogGazer
 
         public void RenderKeyword(KeywordModel keyword)
         {
-            txtKeyword.Text = keyword.KeywordText;
-            toolBtnRegExp.Checked = keyword.Type == KeywordType.RegExp;
+            if (keyword != null)
+            {
+                txtKeyword.Text = keyword.KeywordText;
+                toolBtnRegExp.Checked = keyword.Type == KeywordType.RegExp;
+            }
         }
 
         public void SelectKeywordAt(int position)
@@ -312,11 +315,11 @@ namespace NppLogGazer
 
         private void EnableFilter(bool enable)
         {
-            if (!enable)
-            {
-                txtFilter.Clear();
-            }
             txtFilter.Visible = enable;
+            if (enable)
+                txtFilter.Focus();
+            else
+                txtFilter.Clear();
 
             toolBtnMoveUp.Enabled = !enable;
             toolBtnMoveDown.Enabled = !enable;

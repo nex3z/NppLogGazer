@@ -241,6 +241,7 @@
             this.toolBtnFilter.Name = "toolBtnFilter";
             this.toolBtnFilter.Size = new System.Drawing.Size(23, 22);
             this.toolBtnFilter.Text = "toolStripButton1";
+            this.toolBtnFilter.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_filter;
             this.toolBtnFilter.Click += new System.EventHandler(this.toolBtnFilter_Click);
             // 
             // lstKeywords

@@ -5,8 +5,6 @@ using NppLogGazer.QuickSearch.Model;
 using NppLogGazer.QuickSearch.View.Event;
 using NppPluginNET;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -19,10 +17,8 @@ namespace NppLogGazer.QuickSearch.Presenter
         private IQuickSearchView view;
         private IRepository<KeywordModel> repository;
 
-        private BindingList<KeywordModel> keywords;
-        private BindingList<KeywordModel> filterdKeywords;
-        private bool filterMode = false;
-        private int lastSelectedIndex;
+        private KeywordBindingList keywords;
+        private int lastSelectedIndex = 0;
 
         public QuickSearchPresenter(IQuickSearchView view, IRepository<KeywordModel> repository)
         {
@@ -38,13 +34,13 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                keywords = new BindingList<KeywordModel>(repository.GetAll());
+                keywords = new KeywordBindingList(repository.GetAll());
             }
             catch (LoadDataException ex)
             {
                 string message = ExceptionMessageUtility.BuildLoadDataExceptionMessage(ex);
                 view.ShowMessage(message);
-                keywords = new BindingList<KeywordModel>();
+                keywords = new KeywordBindingList();
             }
             view.Bind(keywords);
         }
@@ -85,7 +81,7 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             if (args.Keyword != null && args.Keyword.KeywordText != "")
             {
-                AddKeywordModelToList(args.Keyword);
+                keywords.AddKeyword(args.Keyword);
                 view.SelectKeywordAt(0);
             }
         }
@@ -93,15 +89,13 @@ namespace NppLogGazer.QuickSearch.Presenter
         private void RemoveKeywordAt(Object sender, RemoveKeywordAtEventArgs args)
         {
             if (args.Position >= 0 && args.Position < keywords.Count)
-                RemoveKeywordModelFromList(args.Position);
+                keywords.RemoveKeywordAt(args.Position);    
         }
 
         private void UpdateKeywordAt(Object sender, UpdateKeywordAtEventArgs args)
         {
             if (args.Position >= 0 && args.Position < keywords.Count)
-            {
-                UpdateKeywordModelAt(args.Keyword, args.Position);
-            }
+                keywords.UpdateKeywordAt(args.Position, args.Keyword);
         }
 
         private void SwapKeywordAt(Object sender, SwapPositionEventArgs args)
@@ -120,7 +114,7 @@ namespace NppLogGazer.QuickSearch.Presenter
             if (view.RequireConfirm(Properties.Resources.remove_dup_dlg_title, 
                                     Properties.Resources.remove_dup_dlg_message))
             {
-                keywords = new BindingList<KeywordModel>(keywords.Distinct().ToList());
+                keywords = new KeywordBindingList(keywords.Distinct().ToList());
                 view.Bind(keywords);
             }
         }
@@ -141,7 +135,7 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
-                keywords = new BindingList<KeywordModel>(repository.GetFrom(new FileInfo(args.Path)));
+                keywords = new KeywordBindingList(repository.GetFrom(new FileInfo(args.Path)));
                 view.Bind(keywords);
             }
             catch(LoadDataException ex)
@@ -152,14 +146,16 @@ namespace NppLogGazer.QuickSearch.Presenter
 
         private void OnSelectedKeywordChanged(Object sender, OnSelectedKeywordChangedEventArgs args)
         {
-            if (args.SelectedIndex >= 0)
+            if (args.SelectedIndex >= 0 && args.SelectedIndex < keywords.Count)
             {
-                view.RenderKeyword(GetKeywordModelAt(args.SelectedIndex));
+                view.RenderKeyword(keywords[args.SelectedIndex]);
             }
         }
 
         private void OnClosing(Object sender, OnClosingEventArgs args)
         {
+            DisableFilter();
+
             QuickSearchSettings.Instance.Configs.MatchCase = args.MatchCaseStatus;
             QuickSearchSettings.Instance.Configs.MatchWord = args.MatchWordStatus;
             QuickSearchSettings.Instance.Configs.WrapSearch = args.WrapSearchStatus;
@@ -181,7 +177,7 @@ namespace NppLogGazer.QuickSearch.Presenter
                 view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
             }
 
-            KeywordModel keyword = GetKeywordModelAt(index);
+            KeywordModel keyword = keywords[index];
             if (args.Mouse == OnKeywordSelectedEventArgs.MouseButton.Left)
             {
                 if (args.Key == OnKeywordSelectedEventArgs.KeyboardButton.Ctrl)
@@ -256,67 +252,28 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             if (args.FilterText != "")
             {
-                IEnumerable<KeywordModel> selection = keywords.Where(m => m.KeywordText.Contains(args.FilterText) == true);
-                filterdKeywords = new BindingList<KeywordModel>(selection.ToList());
-                view.Bind(filterdKeywords);
-                filterMode = true;
+                EnableFilter(args.FilterText);
             }
             else
             {
-                view.Bind(keywords);
-                filterMode = false;
+                DisableFilter();
             }
         }
 
-        private KeywordModel GetKeywordModelAt(int position)
+        private void EnableFilter(string filter)
         {
-            if (filterMode)
-            {
-                return filterdKeywords[position];
-            }
-            else
-            {
-                return keywords[position];
-            }
+            keywords.Filter = filter;
+            lastSelectedIndex = 0;
+            view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
         }
 
-        private void AddKeywordModelToList(KeywordModel keyword)
+        private void DisableFilter()
         {
-            if (filterMode)
-            {
-                filterdKeywords.Insert(0, keyword);
-            }
-            keywords.Insert(0, keyword);
-        }
-
-        private void RemoveKeywordModelFromList(int position)
-        {
-            if (filterMode)
-            {
-                KeywordModel pending = filterdKeywords[position];
-                keywords.Remove(pending);
-
-                filterdKeywords.RemoveAt(position);         
-            }
-            else
-            {
-                keywords.RemoveAt(position);
-            }
-        }
-
-        private void UpdateKeywordModelAt(KeywordModel keyword, int position)
-        {
-            if (filterMode)
-            {
-                KeywordModel pending = filterdKeywords[position];
-                keywords[keywords.IndexOf(pending)] = keyword;
-
-                filterdKeywords[position] = keyword;
-            }
-            else
-            {
-                keywords[position] = keyword;
-            }
+            keywords.RemoveFilter();
+            lastSelectedIndex = 0;
+            view.SelectKeywordAt(0);
+            view.RenderKeyword(keywords[0]);
+            view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
         }
     }
 
