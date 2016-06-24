@@ -36,10 +36,10 @@
             this.toolBtnAdd = new System.Windows.Forms.ToolStripButton();
             this.toolBtnRemove = new System.Windows.Forms.ToolStripButton();
             this.toolBtnReplace = new System.Windows.Forms.ToolStripButton();
-            this.toolBtnRemoveDuplicate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBtnMoveUp = new System.Windows.Forms.ToolStripButton();
             this.toolBtnMoveDown = new System.Windows.Forms.ToolStripButton();
+            this.toolBtnRemoveDuplicate = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBtnOpen = new System.Windows.Forms.ToolStripButton();
             this.toolBtnSaveAs = new System.Windows.Forms.ToolStripButton();
@@ -162,17 +162,6 @@
             this.toolBtnReplace.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_replace;
             this.toolBtnReplace.Click += new System.EventHandler(this.toolBtnReplace_Click);
             // 
-            // toolBtnRemoveDuplicate
-            // 
-            this.toolBtnRemoveDuplicate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolBtnRemoveDuplicate.Image = global::NppLogGazer.Properties.Resources.remove_duplicate;
-            this.toolBtnRemoveDuplicate.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolBtnRemoveDuplicate.Name = "toolBtnRemoveDuplicate";
-            this.toolBtnRemoveDuplicate.Size = new System.Drawing.Size(23, 22);
-            this.toolBtnRemoveDuplicate.Text = "toolStripButton5";
-            this.toolBtnRemoveDuplicate.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_delete_duplicate;
-            this.toolBtnRemoveDuplicate.Click += new System.EventHandler(this.toolBtnRemoveDuplicate_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -199,6 +188,17 @@
             this.toolBtnMoveDown.Text = "toolStripButton4";
             this.toolBtnMoveDown.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_move_down;
             this.toolBtnMoveDown.Click += new System.EventHandler(this.toolBtnMoveDown_Click);
+            // 
+            // toolBtnRemoveDuplicate
+            // 
+            this.toolBtnRemoveDuplicate.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolBtnRemoveDuplicate.Image = global::NppLogGazer.Properties.Resources.remove_duplicate;
+            this.toolBtnRemoveDuplicate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolBtnRemoveDuplicate.Name = "toolBtnRemoveDuplicate";
+            this.toolBtnRemoveDuplicate.Size = new System.Drawing.Size(23, 22);
+            this.toolBtnRemoveDuplicate.Text = "toolStripButton5";
+            this.toolBtnRemoveDuplicate.ToolTipText = global::NppLogGazer.Properties.Resources.tooltip_delete_duplicate;
+            this.toolBtnRemoveDuplicate.Click += new System.EventHandler(this.toolBtnRemoveDuplicate_Click);
             // 
             // toolStripSeparator2
             // 
@@ -251,9 +251,9 @@
             this.lstKeywords.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstKeywords.FormattingEnabled = true;
             this.lstKeywords.ItemHeight = 15;
-            this.lstKeywords.Location = new System.Drawing.Point(3, 114);
+            this.lstKeywords.Location = new System.Drawing.Point(3, 115);
             this.lstKeywords.Name = "lstKeywords";
-            this.lstKeywords.Size = new System.Drawing.Size(365, 611);
+            this.lstKeywords.Size = new System.Drawing.Size(365, 610);
             this.lstKeywords.TabIndex = 5;
             this.lstKeywords.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.lstKeywords_DrawItem);
             this.lstKeywords.SelectedIndexChanged += new System.EventHandler(this.lstKeywords_SelectedIndexChanged);
@@ -361,9 +361,10 @@
             // txtFilter
             // 
             this.txtFilter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFilter.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilter.Location = new System.Drawing.Point(3, 87);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(365, 21);
+            this.txtFilter.Size = new System.Drawing.Size(365, 22);
             this.txtFilter.TabIndex = 8;
             this.txtFilter.Visible = false;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);

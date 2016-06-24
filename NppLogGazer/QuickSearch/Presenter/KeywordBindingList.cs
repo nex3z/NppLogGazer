@@ -7,6 +7,9 @@ namespace NppLogGazer.QuickSearch.Presenter
 {
     class KeywordBindingList : BindingList<KeywordModel>
     {
+        private List<KeywordModel> unfilteredList = new List<KeywordModel>();
+        private string filterValue = null;
+
         public KeywordBindingList(List<KeywordModel> keywords) : base(keywords)
         {
         }
@@ -15,8 +18,14 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
         }
 
-        private List<KeywordModel> unfilteredList = new List<KeywordModel>();
-        private string filterValue = null;
+        public bool FilterEnabled
+        {
+            get
+            {
+                return filterValue != null;
+            }
+        }
+
         public string Filter
         {
             get { return filterValue; }
@@ -32,6 +41,8 @@ namespace NppLogGazer.QuickSearch.Presenter
 
                 if (filterValue != value)
                 {
+                    RaiseListChangedEvents = false;
+
                     if (value == null)
                     {
                         // Cancel filter, restore original list
@@ -47,6 +58,9 @@ namespace NppLogGazer.QuickSearch.Presenter
                         filterValue = value;
                         ApplyFilter();
                     }
+
+                    RaiseListChangedEvents = true;
+                    OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
                 }
             }
         }

@@ -135,8 +135,11 @@ namespace NppLogGazer.QuickSearch.Presenter
         {
             try
             {
+                string filter = keywords.FilterEnabled ? keywords.Filter : null;
                 keywords = new KeywordBindingList(repository.GetFrom(new FileInfo(args.Path)));
                 view.Bind(keywords);
+                ResetKeywordsSelection();
+                if (filter != null) keywords.Filter = filter;
             }
             catch(LoadDataException ex)
             {
@@ -263,16 +266,23 @@ namespace NppLogGazer.QuickSearch.Presenter
         private void EnableFilter(string filter)
         {
             keywords.Filter = filter;
-            lastSelectedIndex = 0;
-            view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
+            ResetKeywordsSelection();
         }
 
         private void DisableFilter()
         {
             keywords.RemoveFilter();
+            ResetKeywordsSelection();
+        }
+
+        private void ResetKeywordsSelection()
+        {
             lastSelectedIndex = 0;
-            view.SelectKeywordAt(0);
-            view.RenderKeyword(keywords[0]);
+            if (keywords.Count > 0)
+            {
+                view.SelectKeywordAt(0);
+                view.RenderKeyword(keywords[0]);
+            }
             view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
         }
     }
