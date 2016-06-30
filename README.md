@@ -2,7 +2,7 @@
 
 ## Description
 
-**NppLogGazer** is a notepad++ plugin with fancy search features, providing fast and convenient searching especially for log analysis.
+**NppLogGazer** is a Notepad++ plugin with fancy search features, providing fast and convenient searching especially for log analysis. It contains two separate plugins: **QuickSearchPanel** for managing and searching frequently used keywords, and **PatternTracer** for tracking keywords sequence.
 
 
 ## How to install
@@ -27,7 +27,7 @@ Open up Notepad++, click the ![pluginicon][quick_search_panel_icon]**Show QuickS
 
 - Input keyword in the text box. Select ![reg_exp][reg_exp_icon]**Regular Expression** if it is a regular expression. Click ![add][add_icon]**Add** button to add it to the list.
 - <kbd>**Click**</kbd> on the keyword in the list to search forward. <kbd>**Shift**</kbd> + <kbd>**Click**</kbd> to search backward. Search options: ![match_word][match_word_icon]**Match Word**, ![match_case][match_case_icon]**Match Case** and ![wrap_search][wrap_search_icon]**Wrap Search**.
-- <kbd>**Ctrl**</kbd> + <kbd>**Click**</kbd> on the keyword to launch Notepad++ Find dialog with selected keyword pasted in "Find what" automatically.
+- <kbd>**Ctrl**</kbd> + <kbd>**Click**</kbd> on the keyword to launch Notepad++'s "Find" dialog with selected keyword pasted in "Find what" automatically. (Note: The "Regular expression" in Notepad++'s Find dialog won't be selected automatically, due to lacking of API support.)
 - Use ![delete][delete_icon]**Delete** button to remove the selected keyword. You can also change the order of selected keyword by using ![move_up][move_up_icon]**Move Up** and ![move_down][move_down_icon]**Move Down**.
 - Use ![open][open_icon]**Open...**/![save][save_icon]**Save As...** to import / export current keywords list.
 - Use ![filter][filter_icon]**Filter** to filter given keyword in the list.
