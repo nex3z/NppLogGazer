@@ -36,7 +36,7 @@
 <h2>
 <a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h2>
 
-<p><strong>NppLogGazer</strong> is a notepad++ plugin with fancy search features, providing fast and convenient searching especially for log analysis.</p>
+<p><strong>NppLogGazer</strong> is a Notepad++ plugin with fancy search features, providing fast and convenient searching especially for log analysis. It contains two separate plugins: <strong>QuickSearchPanel</strong> for managing and searching frequently used keywords, and <strong>PatternTracer</strong> for tracking keywords sequence.</p>
 
 <h2>
 <a id="how-to-install" class="anchor" href="#how-to-install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to install</h2>
@@ -69,7 +69,7 @@
 <li>
 <kbd><strong>Click</strong></kbd> on the keyword in the list to search forward. <kbd><strong>Shift</strong></kbd> + <kbd><strong>Click</strong></kbd> to search backward. Search options: <img src="Images/Icons/match_word.png" alt="match_word"><strong>Match Word</strong>, <img src="Images/Icons/match_case.png" alt="match_case"><strong>Match Case</strong> and <img src="Images/Icons/wrap_search.png" alt="wrap_search"><strong>Wrap Search</strong>.</li>
 <li>
-<kbd><strong>Ctrl</strong></kbd> + <kbd><strong>Click</strong></kbd> on the keyword to launch Notepad++ Find dialog with selected keyword pasted in "Find what" automatically.</li>
+<kbd><strong>Ctrl</strong></kbd> + <kbd><strong>Click</strong></kbd> on the keyword to launch Notepad++'s "Find" dialog with selected keyword pasted in "Find what" automatically. (Note: The "Regular expression" in Notepad++'s Find dialog won't be selected automatically, due to lacking of API support.)</li>
 <li>Use <img src="Images/Icons/delete.png" alt="delete"><strong>Delete</strong> button to remove the selected keyword. You can also change the order of selected keyword by using <img src="Images/Icons/move_up.png" alt="move_up"><strong>Move Up</strong> and <img src="Images/Icons/move_down.png" alt="move_down"><strong>Move Down</strong>.</li>
 <li>Use <img src="Images/Icons/open.png" alt="open"><strong>Open...</strong>/<img src="Images/Icons/save.png" alt="save"><strong>Save As...</strong> to import / export current keywords list.</li>
 <li>Use <img src="Images/Icons/filter.png" alt="filter"><strong>Filter</strong> to filter given keyword in the list.</li>
