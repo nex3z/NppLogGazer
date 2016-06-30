@@ -106,6 +106,15 @@ namespace NppLogGazer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Complete match only.
+        /// </summary>
+        internal static string complete_match_only {
+            get {
+                return ResourceManager.GetString("complete_match_only", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap delete {
@@ -276,15 +285,6 @@ namespace NppLogGazer.Properties {
         internal static string pattern_tracer_status_not_found {
             get {
                 return ResourceManager.GetString("pattern_tracer_status_not_found", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Perfect match only.
-        /// </summary>
-        internal static string perfect_match_only {
-            get {
-                return ResourceManager.GetString("perfect_match_only", resourceCulture);
             }
         }
         

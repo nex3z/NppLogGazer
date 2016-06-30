@@ -286,8 +286,8 @@ For help, info and updates, visit the site by clicking the "Visit site" button b
   <data name="tooltip_launch_npp_search_dlg" xml:space="preserve">
     <value>Launch Notepad++ Search</value>
   </data>
-  <data name="perfect_match_only" xml:space="preserve">
-    <value>Perfect match only</value>
+  <data name="complete_match_only" xml:space="preserve">
+    <value>Complete match only</value>
   </data>
   <data name="ex_msg_backup_at" xml:space="preserve">
     <value>Backup at: </value>

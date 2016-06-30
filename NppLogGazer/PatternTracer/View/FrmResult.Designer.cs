@@ -113,7 +113,7 @@
             this.chkCompleteMatch.Name = "chkCompleteMatch";
             this.chkCompleteMatch.Size = new System.Drawing.Size(132, 23);
             this.chkCompleteMatch.TabIndex = 2;
-            this.chkCompleteMatch.Text = global::NppLogGazer.Properties.Resources.perfect_match_only;
+            this.chkCompleteMatch.Text = global::NppLogGazer.Properties.Resources.complete_match_only;
             this.chkCompleteMatch.UseVisualStyleBackColor = true;
             this.chkCompleteMatch.CheckedChanged += new System.EventHandler(this.chkCompleteMatch_CheckedChanged);
             // 

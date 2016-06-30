@@ -73,14 +73,11 @@ namespace NppLogGazer.PatternTracer.Presenter
                 view.SelectPatternAt(0);
                 view.RenderPattern(patterns[0]);
             }
-
-            // view.ShowStatusMessage(Properties.Resources.quick_search_status_initial_message, Color.Black);
         }
 
         private void SearchPattern(Object sender, SearchPatternEventArgs args)
         {
-            // string result = PerformSearch(args.Pattern, args.MatchWord, args.MatchWord);
-            List<ResultModel> results = PerformSearchFull(args.Pattern, args.MatchWord, args.MatchWord);
+            List<ResultModel> results = PerformSearchFull(args.Pattern, args.MatchWord, args.MatchCase);
             ShowResult(results);
         }
 
