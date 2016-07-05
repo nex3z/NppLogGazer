@@ -78,7 +78,7 @@ namespace NppLogGazer.PatternTracer.Presenter
         private void SearchPattern(Object sender, SearchPatternEventArgs args)
         {
             List<ResultModel> results = PerformSearchFull(args.Pattern, args.MatchWord, args.MatchCase);
-            ShowResult(results);
+            ShowResult(results, args.Pattern);
         }
 
         private void AddPattern(Object sender, AddPatternEventArgs args)
@@ -218,11 +218,11 @@ namespace NppLogGazer.PatternTracer.Presenter
             return results;
         }
 
-        private void ShowResult(List<ResultModel> result)
+        private void ShowResult(List<ResultModel> result, PatternModel pattern)
         {
             IResultView resultFrm = new FrmResult();
             SearchResultPresenter resultPresenter = new SearchResultPresenter(resultFrm);
-            resultPresenter.RenderResult(result, result[0].KeywordCount);
+            resultPresenter.RenderResult(result, pattern.PatternText.Count);
         }
     }
 }
