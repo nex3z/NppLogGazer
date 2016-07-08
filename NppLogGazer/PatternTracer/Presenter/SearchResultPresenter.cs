@@ -1,9 +1,9 @@
-﻿using NppLogGazer.PatternTracer.Model;
+﻿using NppLogGazer.PatternExtractor.Model;
+using NppLogGazer.PatternTracer.Model;
 using NppLogGazer.PatternTracer.View;
 using NppLogGazer.PatternTracer.View.Event;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace NppLogGazer.PatternTracer.Presenter
@@ -12,6 +12,7 @@ namespace NppLogGazer.PatternTracer.Presenter
     {
         private IResultView view;
         private List<ResultModel> result;
+        private PatternModel pattern;
 
         public SearchResultPresenter(IResultView resultView)
         {
@@ -26,20 +27,24 @@ namespace NppLogGazer.PatternTracer.Presenter
 
         private void ResultFilterChanged(Object sender, ResultFilterChangedEventArgs args)
         {
-            string resultText = FormatResult(result, args.CompleteMatch ? result[0].KeywordCount : 0);
-            view.ShowResult(resultText);
+            if (pattern != null && result != null)
+            {
+                string resultText = FormatResult(result, args.CompleteMatch ? pattern.PatternText.Count : 0);
+                view.ShowResult(resultText);
+            }
         }
 
-        public void RenderResult(List<ResultModel> resultList, int matchCountThreshold)
+        public void RenderResult(List<ResultModel> resultList, PatternModel pattern)
         {
             result = resultList;
-            string resultText = FormatResult(resultList, matchCountThreshold);
+            this.pattern = pattern;
+            string resultText = FormatResult(resultList, pattern.PatternText.Count);
             view.ShowResult(resultText);
         }
 
         private string FormatResult(List<ResultModel> resultList, int matchCountThreshold)
         {
-            if (resultList.Count == 0)
+            if (resultList == null || resultList.Count == 0)
             {
                 return Properties.Resources.pattern_tracer_status_not_found;
             }

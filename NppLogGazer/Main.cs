@@ -16,7 +16,7 @@ namespace NppLogGazer
     {
         #region " Fields "
         internal const string PluginName = "NppLogGazer"; 
-        public const string PluginVersion = "0.8.1";
+        public const string PluginVersion = "0.8.2";
         static string iniFilePath = null;
         static string defaultKeywordListFile = null;
         static string defaultPatternListFile = null;

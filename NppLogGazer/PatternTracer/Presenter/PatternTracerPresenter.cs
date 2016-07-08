@@ -11,8 +11,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace NppLogGazer.PatternTracer.Presenter
 {
@@ -231,7 +229,7 @@ namespace NppLogGazer.PatternTracer.Presenter
         {
             IResultView resultFrm = new FrmResult();
             SearchResultPresenter resultPresenter = new SearchResultPresenter(resultFrm);
-            resultPresenter.RenderResult(result, pattern.PatternText.Count);
+            resultPresenter.RenderResult(result, pattern);
         }
     }
 }
