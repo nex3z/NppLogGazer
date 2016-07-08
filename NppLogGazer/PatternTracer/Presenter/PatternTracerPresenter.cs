@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace NppLogGazer.PatternTracer.Presenter
 {
@@ -185,11 +186,19 @@ namespace NppLogGazer.PatternTracer.Presenter
                     sci.SetCurrentPos(0);
                     sci.SetAnchor(0);
 
-                    int pos = sci.SearchForwardSilent(pattern.PatternText[keywordIdx].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
+                    string keyword = pattern.PatternText[keywordIdx].ToString();
+                    bool isRegExp = pattern.Type == PatternType.RegExp;
+                    if (keyword == "")
+                    {
+                        keyword = @"^\s*\n";
+                        isRegExp = true;
+                    }
+
+                    int pos = sci.SearchForwardSilent(keyword, isRegExp, matchWord, matchCase);
                     while (pos != -1)
                     {
                         positions.Add(new LineInfoModel(pos, keywordIdx));
-                        pos = sci.SearchForwardSilent(pattern.PatternText[keywordIdx].ToString(), pattern.Type == PatternType.RegExp, matchWord, matchCase);
+                        pos = sci.SearchForwardSilent(keyword, isRegExp, matchWord, matchCase);
                     }
                 }
                 
